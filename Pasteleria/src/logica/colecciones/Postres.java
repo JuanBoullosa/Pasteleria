@@ -4,32 +4,32 @@ import logica.negocio.Postre;
 
 public class Postres {
 	
-	private TreeMap<String,Postre> arbolpostres;
+	private TreeMap<String,Postre> arbolPostres;
 	
 
 	public Postres ()
 	{
-		arbolpostres= new TreeMap<String, Postre> ();
+		arbolPostres= new TreeMap<String, Postre> ();
 	}
 
 	public boolean member(String codigo)
 	{
-		return arbolpostres.containsKey(codigo);
+		return arbolPostres.containsKey(codigo);
 	}
 	
 	public Postre find (String codigo)
 	{
-		return arbolpostres.get(codigo);
+		return arbolPostres.get(codigo);
 	}
 	
 	public void insert (String codigo, Postre P)
 	{
-		arbolpostres.put(codigo, P);
+		arbolPostres.put(codigo, P);
 	}
 	
 	public void detelet (String codigo)
 	{
-		arbolpostres.remove(codigo);
+		arbolPostres.remove(codigo);
 	}
 	
 }
