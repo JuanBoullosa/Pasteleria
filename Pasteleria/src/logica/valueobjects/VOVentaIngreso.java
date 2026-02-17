@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 
 public class VOVentaIngreso {
 	
-	
-	
 	public VOVentaIngreso(String direccionEnvio, LocalDateTime fecha) {
 		super();
 		this.direccionEnvio = direccionEnvio;
