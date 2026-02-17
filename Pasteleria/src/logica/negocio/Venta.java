@@ -9,10 +9,6 @@ public class Venta {
 	private String direccion;
 	private String Estado;
 	private float montoTotal;
-	public int getNumero() {
-		return numero;
-	
-	}
 	
 	
 	public Venta(int numero, LocalDateTime fecha, String direccion, String estado, float montoTotal) {
@@ -23,8 +19,11 @@ public class Venta {
 		Estado = estado;
 		this.montoTotal = montoTotal;
 	}
-
-
+	
+	public int getNumero() {
+		return numero;
+	
+	}
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}

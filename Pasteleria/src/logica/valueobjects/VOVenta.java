@@ -8,13 +8,18 @@ public class VOVenta extends VOVentaIngreso {
 	private float montoTotal;
 	String estado;
 	
-	
-	public VOVenta(String direccionEnvio, LocalDateTime fecha, float montoTotal, String estado) {
+	public VOVenta(String direccionEnvio, LocalDateTime fecha, int numero, float montoTotal, String estado) {
 		super(direccionEnvio, fecha);
+		this.numero = numero;
 		this.montoTotal = montoTotal;
 		this.estado = estado;
 	}
-	
+	public int getNumero() {
+		return numero;
+	}
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 	public float getMontoTotal() {
 		return montoTotal;
 	}
@@ -29,5 +34,4 @@ public class VOVenta extends VOVentaIngreso {
 	}
 	
 	
-
 }
