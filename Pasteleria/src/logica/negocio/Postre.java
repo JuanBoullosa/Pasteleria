@@ -6,11 +6,11 @@ public class Postre {
 	private String nombre;
 	private String codigo;
 	
-	public Postre(float precio, String nombre, String codigo) {
+	public Postre(String codigo, String nombre,float precio ) {
 		super();
-		this.precio = precio;
-		this.nombre = nombre;
 		this.codigo = codigo;
+		this.nombre = nombre;
+		this.precio = precio;
 	}
 	public float getPrecio() {
 		return precio;
