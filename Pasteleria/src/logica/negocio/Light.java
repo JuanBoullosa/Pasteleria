@@ -5,8 +5,8 @@ public class Light extends Postre {
 	private String endulzante;
 	private String descripcion;
 	
-	public Light(float precio, String nombre, String codigo, String endulzante, String descripcion) {
-		super(precio, nombre, codigo);
+	public Light(String codigo,String nombre, float precio, String endulzante, String descripcion) {
+		super(codigo, nombre, precio);
 		this.endulzante = endulzante;
 		this.descripcion = descripcion;
 	}
