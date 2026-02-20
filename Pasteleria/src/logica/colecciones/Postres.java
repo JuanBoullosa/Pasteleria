@@ -1,5 +1,6 @@
 package logica.colecciones;
 import java.util.TreeMap;
+import java.util.ArrayList;
 import logica.negocio.Postre;
 
 public class Postres {
@@ -31,5 +32,11 @@ public class Postres {
 	{
 		arbolPostres.remove(codigo);
 	}
-	
+
+	public ArrayList<Postre> obtenerPostres() {
+
+	    ArrayList<Postre> listPostres = new ArrayList<Postre>(arbolPostres.values());
+
+	    return listPostres;
+	}
 }

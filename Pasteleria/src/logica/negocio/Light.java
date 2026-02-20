@@ -24,6 +24,14 @@ public class Light extends Postre {
 		this.descripcion = descripcion;
 	}
 	
-	
+	public void toLigth() {
+		System.out.println(
+				"\nPrecio: "+ getPrecio() + 
+				"\nNombre: "+ getNombre() + 
+				"\nCodigo: "+ getCodigo() +
+				"\nEndulzante: "+ getEndulzante() +
+				"\nDescripcion: "+ getDescripcion() 
+				);
+	}
 
 }

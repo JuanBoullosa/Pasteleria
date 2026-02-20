@@ -31,5 +31,15 @@ public class Postre {
 		this.codigo = codigo;
 	}
 
+	// SOLO PARA LAS PRUEBAS HAY QUE BORRAR 
+	public void toPostre() {
+		System.out.println(
+				"\nPrecio: "+ getPrecio() + 
+				"\nNombre: "+ getNombre() + 
+				"\nCodigo: "+ getCodigo() 
+				);
+	}
+	
+	
 	
 }
