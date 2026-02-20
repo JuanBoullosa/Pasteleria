@@ -2,6 +2,7 @@ package logica.colecciones;
 import java.util.TreeMap;
 import java.util.ArrayList;
 import logica.negocio.Postre;
+import logica.valueobjects.VOPostre;
 
 public class Postres {
 	
@@ -33,10 +34,15 @@ public class Postres {
 		arbolPostres.remove(codigo);
 	}
 
-	public ArrayList<Postre> obtenerPostres() {
+	public ArrayList<VOPostre> obtenerPostres() {
 
-	    ArrayList<Postre> listPostres = new ArrayList<Postre>(arbolPostres.values());
-
+	    ArrayList<VOPostre> listPostres = new ArrayList<VOPostre>();
+	    for (Postre p : arbolPostres.values()) {
+	    	
+	    	VOPostre vop = new VOPostre(p);
+	    	
+	    	listPostres.add(vop);
+	    }
 	    return listPostres;
 	}
 }

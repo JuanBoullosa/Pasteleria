@@ -4,6 +4,7 @@ import logica.colecciones.Postres;
 import logica.negocio.Postre;
 import logica.negocio.Light;
 import java.util.ArrayList;
+import logica.valueobjects.VOPostre;
 
 
 public class principal {
@@ -26,10 +27,10 @@ public class principal {
 				
 				System.out.println(existe);
 				
-				ArrayList<Postre> lista = dicPostres.obtenerPostres();
+				ArrayList<VOPostre> lista = dicPostres.obtenerPostres();
 
-				for (Postre p:lista ){
-					p.toPostre();
+				for (VOPostre p:lista ){
+					p.toVOPostre();
 				};
 				
 						

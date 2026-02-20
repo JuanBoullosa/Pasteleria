@@ -1,4 +1,5 @@
 package logica.valueobjects;
+import logica.negocio.Postre;
 
 public class VOPostre {
 
@@ -13,6 +14,13 @@ public class VOPostre {
 		this.precio = precio;
 		this.nombre = nombre;
 		this.codigo = codigo;
+	}
+	
+
+	public VOPostre (Postre p)	{
+		this.codigo = p.getCodigo();
+		this.nombre = p.getNombre();
+		this.precio = p.getPrecio();
 	}
 	
 	public float getPrecio() {
@@ -35,6 +43,13 @@ public class VOPostre {
 	}
 	
 	
-	
+	// SOLO PARA LAS PRUEBAS HAY QUE BORRAR 
+		public void toVOPostre() {
+			System.out.println(
+					"\nPrecio: "+ getPrecio() + 
+					"\nNombre: "+ getNombre() + 
+					"\nCodigo: "+ getCodigo() 
+					);
+		}
 	
 }
