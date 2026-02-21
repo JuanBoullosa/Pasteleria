@@ -3,10 +3,18 @@ package grafica;
 import logica.colecciones.Postres;
 import logica.negocio.Postre;
 import logica.negocio.Light;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import fachada.Fachada;
 import logica.excepciones.*;
 import logica.valueobjects.VOPostre;
+import logica.colecciones.Ventas;
+import logica.negocio.Venta;
+import logica.valueobjects.VOVenta;
+
+
+
 
 
 public class principal {
@@ -51,9 +59,26 @@ public class principal {
 		catch (PostreException e) {
             System.out.println(e.darMensaje());
 		}
-		}
-				
-						
-	}
 
+	   //4) Requemiento 4
+		
+		Ventas SecVentas = new Ventas();
+	    LocalDateTime fecha = LocalDateTime.now();	
+	
+	    Venta v1 = new Venta(2,fecha,"18 de Julio", "Estado", 300);
+	    Venta v2 = new Venta(3,fecha,"16 de Julio", "Pendiente", 999);
+	    Venta v3 = new Venta(1,fecha,"17 de Julio", "Finalziada", 666);
+	
+	    SecVentas.insBack(v3);
+	    SecVentas.insBack(v1);
+	    SecVentas.insBack(v2);
+		
+		ArrayList<VOVenta> listaVentas = SecVentas.obtenerVentas();
+
+		for (VOVenta v:listaVentas){
+			v.toVOVenta();
+		};
+
+}
+}
 

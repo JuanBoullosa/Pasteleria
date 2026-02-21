@@ -2,11 +2,13 @@ package logica.valueobjects;
 
 import java.time.LocalDateTime;
 
+import logica.negocio.Venta;
+
 public class VOVenta extends VOVentaIngreso {
 	
 	private int numero;
 	private float montoTotal;
-	String estado;
+	private String estado;
 	
 	public VOVenta(String direccionEnvio, LocalDateTime fecha, int numero, float montoTotal, String estado) {
 		super(direccionEnvio, fecha);
@@ -14,6 +16,14 @@ public class VOVenta extends VOVentaIngreso {
 		this.montoTotal = montoTotal;
 		this.estado = estado;
 	}
+	
+	public VOVenta(Venta v) {
+		super(v);
+		this.numero = v.getNumero();
+		this.montoTotal = v.getMontoTotal();
+		this.estado = v.getEstado();
+	}
+	
 	public int getNumero() {
 		return numero;
 	}
@@ -33,5 +43,13 @@ public class VOVenta extends VOVentaIngreso {
 		this.estado = estado;
 	}
 	
-	
+	public void toVOVenta() {
+		System.out.println(
+				"\nDireccion Envio: "+ getDireccionEnvio() + 
+				"\nFecha: "+ getFecha() + 
+				"\nNumero: "+ getNumero() +
+				"\nMonto Total: "+ getMontoTotal() +
+				"\nEstado: "+ getEstado()
+				);
+	}
 }
