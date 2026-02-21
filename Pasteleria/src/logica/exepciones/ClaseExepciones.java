@@ -1,4 +1,4 @@
-package logica.excepciones;
+package logica.exepciones;
 
 public class ClaseExepciones {
 

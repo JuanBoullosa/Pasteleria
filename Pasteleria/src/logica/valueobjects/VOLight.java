@@ -1,7 +1,5 @@
 package logica.valueobjects;
 
-import logica.negocio.Postre;
-
 public class VOLight extends VOPostre{
 		private String endulzante;
 		private String descripcion;
@@ -24,14 +22,5 @@ public class VOLight extends VOPostre{
 			this.descripcion = descripcion;
 		}
 		
-		public void toVOPostre() {
-			System.out.println(
-					"\nPrecio: "+ getPrecio() + 
-					"\nNombre: "+ getNombre() + 
-					"\nCodigo: "+ getCodigo() +
-					"\nEndulzante: "+ getEndulzante() +
-					"\nDescripcion: "+ getDescripcion() 
-					);
-		}
 		
 }
