@@ -2,21 +2,24 @@ package logica.negocio;
 
 public class Postre {
 
-	private float precio;
-	private String nombre;
 	private String codigo;
+	private String nombre;
+	private float precio;
 	
-	public Postre(String codigo, String nombre,float precio ) {
+	
+	
+	public Postre(String codigo, String nombre,float precio) {
 		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.precio = precio;
 	}
-	public float getPrecio() {
-		return precio;
+	
+	public String getCodigo() {
+		return codigo;
 	}
-	public void setPrecio(float precio) {
-		this.precio = precio;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	public String getNombre() {
 		return nombre;
@@ -24,13 +27,15 @@ public class Postre {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getCodigo() {
-		return codigo;
+	public float getPrecio() {
+		return precio;
 	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setPrecio(float precio) {
+		this.precio = precio;
 	}
+	
+	
+	
 
-		
 	
 }

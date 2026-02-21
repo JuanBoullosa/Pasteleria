@@ -18,14 +18,7 @@ public class Ventas {
 	listaVentas.addLast(V);
 	}
 
-	//Getter y setters
-	public LinkedList<Venta> getListaVentas() {
-		return listaVentas;
-	}
-
-	public void setListaVentas(LinkedList<Venta> listaVentas) {
-		this.listaVentas = listaVentas;
-	}
+	
 	
 	
 	
