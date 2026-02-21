@@ -4,6 +4,8 @@ import logica.colecciones.Postres;
 import logica.negocio.Postre;
 import logica.negocio.Light;
 import java.util.ArrayList;
+import fachada.Fachada;
+import logica.excepciones.*;
 import logica.valueobjects.VOPostre;
 
 
@@ -11,7 +13,9 @@ public class principal {
 
 	public static void main(String[] args) {
 		
-		Postres dicPostres = new Postres();
+		Fachada f = new Fachada();
+		
+		/*Postres dicPostres = new Postres();
 		
 		Postre p1 = new Postre("P002", "Torta de Chocolate", 500);
 		Postre p2 = new Postre("P001", "Torta de Limon", 333);
@@ -32,9 +36,24 @@ public class principal {
 
 				for (VOPostre p:lista ){
 					p.toVOPostre();
-				};
+				};*/
+		
+		VOPostre vo = new VOPostre("P010", "Torta de Chocolate", 10);
+		
+		try {
+			f.registrarPostre(vo);
+			f.registrarPostre(vo);
+			System.out.println("Postre registrado correctamente");
+		}
+		catch (PrecioException e) {
+			System.out.println(e.darMensaje());
+		}
+		catch (PostreException e) {
+            System.out.println(e.darMensaje());
+		}
+		}
 				
 						
 	}
 
-}
+
