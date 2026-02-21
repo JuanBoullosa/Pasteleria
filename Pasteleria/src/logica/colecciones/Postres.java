@@ -1,8 +1,12 @@
 package logica.colecciones;
 import java.util.TreeMap;
 import java.util.ArrayList;
+
+import logica.negocio.Light;
 import logica.negocio.Postre;
+import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
+
 
 public class Postres {
 	
@@ -35,14 +39,30 @@ public class Postres {
 	}
 
 	public ArrayList<VOPostre> obtenerPostres() {
-
-	    ArrayList<VOPostre> listPostres = new ArrayList<VOPostre>();
-	    for (Postre p : arbolPostres.values()) {
-	    	
-	    	VOPostre vop = new VOPostre(p);
-	    	
-	    	listPostres.add(vop);
-	    }
-	    return listPostres;
+		ArrayList<VOPostre> ListaDePostres = new ArrayList<VOPostre>();
+		for (Postre p: arbolPostres.values()) {
+			
+			VOPostre vop = new VOPostre(p);
+			
+			if (p instanceof Light) {
+				Light l= (Light) p;
+	
+				VOLight vopl = new VOLight(
+						l.getPrecio(),
+						l.getNombre(),
+		                l.getCodigo(),
+		                l.getEndulzante(),
+		                l.getDescripcion()
+						);
+					
+				ListaDePostres.add(vopl);
+				
+			}else {
+				ListaDePostres.add(vop);
+			}		
+		}
+		return ListaDePostres;
 	}
+	
+	
 }
