@@ -1,7 +1,7 @@
 package logica.valueobjects;
 
 import java.time.LocalDateTime;
-
+import logica.valueobjects.VOVenta;
 import logica.negocio.Venta;
 
 public class VOVentaIngreso {
@@ -31,6 +31,6 @@ public class VOVentaIngreso {
 	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
+	
 
-		
 }

@@ -112,32 +112,69 @@ public class principal {
 			System.out.println(vopd);
 		}
 		
+		
+		/*
+		   //4) Requemiento 4
+			
+			Ventas SecVentas = new Ventas();
+		    LocalDateTime fecha = LocalDateTime.now();	
+		    Venta v1 = new Venta(2,fecha,"18 de Julio", "Estado", 300);
+		    Venta v2 = new Venta(3,fecha,"16 de Julio", "Pendiente", 999);
+		    Venta v3 = new Venta(1,fecha,"17 de Julio", "Finalziada", 666);
+		
+		    SecVentas.insBack(v3);
+		    SecVentas.insBack(v1);
+		    SecVentas.insBack(v2);
+			
+			ArrayList<VOVenta> listaVentas = SecVentas.obtenerVentas();
+
+			for (VOVenta v:listaVentas){
+				v.toVOVenta();
+			};
+			*/
+
+			//Probando secuencia de ventas
+			VOVentaIngreso voi1 = new VOVentaIngreso("Rio Danubio M107 S27", LocalDateTime.now());
+			VOVentaIngreso voi2 = new VOVentaIngreso("Carabelas M16 S16", LocalDateTime.now());
+			VOVentaIngreso voi3 = new VOVentaIngreso("Marquez Castro 243", LocalDateTime.now());
+			
+			try {
+			f.nuevaVenta(voi1);
+			//System.out.println("Se logro ingresar la venta correctamente");
+			System.out.println("\nVenta registradas:");
+			}
+			catch (FechaException e)
+			{
+				System.out.println(e.darMensaje());
+			};
+		
+			try {
+			f.nuevaVenta(voi2);
+			//System.out.println("Se logro ingresar la venta correctamente");
+			//System.out.println("\nVenta registrada:");
+			}
+			catch (FechaException e)
+			{
+				System.out.println(e.darMensaje());
+			};
+			try
+			{
+				f.nuevaVenta(voi3);
+				//System.out.println("Se logro ingresar la venta correctamente");
+				//System.out.println("\nVenta registrada:");
+			}
+			catch (FechaException e)
+			{
+				System.out.println(e.darMensaje());
+			};
+			
+			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
+			for (VOVenta vovi: listaingreso) {
+				System.out.println(vovi);
+			}
+		
 	}
 
-
-		/*
-	   //4) Requemiento 4
-		
-		Ventas SecVentas = new Ventas();
-	    LocalDateTime fecha = LocalDateTime.now();	
-	    Venta v1 = new Venta(2,fecha,"18 de Julio", "Estado", 300);
-	    Venta v2 = new Venta(3,fecha,"16 de Julio", "Pendiente", 999);
-	    Venta v3 = new Venta(1,fecha,"17 de Julio", "Finalziada", 666);
-	
-	    SecVentas.insBack(v3);
-	    SecVentas.insBack(v1);
-	    SecVentas.insBack(v2);
-		
-		ArrayList<VOVenta> listaVentas = SecVentas.obtenerVentas();
-
-		for (VOVenta v:listaVentas){
-			v.toVOVenta();
-		};
-		*/
-
-	//Cambio de prueba
-	
-	
 }
 
 

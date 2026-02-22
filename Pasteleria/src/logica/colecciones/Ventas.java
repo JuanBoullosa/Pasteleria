@@ -8,11 +8,13 @@ import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
 import logica.valueobjects.VOVenta;
+import logica.valueobjects.VOVentaIngreso;
 
 
 public class Ventas {
 
 	private LinkedList <Venta> listaVentas;
+
 
 	//Constructor
 	public Ventas()
@@ -27,11 +29,56 @@ public class Ventas {
 		listaVentas.addLast(V);
 	}
 	
-	//agregar por el final
-	public void insBackVOVentaDetalle(Venta V)
-	{
-		listaVentas.addLast(V);
+	//retorno valores de la ultima venta
+	public Venta getUltimaVenta() {
+		if (listaVentas.isEmpty()) return null;
+		return listaVentas.getLast() ;
 	}
+	
+	//Asigno siguiente numero a la venta
+	public int getProximoNumero() {
+		Venta ultima = getUltimaVenta();
+		if (ultima == null) {
+			return 1;
+		}else {
+			return ultima.getNumero() + 1;
+		}
+		
+	}
+	//Fecha valida
+	public Boolean FechaInvalida(VOVentaIngreso vovi)
+	{
+		Venta ult = getUltimaVenta();
+		if (ult != null && vovi.getFecha().isBefore(ult.getFecha())) {
+			return true; // fecha inválida
+	    }else {
+	    	return false;
+	    }
+	}
+	
+	//Requerimiento 4
+	public void altaVenta(VOVentaIngreso vovi) {
+		//Venta ult = getUltimaVenta();
+		
+		String estado;
+		estado = "PROCESO";
+		float montoTotal = 0;
+		int num = getProximoNumero();
+		
+		Venta v= new Venta(
+				num,
+				vovi.getFecha(),
+				vovi.getDireccionEnvio(),
+				estado,
+				montoTotal
+				
+				);
+				
+		listaVentas.addLast(v);
+	}
+	
+
+	
 	
 
 	//Muestra lo que cargas a mano
@@ -44,17 +91,8 @@ public class Ventas {
 		}
 		return listaVentasObtenido;
 		}
-	/*
-	//Requerimiento 4
-	public ArrayList<VOVenta> obtenerVentaIngreso (){
-		ArrayList<VOVenta> ListaDeVentaIngreso = new ArrayList<VOVenta> ();
-		for (Venta v: listaVentas) {
-			
-		}
-		
-	
-	}
-	*/
+
+
 	
 	
 	
