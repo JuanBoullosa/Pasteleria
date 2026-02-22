@@ -35,6 +35,21 @@ public class Postres {
 	{
 		arbolPostres.remove(codigo);
 	}
+	
+	public void insertPostre(String codigo, Postre p)
+	{
+		if (p instanceof Light) {
+			Light l = (Light) p;
+
+			VOLight vol = new VOLight(
+					l.getPrecio(),
+					l.getNombre(),
+	                l.getCodigo(),
+	                l.getEndulzante(),
+	                l.getDescripcion()
+					);
+	}
+	}
 
 	public ArrayList<VOPostre> obtenerPostres() {
 		ArrayList<VOPostre> ListaDePostres = new ArrayList<VOPostre>();

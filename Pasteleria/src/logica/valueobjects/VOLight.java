@@ -4,7 +4,7 @@ public class VOLight extends VOPostre{
 		private String endulzante;
 		private String descripcion;
 		
-		public VOLight(float precio, String nombre, String codigo, String endulzante, String descripcion) {
+		public VOLight(String codigo, String nombre, float precio, String endulzante, String descripcion) {
 			super(codigo, nombre, precio);
 			this.endulzante = endulzante;
 			this.descripcion = descripcion;
@@ -21,11 +21,25 @@ public class VOLight extends VOPostre{
 		public void setDescripcion(String descripcion) {
 			this.descripcion = descripcion;
 		}
+		
+		public String toString() {
+		    String resu;
+
+		    resu = "\n " + getCodigo();
+		    resu = resu + "\n " + getNombre();
+		    resu = resu + "\n Precio: $" + getPrecio();
+		    resu = resu + "\n " + getEndulzante();
+		    resu = resu + "\n " + getDescripcion();
+
+		    return resu;
+		}
+		
+		//ESTO ES LO MISMO QUE ARRIBA PERO LO ROBE DEL TEORICO
 		public void toVOPostre() {
 			System.out.println(
-					"\nPrecio: "+ getPrecio() + 
-					"\nNombre: "+ getNombre() + 
 					"\nCodigo: "+ getCodigo() +
+					"\nNombre: "+ getNombre() +
+					"\nPrecio: "+ getPrecio() + 
 					"\nEndulzante: "+ getEndulzante() +
 					"\nDescripcion: "+ getDescripcion() 
 					);

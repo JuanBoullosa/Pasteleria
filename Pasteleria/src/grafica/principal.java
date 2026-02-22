@@ -6,7 +6,7 @@ import logica.negocio.Light;
 import java.util.ArrayList;
 import fachada.Fachada;
 import logica.excepciones.*;
-import logica.valueobjects.VOPostre;
+import logica.valueobjects.*;
 
 
 public class principal {
@@ -38,22 +38,27 @@ public class principal {
 					p.toVOPostre();
 				};*/
 		
-		VOPostre vo = new VOPostre("P010", "Torta de Chocolate", 10);
+		VOPostre vop = new VOPostre("P090", "Torta de Chocolate", 10);
+		//VOLight vop = new VOLight("P003", "Torta de Coco",887 ,"Estevia","Bajo en calorias");
 		
 		try {
-			f.registrarPostre(vo);
-			f.registrarPostre(vo);
+			f.registrarPostre(vop);
 			System.out.println("Postre registrado correctamente");
+			
+			System.out.println("\nPostres registrados:");
+			  VOPostre vo = f.ListarPostreDetallado("P090");
+			  System.out.println(vo);
 		}
 		catch (PrecioException e) {
 			System.out.println(e.darMensaje());
 		}
 		catch (PostreException e) {
             System.out.println(e.darMensaje());
-		}
-		}
-				
-						
+		
+		};
 	}
+}
+
+	
 
 

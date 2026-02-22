@@ -48,6 +48,14 @@ public class VOPostre {
 		this.precio = precio;
 	}
 	
+	public String toString () {
+	String resu;
+	  resu = "\n Codigo: " + codigo;
+	    resu = resu + "\n Nombre: " + nombre;
+	    resu = resu + "\n Precio: $" + precio;
+
+	    return resu;
+	}
 	
 	
 	
