@@ -2,15 +2,22 @@ package logica.valueobjects;
 
 import java.time.LocalDateTime;
 
+import logica.negocio.Venta;
+
 public class VOVentaIngreso {
 	
+	private String direccionEnvio;
+	private LocalDateTime fecha;
+	
 	public VOVentaIngreso(String direccionEnvio, LocalDateTime fecha) {
-		super();
 		this.direccionEnvio = direccionEnvio;
 		this.fecha = fecha;
 	}
-	private String direccionEnvio;
-	private LocalDateTime fecha;
+	
+	public VOVentaIngreso(Venta v) {
+		this.direccionEnvio = v.getDireccion();
+		this.fecha = v.getFecha();
+	}
 	
 	public String getDireccionEnvio() {
 		return direccionEnvio;
@@ -25,5 +32,5 @@ public class VOVentaIngreso {
 		this.fecha = fecha;
 	}
 
-	
+		
 }
