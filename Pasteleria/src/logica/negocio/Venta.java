@@ -13,16 +13,18 @@ public class Venta {
 	private int numero;
 	private LocalDateTime fecha;
 	private String direccion;
-	private String Estado;
+	private String estado;
 	private float montoTotal;
 	
 	
-	public Venta(int numero, LocalDateTime fecha, String direccion) {
+
+	public Venta(int numero, LocalDateTime fecha, String direccion, String estado, float montoTotal) {
+		super();
 		this.numero = numero;
 		this.fecha = fecha;
 		this.direccion = direccion;
-		this.Estado = "PROCESO";
-		this.montoTotal = 0;
+		this.estado = estado;
+		this.montoTotal = montoTotal;
 	}
 	
 	public int getNumero() {
@@ -45,10 +47,10 @@ public class Venta {
 		this.direccion = direccion;
 	}
 	public String getEstado() {
-		return Estado;
+		return estado;
 	}
 	public void setEstado(String estado) {
-		Estado = estado;
+		this.estado = estado;
 	}
 	public float getMontoTotal() {
 		return montoTotal;

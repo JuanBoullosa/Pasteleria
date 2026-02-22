@@ -10,6 +10,8 @@ import logica.negocio.Postre;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
+import logica.valueobjects.VOVenta;
+import logica.valueobjects.VOVentaIngreso;
 
 public class Fachada {
 	
@@ -107,8 +109,21 @@ public class Fachada {
 	
 	
 	//Requerimiento 4
+	public void nuevaVenta(VOVentaIngreso vovi) throws FechaException 
+	{
+		
+		if (secVentas.FechaInvalida(vovi))
+		{
+			String msg= "La fecha no es valida";
+		    throw new FechaException(msg);
+        }
+		secVentas.altaVenta(vovi);
+	}
 	
-	
-	
+	//funcion que sirve para ver como cargto las listas ingresadas
+	public ArrayList<VOVenta> ListaDeVentasIngresadas()
+	{
+		return secVentas.obtenerVentas();
+	}
 	
 }
