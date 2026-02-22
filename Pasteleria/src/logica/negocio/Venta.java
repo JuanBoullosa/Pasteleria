@@ -2,6 +2,12 @@ package logica.negocio;
 
 import java.time.LocalDateTime;
 
+import logica.excepciones.AlfanumericoException;
+import logica.excepciones.PostreException;
+import logica.excepciones.PrecioException;
+import logica.valueobjects.VOLight;
+import logica.valueobjects.VOPostre;
+
 public class Venta {
 	
 	private int numero;
@@ -11,13 +17,12 @@ public class Venta {
 	private float montoTotal;
 	
 	
-	public Venta(int numero, LocalDateTime fecha, String direccion, String estado, float montoTotal) {
-		super();
+	public Venta(int numero, LocalDateTime fecha, String direccion) {
 		this.numero = numero;
 		this.fecha = fecha;
 		this.direccion = direccion;
-		Estado = estado;
-		this.montoTotal = montoTotal;
+		this.Estado = "PROCESO";
+		this.montoTotal = 0;
 	}
 	
 	public int getNumero() {
@@ -52,6 +57,4 @@ public class Venta {
 		this.montoTotal = montoTotal;
 	}
 	
-	
-
 }

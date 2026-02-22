@@ -105,4 +105,10 @@ public class Fachada {
 		return dicPostres.obtenerPostresDetallado();
 	}
 	
+	
+	//Requerimiento 4
+	
+	
+	
+	
 }

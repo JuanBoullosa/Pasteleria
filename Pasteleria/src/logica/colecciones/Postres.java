@@ -43,7 +43,7 @@ public class Postres {
 		return arbolPostres;
 	}
 	
-	///Metodo auxiliar para ver en consola nada mas
+	//Requerimiento 2
 		public ArrayList<VOPostreDetallado> obtenerPostresDetallado() {
 			ArrayList<VOPostreDetallado> ListaDePostresDetallado = new ArrayList<VOPostreDetallado>();
 			for (Postre p: arbolPostres.values()) {
