@@ -1,5 +1,7 @@
 package logica.valueobjects;
 
+import logica.negocio.Postre;
+
 public class VOPostreDetallado {
 	
 	private String codigo;
@@ -14,6 +16,13 @@ public class VOPostreDetallado {
 		this.nombre = nombre;
 		this.precio = precio;
 		this.tipo = tipo;
+	}
+	
+	public VOPostreDetallado(Postre p, int cant) {
+		this.codigo = p.getCodigo();	
+		this.nombre = p.getNombre();
+		this.precio = p.getPrecio();
+	//	this.tipo = p.;
 	}
 	
 	public float getPrecio() {

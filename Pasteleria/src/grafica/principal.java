@@ -13,7 +13,8 @@ import logica.valueobjects.VOPostre;
 import logica.colecciones.Ventas;
 import logica.negocio.Venta;
 import logica.valueobjects.VOVenta;
-
+import logica.colecciones.Es_Vendidos;
+import logica.negocio.Es_Vendido;
 
 
 public class principal {
@@ -22,7 +23,7 @@ public class principal {
 		
 		Fachada f = new Fachada();
 		
-		/*Postres dicPostres = new Postres();
+		Postres dicPostres = new Postres();
 		
 		Postre p1 = new Postre("P002", "Torta de Chocolate", 500);
 		Postre p2 = new Postre("P001", "Torta de Limon", 333);
@@ -43,7 +44,7 @@ public class principal {
 
 				for (VOPostre p:lista ){
 					p.toVOPostre();
-				};*/
+				};
 		
 		VOPostre vop0 = new VOPostre("P007", "Torta de Chocolate", 10);
 		VOLight vop1 = new VOLight("P003", "Torta de Coco",887 ,"Estevia","Bajo en calorias");
@@ -107,37 +108,60 @@ public class principal {
 		};
 		
 		
-		ArrayList<VOPostreDetallado> lista = f.ListadoGeneralPostre();
-		for (VOPostreDetallado vopd: lista) {
+		ArrayList<VOPostreDetallado> lista1 = f.ListadoGeneralPostre();
+		for (VOPostreDetallado vopd: lista1) {
 			System.out.println(vopd);
 		}
 		
-	}
-
-
-		/*
-	   //4) Requemiento 4
+		
+	   //4) Requemiento 4 
 		
 		Ventas SecVentas = new Ventas();
 	    LocalDateTime fecha = LocalDateTime.now();	
-	    Venta v1 = new Venta(2,fecha,"18 de Julio", "Estado", 300);
-	    Venta v2 = new Venta(3,fecha,"16 de Julio", "Pendiente", 999);
-	    Venta v3 = new Venta(1,fecha,"17 de Julio", "Finalziada", 666);
-	
-	    SecVentas.insBack(v3);
-	    SecVentas.insBack(v1);
-	    SecVentas.insBack(v2);
+	    Venta v1 = new Venta(2,fecha,"18 de Julio");
+	    Venta v2 = new Venta(3,fecha,"16 de Julio");
+	    Venta v3 = new Venta(1,fecha,"17 de Julio");
+		    
+	    SecVentas.insBackVOVentaDetalle(v3);
+	    SecVentas.insBackVOVentaDetalle(v1);
+	    SecVentas.insBackVOVentaDetalle(v2);
 		
+	    
 		ArrayList<VOVenta> listaVentas = SecVentas.obtenerVentas();
 
 		for (VOVenta v:listaVentas){
 			v.toVOVenta();
 		};
-		*/
-
+		
+		Es_Vendidos SecEsVendidos = new Es_Vendidos();
+		
+		Es_Vendido esv1 = new Es_Vendido (p1,5);
+	    Es_Vendido esv2 = new Es_Vendido (p2,10);
+	    Es_Vendido esv3 = new Es_Vendido (p3,40);
+	    Es_Vendido esv4 = new Es_Vendido (p4,40);
+		
+		
+		SecEsVendidos.insertar(esv1);
+		SecEsVendidos.insertar(esv2);
+		SecEsVendidos.insertar(esv3);
+		SecEsVendidos.insertar(esv4);
+		
+		
+		ArrayList<VOPostreDetallado> listaResultado = SecEsVendidos.ListadoEsVendidos();
+		
+		for(VOPostreDetallado r : listaResultado ){
+			r.toString();
+			System.out.println("\n PRUEBA");
+		}
+		
+		System.out.println("\n Cantidad en la Lista Es Vendidos : "+ SecEsVendidos.largo());
+		System.out.println("\n Cantidad Total la Lista Es Vendidos : "+ SecEsVendidos.getTotalUnidades());
+		System.out.println("\n Cantidad en la Lista VOPostres Detalles  : "+ listaResultado.size());
+		
 	//Cambio de prueba
 	
 	
+}
 }
 
 
