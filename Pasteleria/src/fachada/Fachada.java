@@ -1,5 +1,7 @@
 package fachada;
 
+import java.util.ArrayList;
+
 import logica.colecciones.Postres;
 import logica.colecciones.Ventas;
 import logica.excepciones.*;
@@ -7,7 +9,7 @@ import logica.negocio.Light;
 import logica.negocio.Postre;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
-
+import logica.valueobjects.VOPostreDetallado;
 
 public class Fachada {
 	
@@ -20,6 +22,7 @@ public class Fachada {
 		secVentas = new Ventas();
 	}
 	
+	//Requerimiento 1
 	public void registrarPostre(VOPostre voP)throws AlfanumericoException, PostreException, PrecioException
 	{
 		
@@ -59,7 +62,7 @@ public class Fachada {
 		dicPostres.insert(voP.getCodigo(), p);
 		}
 	
-	
+	//Requerimiento 3
 	public VOPostre ListarPostreDetallado(String codigo) throws AlfanumericoException,PostreException 
 	{
 	    if (!codigo.matches("^[a-zA-Z0-9]+$")) {
@@ -94,6 +97,12 @@ public class Fachada {
 			}
 		
 	
+	}
+	
+	// Reqierimiento 2
+	public ArrayList<VOPostreDetallado> ListadoGeneralPostre() 
+	{
+		return dicPostres.obtenerPostresDetallado();
 	}
 	
 }

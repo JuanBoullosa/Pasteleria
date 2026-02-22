@@ -2,17 +2,17 @@ package logica.valueobjects;
 
 public class VOPostreDetallado {
 	
-	private float precio;
-	private String nombre;
 	private String codigo;
+	private String nombre;
+	private float precio;
 	private String tipo;
 	
 	
-	public VOPostreDetallado(float precio, String nombre, String codigo, String tipo) {
+	public VOPostreDetallado(String codigo, String nombre, float precio, String tipo) {
 		super();
-		this.precio = precio;
+		this.codigo = codigo;	
 		this.nombre = nombre;
-		this.codigo = codigo;
+		this.precio = precio;
 		this.tipo = tipo;
 	}
 	
@@ -41,6 +41,15 @@ public class VOPostreDetallado {
 		this.tipo = tipo;
 	}
 	
-	
+	public String toString() {
+	    String resu;
+
+	    resu = "\n Codigo" + " - " +getCodigo();
+	    resu = resu + "\n Nombre " + " - "+  getNombre();
+	    resu = resu + "\n Precio " + " - " +"$" + getPrecio();
+	    resu = resu + "\n Tipo " + " - "  + getTipo();
+
+	    return resu;
+	}
 
 }

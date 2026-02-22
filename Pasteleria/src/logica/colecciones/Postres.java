@@ -5,6 +5,7 @@ import logica.negocio.Light;
 import logica.negocio.Postre;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
+import logica.valueobjects.VOPostreDetallado;
 
 public class Postres {
 	
@@ -36,7 +37,48 @@ public class Postres {
 		arbolPostres.remove(codigo);
 	}
 	
-
+	 // (opcional) para listar en orden en pruebas
+	public TreeMap<String, Postre> getArbolPostres()
+	{
+		return arbolPostres;
+	}
+	
+	///Metodo auxiliar para ver en consola nada mas
+		public ArrayList<VOPostreDetallado> obtenerPostresDetallado() {
+			ArrayList<VOPostreDetallado> ListaDePostresDetallado = new ArrayList<VOPostreDetallado>();
+			for (Postre p: arbolPostres.values()) {
+				
+				String tipo;
+				
+				if (p instanceof Light) {
+					tipo = "LIGHT";
+					
+		 
+					VOPostreDetallado vopd = new VOPostreDetallado(
+							p.getCodigo(),
+							p.getNombre(),
+			                p.getPrecio(),
+			                tipo
+							);
+						
+					ListaDePostresDetallado.add(vopd);
+					
+				}else {
+					tipo = "COMUN";
+					
+					VOPostreDetallado vopdc = new VOPostreDetallado(
+							p.getCodigo(),
+							p.getNombre(),
+			                p.getPrecio(),
+			                tipo
+							);
+					ListaDePostresDetallado.add(vopdc);
+				}		
+			}
+			return ListaDePostresDetallado;
+		}
+	
+	
     ///Metodo auxiliar para ver en consola nada mas
 	public ArrayList<VOPostre> obtenerPostres() {
 		ArrayList<VOPostre> ListaDePostres = new ArrayList<VOPostre>();

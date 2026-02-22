@@ -45,16 +45,16 @@ public class principal {
 					p.toVOPostre();
 				};*/
 		
-		//VOPostre vop = new VOPostre("090", "Torta de Chocolate", 10);
-		VOLight vop = new VOLight("P003", "Torta de Coco",887 ,"Estevia","Bajo en calorias");
-		
+		VOPostre vop0 = new VOPostre("P007", "Torta de Chocolate", 10);
+		VOLight vop1 = new VOLight("P003", "Torta de Coco",887 ,"Estevia","Bajo en calorias");
+		VOLight vop2 = new VOLight("P020", "Torta de Limon",200 ,"Estevia","0 Calorias");
 		try {
-			f.registrarPostre(vop);
-			System.out.println("Postre registrado correctamente");
+			f.registrarPostre(vop0);
+			//System.out.println("Postre registrado correctamente");
 			
-			System.out.println("\nPostres registrado:");
-			VOPostre vo = f.ListarPostreDetallado("P003");
-			System.out.println(vo);
+			//System.out.println("\nPostres registrado:");
+			//VOPostre vo = f.ListarPostreDetallado("P003");
+			//System.out.println(vop0);
 		}
 		catch (AlfanumericoException e) {
 			System.out.println(e.darMensaje());
@@ -66,6 +66,52 @@ public class principal {
             System.out.println(e.darMensaje());
 		
 		};
+		
+		try {
+			f.registrarPostre(vop1);
+			//System.out.println("Postre registrado correctamente");
+			
+			//System.out.println("\nPostres registrado:");
+			//VOPostre vo = f.ListarPostreDetallado("P003");
+			//System.out.println(vop1);
+		}
+		catch (AlfanumericoException e) {
+			System.out.println(e.darMensaje());
+		}
+		catch (PrecioException e) {
+			System.out.println(e.darMensaje());
+		}
+		catch (PostreException e) {
+            System.out.println(e.darMensaje());
+		
+		};
+		
+		
+		try {
+			f.registrarPostre(vop2);
+			//System.out.println("Postre registrado correctamente");
+			
+			//System.out.println("\nPostres registrado:");
+			//VOPostre vo = f.ListarPostreDetallado("P003");
+			//System.out.println(vop2);
+		}
+		catch (AlfanumericoException e) {
+			System.out.println(e.darMensaje());
+		}
+		catch (PrecioException e) {
+			System.out.println(e.darMensaje());
+		}
+		catch (PostreException e) {
+            System.out.println(e.darMensaje());
+		
+		};
+		
+		
+		ArrayList<VOPostreDetallado> lista = f.ListadoGeneralPostre();
+		for (VOPostreDetallado vopd: lista) {
+			System.out.println(vopd);
+		}
+		
 	}
 
 

@@ -7,7 +7,7 @@ public class VOPostreCantidad extends VOPostreDetallado{
 	
 
 	public VOPostreCantidad(float precio, String nombre, String codigo, String tipo, int cantidad) {
-		super(precio, nombre, codigo, tipo);
+		super(codigo, nombre, precio, tipo);
 		this.cantidad = cantidad;
 	}
 
