@@ -20,9 +20,13 @@ public class Fachada {
 		secVentas = new Ventas();
 	}
 	
-	public void registrarPostre(VOPostre voP)throws PostreException, PrecioException
+	public void registrarPostre(VOPostre voP)throws AlfanumericoException, PostreException, PrecioException
 	{
 		
+	    if (!voP.getCodigo().matches("^[a-zA-Z0-9]+$")) {
+	        String msg= "El codigo debe ser alfanumerico";
+	    	throw new AlfanumericoException(msg);
+	    }
 		if(voP.getPrecio() <= 0)
 		{
 			String msg = "El precio del postre no corresponde";
@@ -56,8 +60,12 @@ public class Fachada {
 		}
 	
 	
-	public VOPostre ListarPostreDetallado(String codigo) throws PostreException 
+	public VOPostre ListarPostreDetallado(String codigo) throws AlfanumericoException,PostreException 
 	{
+	    if (!codigo.matches("^[a-zA-Z0-9]+$")) {
+	        String msg= "El codigo debe ser alfanumerico";
+	    	throw new AlfanumericoException(msg);
+	    }
 		if(!dicPostres.member(codigo)) {
 			String msg = "No existe un postre con ese codigo";
 			throw new PostreException(msg);

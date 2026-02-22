@@ -8,17 +8,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import fachada.Fachada;
 import logica.excepciones.*;
-<<<<<<< HEAD
 import logica.valueobjects.*;
-=======
 import logica.valueobjects.VOPostre;
 import logica.colecciones.Ventas;
 import logica.negocio.Venta;
 import logica.valueobjects.VOVenta;
 
-
-
->>>>>>> aa93c034adbcdf71e4791d84d6da28e015849ccf
 
 
 public class principal {
@@ -50,38 +45,35 @@ public class principal {
 					p.toVOPostre();
 				};*/
 		
-		VOPostre vop = new VOPostre("P090", "Torta de Chocolate", 10);
-		//VOLight vop = new VOLight("P003", "Torta de Coco",887 ,"Estevia","Bajo en calorias");
+		//VOPostre vop = new VOPostre("090", "Torta de Chocolate", 10);
+		VOLight vop = new VOLight("P003", "Torta de Coco",887 ,"Estevia","Bajo en calorias");
 		
 		try {
 			f.registrarPostre(vop);
 			System.out.println("Postre registrado correctamente");
 			
-			System.out.println("\nPostres registrados:");
-			  VOPostre vo = f.ListarPostreDetallado("P090");
-			  System.out.println(vo);
+			System.out.println("\nPostres registrado:");
+			VOPostre vo = f.ListarPostreDetallado("P003");
+			System.out.println(vo);
+		}
+		catch (AlfanumericoException e) {
+			System.out.println(e.darMensaje());
 		}
 		catch (PrecioException e) {
 			System.out.println(e.darMensaje());
 		}
 		catch (PostreException e) {
             System.out.println(e.darMensaje());
-<<<<<<< HEAD
 		
 		};
 	}
-}
 
-	
-=======
-		}
->>>>>>> aa93c034adbcdf71e4791d84d6da28e015849ccf
 
+		/*
 	   //4) Requemiento 4
 		
 		Ventas SecVentas = new Ventas();
 	    LocalDateTime fecha = LocalDateTime.now();	
-	
 	    Venta v1 = new Venta(2,fecha,"18 de Julio", "Estado", 300);
 	    Venta v2 = new Venta(3,fecha,"16 de Julio", "Pendiente", 999);
 	    Venta v3 = new Venta(1,fecha,"17 de Julio", "Finalziada", 666);
@@ -95,7 +87,8 @@ public class principal {
 		for (VOVenta v:listaVentas){
 			v.toVOVenta();
 		};
+		*/
 
 }
-}
+
 

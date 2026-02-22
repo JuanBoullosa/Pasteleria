@@ -25,11 +25,11 @@ public class VOLight extends VOPostre{
 		public String toString() {
 		    String resu;
 
-		    resu = "\n " + getCodigo();
-		    resu = resu + "\n " + getNombre();
-		    resu = resu + "\n Precio: $" + getPrecio();
-		    resu = resu + "\n " + getEndulzante();
-		    resu = resu + "\n " + getDescripcion();
+		    resu = "\n Codigo" + " - " +getCodigo();
+		    resu = resu + "\n Nombre " + " - "+  getNombre();
+		    resu = resu + "\n Precio " + " - " +"$" + getPrecio();
+		    resu = resu + "\n Endulzante " + " - " + getEndulzante();
+		    resu = resu + "\n Descripcion" + " - " + getDescripcion();
 
 		    return resu;
 		}

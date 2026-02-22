@@ -50,9 +50,9 @@ public class VOPostre {
 	
 	public String toString () {
 	String resu;
-	  resu = "\n Codigo: " + codigo;
-	    resu = resu + "\n Nombre: " + nombre;
-	    resu = resu + "\n Precio: $" + precio;
+			resu = "\n Codigo" + " - " +getCodigo();
+		    resu = resu + "\n Nombre" + " - "+  getNombre();
+		    resu = resu + "\n Precio" + " - " + "$" +getPrecio();
 
 	    return resu;
 	}
