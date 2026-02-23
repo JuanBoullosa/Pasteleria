@@ -59,7 +59,6 @@ public class VOPostre {
 	
 	
 	
-	
 	// SOLO PARA LAS PRUEBAS HAY QUE BORRAR 
 		public void toVOPostre() {
 			System.out.println(

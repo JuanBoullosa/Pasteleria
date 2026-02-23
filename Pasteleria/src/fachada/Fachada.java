@@ -145,7 +145,7 @@ public class Fachada {
 	
 	
 	//Requerimiento 5
-	public void agregarPostreEnVenta (VOPostre vop, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException
+	public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException
 	{
 		
 		if(cantidad <= 0)
@@ -153,11 +153,11 @@ public class Fachada {
 			String msg= "Cantidad no valida, debe ser mayor a 0";
 		    throw new CantidadException(msg);
 		}
-		if (!vop.getCodigo().matches("^[a-zA-Z0-9]+$")) {
+		if (!codigo.matches("^[a-zA-Z0-9]+$")) {
 		    String msg= "El codigo debe ser alfanumerico";
 		    throw new AlfanumericoException(msg);
 		}
-		if(!dicPostres.member(vop.getCodigo())) {
+		if(!dicPostres.member(codigo)) {
 			String msg = "No existe un postre con ese codigo";
 			throw new PostreException(msg);
 			
@@ -167,10 +167,11 @@ public class Fachada {
 			String msg= "No existe venta con ese numero";
 		    throw new ExisteVentaException(msg);
 		}
-			
 		
+		Postre p = dicPostres.find(codigo);
+	
 		int antesTotal = secVentas.existeVenta(numVenta).getSecEsVendido().getTotalUnidades();
-		secVentas.existeVenta(numVenta).altaPostreEnVenta(convertirAPostre(vop), cantidad);
+			secVentas.existeVenta(numVenta).altaPostreEnVenta(p, cantidad);
 		int despuesTotal = secVentas.existeVenta(numVenta).getSecEsVendido().getTotalUnidades();
 	
 		if (despuesTotal==antesTotal)
