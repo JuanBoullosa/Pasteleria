@@ -2,6 +2,8 @@ package logica.valueobjects;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import logica.negocio.Postre;
 import logica.negocio.Venta;
 
 public class VOVenta extends VOVentaIngreso {
@@ -42,6 +44,8 @@ public class VOVenta extends VOVentaIngreso {
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
+	
+	
 	
 	public String toString() {
 	    String resu;

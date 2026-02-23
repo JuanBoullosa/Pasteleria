@@ -2,6 +2,7 @@ package logica.colecciones;
 import java.util.ArrayList;
 import logica.negocio.Es_Vendido;
 import logica.negocio.Postre;
+import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
 
 
@@ -12,6 +13,50 @@ public class Es_Vendidos {
 	{
 		arrayEsVendido = new ArrayList<Es_Vendido> ();
 	}
+	
+	
+	
+	
+	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	//Requerimiento 5
+	
+	
+	
+	
+	
+	
+	//Funcion aux 1 - Requerimiento 5 - Insertar postre valido en Es_Vendidos
+	public Boolean insertarPostreEs_Vendidos (Postre p, int unidades)
+	{
+		int cantUnidades = 0;
+		for (Es_Vendido ev : arrayEsVendido) 
+		{
+			cantUnidades = cantUnidades + ev.getCantidad();
+		}
+		if (cantUnidades + unidades > 40) {
+			return false;
+		}
+		
+		for (Es_Vendido ev: arrayEsVendido){
+			if (ev.getPostre().getCodigo().equals(p.getCodigo())) {
+				ev.sumarCantidad(unidades);
+				return true;
+			}
+		}
+		arrayEsVendido.add(new Es_Vendido(p,unidades ));
+		return true;
+	}
+	// //Funcion aux 2  - Requerimiento 5 - Actualizar monto total plata
+	public float actualizarMontoTotal() 
+	{
+		float monto = 0;
+		for ( Es_Vendido ev: arrayEsVendido) {
+			monto = monto + ev.getPostre().getPrecio()*ev.getCantidad();
+		}
+		return monto;
+	}
+	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 	//agregar un elemento a la lista
 	public void insertar(Es_Vendido esV)
 	{

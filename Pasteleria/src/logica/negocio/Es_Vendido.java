@@ -29,6 +29,13 @@ public class Es_Vendido {
 		this.postre = postre;
 	}
 
+	public void sumarCantidad(int cant) {
+		int cantidadActual = this.cantidad;
+		int nuevaCantidad = cantidadActual + cant;
+		this.cantidad = nuevaCantidad;
+	}
+	
+	
 	//MODIFICAR SOLO PARA PRUEBAS 
 	public void toEsVendido (){
 		VOPostre p = new VOPostre(getPostre()); 
