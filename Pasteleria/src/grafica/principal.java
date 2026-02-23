@@ -22,28 +22,7 @@ public class principal {
 		
 		Fachada f = new Fachada();
 		
-		/*Postres dicPostres = new Postres();
-		
-		Postre p1 = new Postre("P002", "Torta de Chocolate", 500);
-		Postre p2 = new Postre("P001", "Torta de Limon", 333);
-		Postre p3 = new Postre("P003", "Torta de Coco", 999);
-		Postre p4 = new Light("P004", "Torta de Coco", 887,"Estevia","Bajo en calorias");
-		Postre p5 = new Light("A003", "Galleta de avena  ", 250f ,"Miel","Fuerte en fibras");
-				dicPostres.insert(p3.getCodigo(), p3);		
-				dicPostres.insert(p1.getCodigo(), p1);
-				dicPostres.insert(p2.getCodigo(), p2);
-				dicPostres.insert(p4.getCodigo(), p4);
-				dicPostres.insert(p5.getCodigo(), p5);
-				boolean existe = dicPostres.member("P004");
-				
-				System.out.println(existe);
-	
-				
-				ArrayList<VOPostre> lista = dicPostres.obtenerPostres();
 
-				for (VOPostre p:lista ){
-					p.toVOPostre();
-				};*/
 		
 		VOPostre vop0 = new VOPostre("P007", "Torta de Chocolate", 10);
 		VOLight vop1 = new VOLight("P003", "Torta de Coco",887 ,"Estevia","Bajo en calorias");
@@ -112,31 +91,13 @@ public class principal {
 			System.out.println(vopd);
 		}
 		
-		
-		/*
-		   //4) Requemiento 4
-			
-			Ventas SecVentas = new Ventas();
-		    LocalDateTime fecha = LocalDateTime.now();	
-		    Venta v1 = new Venta(2,fecha,"18 de Julio", "Estado", 300);
-		    Venta v2 = new Venta(3,fecha,"16 de Julio", "Pendiente", 999);
-		    Venta v3 = new Venta(1,fecha,"17 de Julio", "Finalziada", 666);
-		
-		    SecVentas.insBack(v3);
-		    SecVentas.insBack(v1);
-		    SecVentas.insBack(v2);
-			
-			ArrayList<VOVenta> listaVentas = SecVentas.obtenerVentas();
-
-			for (VOVenta v:listaVentas){
-				v.toVOVenta();
-			};
-			*/
 
 			//Probando secuencia de ventas
 			VOVentaIngreso voi1 = new VOVentaIngreso("Rio Danubio M107 S27", LocalDateTime.now());
 			VOVentaIngreso voi2 = new VOVentaIngreso("Carabelas M16 S16", LocalDateTime.now());
 			VOVentaIngreso voi3 = new VOVentaIngreso("Marquez Castro 243", LocalDateTime.now());
+			
+			
 			
 			try {
 			f.nuevaVenta(voi1);
@@ -168,11 +129,45 @@ public class principal {
 				System.out.println(e.darMensaje());
 			};
 			
+			
+			
+			
+			///%%%%%%%%%%%%%%%%%%%%          Requerimiento 5 Prueba %%%%%%%%%%%%%%%%%%%
+			VOPostre v7 = new VOPostre("P90", "Torta de Chocolate", 300);
+			
+			try
+			{
+				f.agregarPostreEnVenta(v7, 6, 60);
+				//System.out.println("Se logro ingresar la venta correctamente");
+				//System.out.println("\nVenta registrada:");
+			}
+			catch (CantidadException e)
+			{
+				System.out.println(e.darMensaje());
+			}
+			catch (AlfanumericoException e)
+			{
+				System.out.println(e.darMensaje());
+			}
+			catch (PostreException e)
+			{
+				System.out.println(e.darMensaje());
+			}
+			catch (ExisteVentaException e)
+			{
+				System.out.println(e.darMensaje());
+			}
+			catch (LimiteUnidadesException e)
+			{
+				System.out.println(e.darMensaje());
+			}
+			;
+			
+			
 			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
 			for (VOVenta vovi: listaingreso) {
 				System.out.println(vovi);
 			}
-		
 	}
 
 }
