@@ -65,9 +65,15 @@ public class Venta {
 		SecEsVendido = secEsVendido;
 	}
 	
+	public Es_Vendidos obtenerDetallesVenta() {
+		return getSecEsVendido();
+	}
+	
+	
 	//Requerimiento 5
 	public void altaPostreEnVenta(Postre p, int cantidad)
 	{
+		
 		SecEsVendido.insertarPostreEs_Vendidos(p, cantidad);
 		montoTotal = SecEsVendido.actualizarMontoTotal();
 	}

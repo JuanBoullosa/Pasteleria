@@ -53,7 +53,7 @@ public class VOPostre {
 			resu = "\n Codigo" + " - " +getCodigo();
 		    resu = resu + "\n Nombre" + " - "+  getNombre();
 		    resu = resu + "\n Precio" + " - " + "$" +getPrecio();
-		    resu = resu + "\n Tipo" + getTipoPostre();
+		    resu = resu + "\n Tipo" + " - " + getTipoPostre();
 	    return resu;
 	}
 	

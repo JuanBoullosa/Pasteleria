@@ -63,8 +63,8 @@ public class principal {
 		//Ingreso el postre en la venta
 		try
 		{
-			f.agregarPostreEnVenta("P002", 1, 1);
-			f.agregarPostreEnVenta("P002", 1, 2);
+			f.agregarPostreEnVenta("P002", -40, 1);
+			f.agregarPostreEnVenta("P002", 10, 1);
 			f.agregarPostreEnVenta("P004", 1, 2); // agrego el mismo 2 veces
 			System.out.println("Lista de ventas:");
 			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
@@ -88,10 +88,15 @@ public class principal {
 		{
 			System.out.println(e.darMensaje());
 		}
+		catch (IngresoCantidadException e)
+		{
+			System.out.println(e.darMensaje());
+		}
 		catch (LimiteUnidadesException e)
 		{
 			System.out.println(e.darMensaje());
 		}
+		
 		;
 		
 		// Listado de todos los Postres 
@@ -109,7 +114,27 @@ public class principal {
 		} catch (PostreException e) {
 		    System.out.println(e.getMessage());
 		}
+	
+
+
+	try
+	{
+		System.out.println("Lista de ventas:");
+		f.nuevaVenta(voi1);
+		f.nuevaVenta(voi2);
+		f.nuevaVenta(voi3);
 	}
+	catch (FechaException e)
+	{
+		System.out.println(e.darMensaje());
+	};
+
+	//Funcion para mostrar ventas ingresadas
+	ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
+	for (VOVenta vovi: listaingreso) {
+		System.out.println(vovi);
+	}
+}
 
 }
 

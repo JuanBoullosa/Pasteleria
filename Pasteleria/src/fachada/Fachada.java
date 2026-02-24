@@ -148,7 +148,7 @@ public class Fachada {
 	
 	
 	//Requerimiento 5
-	public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException
+	public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException,IngresoCantidadException
 	{
 		
 		if(cantidad <= 0)
@@ -171,20 +171,24 @@ public class Fachada {
 		    throw new ExisteVentaException(msg);
 		}
 		
-		Postre p = dicPostres.find(codigo);
-	
-		int antesTotal = secVentas.obtenerVenta(numVenta).getSecEsVendido().getTotalUnidades();
-			secVentas.obtenerVenta(numVenta).altaPostreEnVenta(p, cantidad);
-		int despuesTotal = secVentas.obtenerVenta(numVenta).getSecEsVendido().getTotalUnidades();
-	
-		if (despuesTotal==antesTotal)
+		if (cantidad > 40)
+		{
+			String msg= "La cantidad ingresado es mayor que 40";
+		    throw new IngresoCantidadException(msg);
+		}
+		
+		int antesTotal = secVentas.obtenerVenta(numVenta).obtenerDetallesVenta().getTotalUnidades();
+		
+		if (antesTotal+cantidad>40)
 		{
 			String msg = "Supera el maximo de unidades que es 40";
 			throw new LimiteUnidadesException(msg);
 		}
+		
+		Postre p = dicPostres.find(codigo);
+		
+			secVentas.obtenerVenta(numVenta).altaPostreEnVenta(p, cantidad);
 	}
-	
-	
 	
 	
 	//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
