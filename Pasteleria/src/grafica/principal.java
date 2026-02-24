@@ -27,7 +27,7 @@ public class principal {
 		VOVentaIngreso voi2 = new VOVentaIngreso("Carabelas M16 S16", LocalDateTime.now());
 		VOVentaIngreso voi3 = new VOVentaIngreso("Marquez Castro 243", LocalDateTime.now());
 		VOPostre vop1 = new VOPostre("P002", "Torta de Chocolate", 200);
-		VOLight vop4 = new VOLight("P004", "Torta de Coco", 350,"Estevia","Bajo en calorias");
+		VOPostre vop4 = new VOLight("P004", "Torta de Coco", 350,"Estevia","Bajo en calorias");
 		
 		//Ingreso el postre 
 		try {
@@ -94,8 +94,21 @@ public class principal {
 		}
 		;
 		
+		// Listado de todos los Postres 
+		for (VOPostre vod : f.ListadoGeneralPostre()) {
+		    System.out.println(vod.toString());
+		}
 		
 		
+		//Prueba 1 postre detallado 
+		try {
+		    VOPostreDetallado r = f.ListarPostreDetallado("P004");
+		    System.out.println(r);  
+		} catch (AlfanumericoException e) {
+		    System.out.println(e.getMessage()); 
+		} catch (PostreException e) {
+		    System.out.println(e.getMessage());
+		}
 	}
 
 }

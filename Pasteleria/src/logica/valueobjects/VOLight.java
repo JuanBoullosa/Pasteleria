@@ -28,21 +28,17 @@ public class VOLight extends VOPostre{
 		    resu = "\n Codigo" + " - " +getCodigo();
 		    resu = resu + "\n Nombre " + " - "+  getNombre();
 		    resu = resu + "\n Precio " + " - " +"$" + getPrecio();
+		    /* El Req 2 no pide Mostrar si detalles del Ligth como extra solo el TIPO
 		    resu = resu + "\n Endulzante " + " - " + getEndulzante();
 		    resu = resu + "\n Descripcion" + " - " + getDescripcion();
-
+		    */
+		    resu = resu + "\n Tipo" + " - " + getTipoPostre();
 		    return resu;
 		}
 		
-		//ESTO ES LO MISMO QUE ARRIBA PERO LO ROBE DEL TEORICO
-		public void toVOPostre() {
-			System.out.println(
-					"\nCodigo: "+ getCodigo() +
-					"\nNombre: "+ getNombre() +
-					"\nPrecio: "+ getPrecio() + 
-					"\nEndulzante: "+ getEndulzante() +
-					"\nDescripcion: "+ getDescripcion() 
-					);
+		public String getTipoPostre() {
+			return"Light";
 		}
 		
+
 }

@@ -12,6 +12,7 @@ import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
 import logica.valueobjects.VOVenta;
 import logica.valueobjects.VOVentaIngreso;
+import logica.valueobjects.VOLightDetallado;
 
 public class Fachada {
 	
@@ -25,6 +26,8 @@ public class Fachada {
 	}
 	
 	
+	
+	// CREO QUE NO LO ESTAMOS USANDO 
 	private Postre convertirAPostre(VOPostre vo) {
 
 	    if (vo instanceof VOLight) {
@@ -66,29 +69,37 @@ public class Fachada {
 		}
 		Postre p;
 
-	    if (voP instanceof VOLight) {
+		if (voP.getTipoPostre().equals("Light")) {
 
-	        VOLight vol = (VOLight) voP;
+		    VOLight vol = (VOLight) voP;
 
-	        p = new Light(
-	            vol.getCodigo(),
-	            vol.getNombre(),
-	            vol.getPrecio(),
-	            vol.getEndulzante(),
-	            vol.getDescripcion()
-	        );
+		    p = new Light(
+		        vol.getCodigo(),
+		        vol.getNombre(),
+		        vol.getPrecio(),
+		        vol.getEndulzante(),
+		        vol.getDescripcion()
+		    );
 
-	    } else {
-		 p = new Postre(
-				voP.getCodigo(),
-				voP.getNombre(),
-				voP.getPrecio());	
-}
-		dicPostres.insert(voP.getCodigo(), p);
+		} else {
+
+		    p = new Postre(
+		        voP.getCodigo(),
+		        voP.getNombre(),
+		        voP.getPrecio()
+		    );
 		}
+		dicPostres.insert(p.getCodigo(), p);
+	  }
+
+	// Reqierimiento 2
+	public ArrayList<VOPostre> ListadoGeneralPostre() 
+	{
+		return dicPostres.obtenerPostresDetallado();
+	}
 	
 	//Requerimiento 3
-	public VOPostre ListarPostreDetallado(String codigo) throws AlfanumericoException,PostreException 
+	public VOPostreDetallado ListarPostreDetallado(String codigo) throws AlfanumericoException,PostreException 
 	{
 	    if (!codigo.matches("^[a-zA-Z0-9]+$")) {
 	        String msg= "El codigo debe ser alfanumerico";
@@ -103,31 +114,23 @@ public class Fachada {
 		if (p instanceof Light) {
 			Light l = (Light) p;
 
-			return new VOLight(
+			return new VOLightDetallado(
 					l.getCodigo(),
 					l.getNombre(),
 					l.getPrecio(),
+					l.getTipoPostre(),
 	                l.getEndulzante(),
 	                l.getDescripcion()
 					);
 		}
 			else {
-				return  new VOPostre(
-						
+				return  new VOPostreDetallado(						
 						p.getCodigo(),
 						p.getNombre(),
-						p.getPrecio()
+						p.getPrecio(),
+						p.getTipoPostre()
 						);
-						
 			}
-		
-	
-	}
-	
-	// Reqierimiento 2
-	public ArrayList<VOPostreDetallado> ListadoGeneralPostre() 
-	{
-		return dicPostres.obtenerPostresDetallado();
 	}
 	
 	
@@ -162,7 +165,7 @@ public class Fachada {
 			throw new PostreException(msg);
 			
 		}
-		if (secVentas.existeVenta(numVenta) == null)
+		if (secVentas.obtenerVenta(numVenta) == null)
 		{
 			String msg= "No existe venta con ese numero";
 		    throw new ExisteVentaException(msg);
@@ -170,9 +173,9 @@ public class Fachada {
 		
 		Postre p = dicPostres.find(codigo);
 	
-		int antesTotal = secVentas.existeVenta(numVenta).getSecEsVendido().getTotalUnidades();
-			secVentas.existeVenta(numVenta).altaPostreEnVenta(p, cantidad);
-		int despuesTotal = secVentas.existeVenta(numVenta).getSecEsVendido().getTotalUnidades();
+		int antesTotal = secVentas.obtenerVenta(numVenta).getSecEsVendido().getTotalUnidades();
+			secVentas.obtenerVenta(numVenta).altaPostreEnVenta(p, cantidad);
+		int despuesTotal = secVentas.obtenerVenta(numVenta).getSecEsVendido().getTotalUnidades();
 	
 		if (despuesTotal==antesTotal)
 		{

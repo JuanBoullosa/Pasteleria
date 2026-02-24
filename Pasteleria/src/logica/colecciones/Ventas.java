@@ -83,7 +83,7 @@ public class Ventas {
 	
 
 	//Buscar si existe la venta segun el numero dado - Sirve para requerimiento 5
-	public Venta existeVenta(int numeroVenta)
+	public Venta obtenerVenta(int numeroVenta)
 	{
 		for (Venta ven: listaVentas)
 		{
@@ -94,10 +94,6 @@ public class Ventas {
 		}
 		return null;
 	}
-	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	
-	
-	
 	
 	//Muestra lo que cargas a mano
 	public ArrayList<VOVenta> obtenerVentas() {

@@ -22,7 +22,7 @@ public class VOPostreDetallado {
 		this.codigo = p.getCodigo();	
 		this.nombre = p.getNombre();
 		this.precio = p.getPrecio();
-	//	this.tipo = p.;
+		this.tipo = p.getTipoPostre();
 	}
 	
 	public float getPrecio() {

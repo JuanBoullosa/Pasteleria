@@ -1,5 +1,5 @@
 package logica.negocio;
-import logica.valueobjects.VOPostre;
+//import logica.valueobjects.VOPostre;
 
 public class Es_Vendido {
 	
@@ -35,11 +35,12 @@ public class Es_Vendido {
 		this.cantidad = nuevaCantidad;
 	}
 	
-	
+	 /*
 	//MODIFICAR SOLO PARA PRUEBAS 
 	public void toEsVendido (){
 		VOPostre p = new VOPostre(getPostre()); 
-		p.toVOPostre();
+		// p.toVOPostre();
 	};
+	*/
 
 }

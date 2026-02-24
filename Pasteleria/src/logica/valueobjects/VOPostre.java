@@ -53,19 +53,13 @@ public class VOPostre {
 			resu = "\n Codigo" + " - " +getCodigo();
 		    resu = resu + "\n Nombre" + " - "+  getNombre();
 		    resu = resu + "\n Precio" + " - " + "$" +getPrecio();
-
+		    resu = resu + "\n Tipo" + getTipoPostre();
 	    return resu;
 	}
 	
-	
-	
-	// SOLO PARA LAS PRUEBAS HAY QUE BORRAR 
-		public void toVOPostre() {
-			System.out.println(
-					"\nPrecio: "+ getPrecio() + 
-					"\nNombre: "+ getNombre() + 
-					"\nCodigo: "+ getCodigo() 
-					);
-		}
+		
+	public String getTipoPostre() {
+		return"Comun";
+	}
 	
 }

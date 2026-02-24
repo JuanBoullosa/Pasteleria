@@ -6,6 +6,7 @@ import logica.negocio.Postre;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
+import logica.valueobjects.VOLightDetallado;
 
 public class Postres {
 	
@@ -44,33 +45,27 @@ public class Postres {
 	}
 	
 	//Requerimiento 2
-		public ArrayList<VOPostreDetallado> obtenerPostresDetallado() {
-			ArrayList<VOPostreDetallado> ListaDePostresDetallado = new ArrayList<VOPostreDetallado>();
+		public ArrayList<VOPostre> obtenerPostresDetallado() {
+			ArrayList<VOPostre> ListaDePostresDetallado = new ArrayList<VOPostre>();
 			for (Postre p: arbolPostres.values()) {
-				
-				String tipo;
-				
-				if (p instanceof Light) {
-					tipo = "LIGHT";
-					
-		 
-					VOPostreDetallado vopd = new VOPostreDetallado(
-							p.getCodigo(),
-							p.getNombre(),
-			                p.getPrecio(),
-			                tipo
+								
+				if (p instanceof Light) {		
+					Light l = (Light) p;
+					VOLight vopd = new VOLight(
+							l.getCodigo(),
+				            l.getNombre(),
+				            l.getPrecio(),
+				            l.getEndulzante(),
+				            l.getDescripcion()
 							);
 						
 					ListaDePostresDetallado.add(vopd);
 					
-				}else {
-					tipo = "COMUN";
-					
-					VOPostreDetallado vopdc = new VOPostreDetallado(
+				}else {			
+					VOPostre vopdc = new VOPostre(
 							p.getCodigo(),
 							p.getNombre(),
-			                p.getPrecio(),
-			                tipo
+			                p.getPrecio()
 							);
 					ListaDePostresDetallado.add(vopdc);
 				}		

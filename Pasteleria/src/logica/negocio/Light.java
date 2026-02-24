@@ -23,5 +23,9 @@ public class Light extends Postre {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}	
+	
+	public String getTipoPostre() {
+		return"Light";
+	}
 
 }

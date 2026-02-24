@@ -34,6 +34,10 @@ public class Postre {
 		this.precio = precio;
 	}
 	
+	public String getTipoPostre() {
+		return"Comun";
+	}
+	
 	
 	
 
