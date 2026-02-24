@@ -24,6 +24,29 @@ public class Fachada {
 		secVentas = new Ventas();
 	}
 	
+	
+	private Postre convertirAPostre(VOPostre vo) {
+
+	    if (vo instanceof VOLight) {
+	        VOLight vl = (VOLight) vo;
+
+	        return new Light(
+	                vl.getCodigo(),
+	                vl.getNombre(),
+	                vl.getPrecio(),
+	                vl.getEndulzante(),
+	                vl.getDescripcion()
+	        );
+	    }
+
+	    return new Postre(
+	            vo.getCodigo(),
+	            vo.getNombre(),
+	            vo.getPrecio()
+	    );
+	}
+	
+	
 	//Requerimiento 1
 	public void registrarPostre(VOPostre voP)throws AlfanumericoException, PostreException, PrecioException
 	{
@@ -120,10 +143,56 @@ public class Fachada {
 		secVentas.altaVenta(vovi);
 	}
 	
-	//funcion que sirve para ver como cargto las listas ingresadas
+	
+	//Requerimiento 5
+	public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException
+	{
+		
+		if(cantidad <= 0)
+		{
+			String msg= "Cantidad no valida, debe ser mayor a 0";
+		    throw new CantidadException(msg);
+		}
+		if (!codigo.matches("^[a-zA-Z0-9]+$")) {
+		    String msg= "El codigo debe ser alfanumerico";
+		    throw new AlfanumericoException(msg);
+		}
+		if(!dicPostres.member(codigo)) {
+			String msg = "No existe un postre con ese codigo";
+			throw new PostreException(msg);
+			
+		}
+		if (secVentas.existeVenta(numVenta) == null)
+		{
+			String msg= "No existe venta con ese numero";
+		    throw new ExisteVentaException(msg);
+		}
+		
+		Postre p = dicPostres.find(codigo);
+	
+		int antesTotal = secVentas.existeVenta(numVenta).getSecEsVendido().getTotalUnidades();
+			secVentas.existeVenta(numVenta).altaPostreEnVenta(p, cantidad);
+		int despuesTotal = secVentas.existeVenta(numVenta).getSecEsVendido().getTotalUnidades();
+	
+		if (despuesTotal==antesTotal)
+		{
+			String msg = "Supera el maximo de unidades que es 40";
+			throw new LimiteUnidadesException(msg);
+		}
+	}
+	
+	
+	
+	
+	//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
 	public ArrayList<VOVenta> ListaDeVentasIngresadas()
 	{
 		return secVentas.obtenerVentas();
 	}
+	
+	
+	
+	
+	
 	
 }

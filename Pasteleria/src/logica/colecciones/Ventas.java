@@ -22,13 +22,14 @@ public class Ventas {
 		listaVentas = new LinkedList <Venta> ();
 		
 	}
-
+	
 	//agregar por el final
 	public void insBack(Venta V)
 	{
 		listaVentas.addLast(V);
 	}
 	
+	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	//retorno valores de la ultima venta
 	public Venta getUltimaVenta() {
 		if (listaVentas.isEmpty()) return null;
@@ -64,23 +65,40 @@ public class Ventas {
 		estado = "PROCESO";
 		float montoTotal = 0;
 		int num = getProximoNumero();
+		Es_Vendidos sec = new Es_Vendidos();
 		
 		Venta v= new Venta(
 				num,
 				vovi.getFecha(),
 				vovi.getDireccionEnvio(),
 				estado,
-				montoTotal
-				
+				montoTotal,
+				sec
 				);
 				
 		listaVentas.addLast(v);
 	}
+	// Requerimiento 5
+	//public void Insertar 
 	
 
+	//Buscar si existe la venta segun el numero dado - Sirve para requerimiento 5
+	public Venta existeVenta(int numeroVenta)
+	{
+		for (Venta ven: listaVentas)
+		{
+			if(numeroVenta == ven.getNumero())
+			{
+				return ven;
+			}
+		}
+		return null;
+	}
+	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 	
-
+	
+	
 	//Muestra lo que cargas a mano
 	public ArrayList<VOVenta> obtenerVentas() {
 		ArrayList<VOVenta> listaVentasObtenido = new ArrayList<VOVenta>();
