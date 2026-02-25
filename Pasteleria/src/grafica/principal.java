@@ -73,10 +73,10 @@ public class principal {
 		try
 		{
 
-			f.agregarPostreEnVenta("P002", 10, 1);
-			f.agregarPostreEnVenta("P002", 10, 1);
-			f.agregarPostreEnVenta("P004", 5, 1);
-			f.agregarPostreEnVenta("P004", 5, 1);// agrego el mismo 2 veces
+			f.agregarPostreEnVenta("P002", 1, 1);
+			f.agregarPostreEnVenta("P002", 1, 1);
+			f.agregarPostreEnVenta("P002", 1, 1);
+			f.agregarPostreEnVenta("P002", 1, 1);// agrego el mismo 2 veces
 			System.out.println("Lista de ventas:");
 			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
 			for (VOVenta vovi: listaingreso) {
@@ -122,11 +122,13 @@ public class principal {
 		{
 			f.eliminarOBorrarPostreEs_Vendidos("P002", 10, 1);			
 			
-			System.out.println("Lista de ventas:");
+			System.out.println("Lista de ListaDeVentasIngresadas:");
+			/*
 			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
 			for (VOVenta vovi: listaingreso) {
 				System.out.println(vovi);
 			}
+			*/
 		}
 		catch (Exception e)
 		{
@@ -134,24 +136,13 @@ public class principal {
 		}
 		
 
-	try
-	{
-		System.out.println("Lista de ventas:");
-		f.nuevaVenta(voi1);
-		f.nuevaVenta(voi2);
-		f.nuevaVenta(voi3);
-	}
-	catch (FechaException e)
-	{
-		System.out.println(e.darMensaje());
-	};
-
 	//Funcion para mostrar ventas ingresadas
 	//ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
 	//for (VOVenta vovi: listaingreso) {
 		//System.out.println(vovi);
 	//}
 	
+	/*
 	// Prueba Reuqeremiento 8
 	//FALTA REVISAR LA EXCEPTION
 	try {
@@ -159,6 +150,10 @@ public class principal {
 	} catch (NroVentaException e) {
 	    System.out.println(e.getMensaje());
 	}
+	*/
+	
+	
+	
 /*
 		catch (CantidadException e)
 		{
@@ -186,7 +181,18 @@ public class principal {
 	        } catch (Exception e) {
 	            System.out.println("Error al respaldar.");
 	        }
+		
+	
+		// Requ 8 
+		  
+		try {
+			f.ListadoVentasxEstado("P");
+		}catch (EstadoVentaException e) {
+			System.out.println(e.getMensaje());
+			}
 		}
+		
+
 }
 
 		

@@ -83,7 +83,7 @@ public class Venta implements Serializable {
 	}
 
 
-	//Req 8
+	//Req 9
 	public ArrayList<VOPostreCantidad> ObtenerListadoPostresVenta () {
 		ArrayList<VOPostreCantidad> listaEsVendidoRes = new ArrayList  <VOPostreCantidad>();
 		
@@ -112,6 +112,5 @@ public class Venta implements Serializable {
 	
 	
 	
-
 	
 }

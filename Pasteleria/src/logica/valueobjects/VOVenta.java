@@ -53,8 +53,9 @@ public class VOVenta extends VOVentaIngreso {
 	    resu = "\n Numero" + " - " + getNumero();
 	    resu = resu + "\n Fecha " + " - "+  getFecha();
 	    resu = resu + "\n Direccion " + " - "  + getDireccionEnvio();
-	    resu = resu + "\n Estado " + " - "  + getEstado();
 	    resu = resu + "\n Monto total " + " - " +"$" + getMontoTotal();
+	    resu = resu + "\n Estado " + " - "  + getEstado();
+	    
 	    
 	    return resu;
 	}	

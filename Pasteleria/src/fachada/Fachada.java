@@ -1,6 +1,7 @@
 package fachada;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import logica.colecciones.Postres;
 import logica.colecciones.Ventas;
@@ -235,7 +236,7 @@ public class Fachada {
 	}
 	
 	
-	// Requerimiento 8 
+	// Requerimiento 9 
 	
 	public void ListadoPostresVenta(int numero) throws NroVentaException {
 
@@ -286,13 +287,35 @@ public class Fachada {
 		        this.dicPostres = vo.getPostres();
 		        this.secVentas = vo.getVentas();
 		    }
-		 
+		 /*
 		//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
 		public ArrayList<VOVenta> ListaDeVentasIngresadas()
 		{
 			return secVentas.obtenerVentas();
 		}
+		*/
 		
+		// Requerimiento 8 
+		
+		public void ListadoVentasxEstado(String Estado) throws EstadoVentaException
+		{
+			// Estado = Estado.toUpperCase();
+			if (!(Estado.equals("T") || Estado.equals("P") || Estado.equals("F"))) {
+
+			    String msg= "Error, El Estado debe ser : \nT = todas las ventas \nP = ventas en proceso \nF = ventas finalizadas";
+			    throw new EstadoVentaException(msg);
+			}
+			
+			LinkedList <VOVenta> lista = secVentas.ListaVentaXEstado(Estado);
+			//PARA MOSTRAR HACEMES UN FOR
+			for(VOVenta v : lista)
+			{
+				System.out.println(v.toString());		
+			}
+			
+		}
+
+
 
 
 }

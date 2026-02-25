@@ -109,6 +109,26 @@ public class Ventas implements Serializable {
 		}
 
 	
+	//Req8
+		public LinkedList <VOVenta> ListaVentaXEstado (String Estado)
+		{
+			LinkedList <VOVenta> ListRaVentaXEstadoRes = new LinkedList<>();
+			
+			for (Venta v : listaVentas) {
+		        if (Estado.equals("P")) {
+		            if (v.getEstado().equals("PROCESO")) {
+		            	ListRaVentaXEstadoRes.addLast(new VOVenta(v));
+		            }
+		        } else if (Estado.equals("F")) {
+		            if (v.getEstado().equals("FINALIZADA")) {
+		            	ListRaVentaXEstadoRes.addLast(new VOVenta(v));
+		            }
+		        } else if (Estado.equals("T")) {
+		        	ListRaVentaXEstadoRes.addLast(new VOVenta(v));
+		        }
+		    }	
+			return ListRaVentaXEstadoRes ;
+		}
 	
 	
 	
