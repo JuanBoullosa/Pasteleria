@@ -180,7 +180,7 @@ public class Fachada {
 		    throw new IngresoCantidadException(msg);
 		}
 		
-		int antesTotal = secVentas.obtenerVenta(numVenta).obtenerDetallesVenta().getTotalUnidades();
+		int antesTotal = secVentas.obtenerVenta(numVenta).obtenerDetalleVentas().getTotalUnidades();
 		
 		if (antesTotal+cantidad>40)
 		{
@@ -191,6 +191,38 @@ public class Fachada {
 		Postre p = dicPostres.find(codigo);
 		
 			secVentas.obtenerVenta(numVenta).altaPostreEnVenta(p, cantidad);
+	}
+	
+	
+	
+	//Requerimiento 6
+	public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException
+	{
+		
+		if(cantidad <= 0)
+		{
+			String msg= "Cantidad no valida, debe ser mayor a 0";
+		    throw new CantidadException(msg);
+		}
+		if (!codigo.matches("^[a-zA-Z0-9]+$")) {
+		    String msg= "El codigo debe ser alfanumerico";
+		    throw new AlfanumericoException(msg);
+		}
+		if(!dicPostres.member(codigo)) {
+			String msg = "No existe un postre con ese codigo";
+			throw new PostreException(msg);
+			
+		}
+		if (secVentas.obtenerVenta(numVenta) == null)
+		{
+			String msg= "No existe venta con ese numero";
+		    throw new ExisteVentaException(msg);
+		}
+		
+		
+		Postre p = dicPostres.find(codigo);
+		
+			secVentas.obtenerVenta(numVenta).bajaPostreEs_Vendidos(p, cantidad);
 	}
 	
 	

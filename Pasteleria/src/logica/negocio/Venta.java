@@ -68,7 +68,8 @@ public class Venta {
 		SecEsVendido = secEsVendido;
 	}
 	
-	public Es_Vendidos obtenerDetallesVenta() {
+
+	public Es_Vendidos obtenerDetalleVentas() {
 		return getSecEsVendido();
 	}
 	
@@ -76,10 +77,10 @@ public class Venta {
 	//Requerimiento 5
 	public void altaPostreEnVenta(Postre p, int cantidad)
 	{
-		
 		SecEsVendido.insertarPostreEs_Vendidos(p, cantidad);
 		montoTotal = SecEsVendido.actualizarMontoTotal();
 	}
+
 
 	//Req 8
 	public ArrayList<VOPostreCantidad> ObtenerListadoPostresVenta () {
@@ -100,5 +101,16 @@ public class Venta {
 	}
 	
 	
+
+	//Requerimiento 6
+	public void bajaPostreEs_Vendidos(Postre p, int cantidad)
+	{
+		SecEsVendido.eliminarPostreEs_Vendidos(p, cantidad);
+		montoTotal = SecEsVendido.actualizarMontoTotal();
+	}
+	
+	
+	
+
 	
 }
