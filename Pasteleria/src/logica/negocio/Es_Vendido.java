@@ -35,6 +35,11 @@ public class Es_Vendido {
 		this.cantidad = nuevaCantidad;
 	}
 	
+	public void restarCantidad(int cant) {
+		int cantidadActual = this.cantidad;
+		int nuevaCantidad = cantidadActual - cant;
+		this.cantidad = nuevaCantidad;
+	}
 	 /*
 	//MODIFICAR SOLO PARA PRUEBAS 
 	public void toEsVendido (){

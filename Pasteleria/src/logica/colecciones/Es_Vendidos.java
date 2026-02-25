@@ -19,15 +19,11 @@ public class Es_Vendidos {
 	
 	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	//Requerimiento 5
-	
-	
-	
-	
-	
-	
-	//Funcion aux 1 - Requerimiento 5 - Insertar postre valido en Es_Vendidos
-	public Boolean insertarPostreEs_Vendidos (Postre p, int unidades)
+
+	//Funcion aux 1 - Requerimiento 5 - sumar o insertar postre valido en Es_Vendidos
+	public boolean insertarPostreEs_Vendidos (Postre p, int unidades)
 	{
+	
 		int cantUnidades = 0;
 		for (Es_Vendido ev : arrayEsVendido) 
 		{
@@ -45,7 +41,14 @@ public class Es_Vendidos {
 		}
 		arrayEsVendido.add(new Es_Vendido(p,unidades ));
 		return true;
+			
 	}
+	
+	
+	
+	
+	
+
 	// //Funcion aux 2  - Requerimiento 5 - Actualizar monto total plata
 	public float actualizarMontoTotal() 
 	{
@@ -55,6 +58,33 @@ public class Es_Vendidos {
 		}
 		return monto;
 	}
+	
+	
+	//Requerimiento 6
+	//Funcion aux 1 - Requerimiento 6 - restar o eliminar cantidad postre valido en Es_Vendidos
+	public void eliminarPostreEs_Vendidos(Postre p, int unidades) 
+	{
+			
+		for (int i = 0; i < arrayEsVendido.size(); i++) {
+
+	        Es_Vendido ev = arrayEsVendido.get(i);
+
+	        if (ev.getPostre().getCodigo().equals(p.getCodigo())) {
+
+	            int cantidad = ev.getCantidad();
+
+	            if (cantidad - unidades > 0) {
+	                ev.restarCantidad(unidades);
+	            } else {
+	                arrayEsVendido.remove(i); 
+
+	            return;
+	            }
+	       }
+		}
+	}
+	
+	
 	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	//agregar un elemento a la lista
