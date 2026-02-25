@@ -9,9 +9,11 @@ import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
 import logica.valueobjects.VOVenta;
 import logica.valueobjects.VOVentaIngreso;
+import java.io.Serializable;
 
-
-public class Ventas {
+public class Ventas implements Serializable {
+	private static final long serialVersionUID= 1L;
+	
 
 	private LinkedList <Venta> listaVentas;
 

@@ -4,9 +4,12 @@ import logica.negocio.Es_Vendido;
 import logica.negocio.Postre;
 import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
+import java.io.Serializable;
 
 
-public class Es_Vendidos {
+public class Es_Vendidos implements Serializable{
+	private static final long serialVersionUID= 1L;
+	
 	private ArrayList <Es_Vendido> arrayEsVendido;
 	
 	public  Es_Vendidos()

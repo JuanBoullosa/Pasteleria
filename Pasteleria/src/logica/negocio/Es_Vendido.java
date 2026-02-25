@@ -1,7 +1,9 @@
 package logica.negocio;
 //import logica.valueobjects.VOPostre;
+import java.io.Serializable;
 
-public class Es_Vendido {
+public class Es_Vendido implements Serializable {
+	private static final long serialVersionUID= 1L;
 	
 	private int cantidad;
 	private Postre postre;

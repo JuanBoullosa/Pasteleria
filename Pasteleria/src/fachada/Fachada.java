@@ -16,6 +16,8 @@ import logica.valueobjects.VOVentaIngreso;
 import logica.valueobjects.VOLightDetallado;
 import logica.excepciones.NroVentaException;
 import logica.negocio.Venta;
+import persistencia.*;
+import logica.valueobjects.VOEstadoSistema;
 
 public class Fachada {
 	
@@ -250,6 +252,47 @@ public class Fachada {
 	        System.out.println(voc);
 	    }
 	}
+	
+	//requerimiento 11
+	
+		public void respaldar() throws RespaldoException {
+
+		    Persistencia p = new Persistencia();
+
+		    VOEstadoSistema vo = this.exportarDatos();
+
+		    p.respaldar("pasteleria.dat", vo);
+		}
+
+		
+		
+		//requerimiento 12
+		
+		public void recuperar() throws RecuperarException {
+
+		    Persistencia p = new Persistencia();
+
+		    VOEstadoSistema estado = p.recuperar("pasteleria.dat");
+
+		    this.importarDatos(estado);
+		}
+
+		    
+		 public VOEstadoSistema exportarDatos() {
+		     return new VOEstadoSistema(dicPostres, secVentas);
+		    }
+		
+		 public void importarDatos(VOEstadoSistema vo) {
+		        this.dicPostres = vo.getPostres();
+		        this.secVentas = vo.getVentas();
+		    }
+		 
+		//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
+		public ArrayList<VOVenta> ListaDeVentasIngresadas()
+		{
+			return secVentas.obtenerVentas();
+		}
+		
 
 
 }

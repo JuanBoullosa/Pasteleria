@@ -22,7 +22,16 @@ public class principal {
 		
 		Fachada f = new Fachada();
 		
-		
+		// requerimiento 12 - Recuperar
+	      try {
+	           
+	            f.recuperar();
+	            System.out.println("Se restauro el sistema correctamente.");
+	        } catch (Exception e) {
+	            System.out.println("No existe respaldo previo.");
+	        }
+	      
+	      
 		VOVentaIngreso voi1 = new VOVentaIngreso("Rio Danubio M107 S27", LocalDateTime.now());
 		VOVentaIngreso voi2 = new VOVentaIngreso("Carabelas M16 S16", LocalDateTime.now());
 		VOVentaIngreso voi3 = new VOVentaIngreso("Marquez Castro 243", LocalDateTime.now());
@@ -108,7 +117,6 @@ public class principal {
 		
 		
 		
-		
 		//elimino el postre en la venta
 		try
 		{
@@ -120,9 +128,11 @@ public class principal {
 				System.out.println(vovi);
 			}
 		}
-
-	
-
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
 
 	try
 	{
@@ -137,19 +147,19 @@ public class principal {
 	};
 
 	//Funcion para mostrar ventas ingresadas
-	ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
-	for (VOVenta vovi: listaingreso) {
-		System.out.println(vovi);
-	}
+	//ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
+	//for (VOVenta vovi: listaingreso) {
+		//System.out.println(vovi);
+	//}
 	
 	// Prueba Reuqeremiento 8
-	// FALTA REVISAR LA EXCEPTION
+	//FALTA REVISAR LA EXCEPTION
 	try {
 	    f.ListadoPostresVenta(1);   
 	} catch (NroVentaException e) {
 	    System.out.println(e.getMensaje());
 	}
-
+/*
 		catch (CantidadException e)
 		{
 			System.out.println(e.darMensaje());
@@ -166,11 +176,25 @@ public class principal {
 		{
 			System.out.println(e.darMensaje());
 		}
-		;
+		;*/
 		
-
+		//requerimiento 11
+		
+		  try {
+	            f.respaldar();
+	            System.out.println("Sistema respaldado correctamente.");
+	        } catch (Exception e) {
+	            System.out.println("Error al respaldar.");
+	        }
+		}
 }
 
-}
+		
+	
+		
+	
+		
+		
+		
 
 

@@ -1,7 +1,9 @@
 package logica.negocio;
+import java.io.Serializable;
 
-public class Postre {
-
+public class Postre implements Serializable {
+	private static final long serialVersionUID= 1L;
+	
 	private String codigo;
 	private String nombre;
 	private float precio;

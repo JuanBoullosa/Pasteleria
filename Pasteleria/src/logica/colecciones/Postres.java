@@ -7,8 +7,10 @@ import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
 import logica.valueobjects.VOLightDetallado;
+import java.io.Serializable;
 
-public class Postres {
+public class Postres implements Serializable {
+	private static final long serialVersionUID= 1L;
 	
 	private TreeMap<String,Postre> arbolPostres;
 	

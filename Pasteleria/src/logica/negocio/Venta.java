@@ -1,5 +1,5 @@
 package logica.negocio;
-
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -12,7 +12,8 @@ import logica.valueobjects.VOVenta;
 import logica.colecciones.Es_Vendidos;
 import logica.valueobjects.VOPostreCantidad;
 
-public class Venta {
+public class Venta implements Serializable {
+	private static final long serialVersionUID= 1L;
 	
 	private int numero;
 	private LocalDateTime fecha;
