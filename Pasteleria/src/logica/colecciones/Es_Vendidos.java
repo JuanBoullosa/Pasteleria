@@ -113,6 +113,11 @@ public class Es_Vendidos {
 	    return total;
 	}
 	
+	public ArrayList<Es_Vendido> getArrayEsVendido() {
+	    return arrayEsVendido;
+	}
+	
+	
 }	
 	
 

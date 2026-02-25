@@ -1,13 +1,16 @@
 package logica.negocio;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import logica.excepciones.AlfanumericoException;
 import logica.excepciones.PostreException;
 import logica.excepciones.PrecioException;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
+import logica.valueobjects.VOVenta;
 import logica.colecciones.Es_Vendidos;
+import logica.valueobjects.VOPostreCantidad;
 
 public class Venta {
 	
@@ -78,5 +81,24 @@ public class Venta {
 		montoTotal = SecEsVendido.actualizarMontoTotal();
 	}
 
+	//Req 8
+	public ArrayList<VOPostreCantidad> ObtenerListadoPostresVenta () {
+		ArrayList<VOPostreCantidad> listaEsVendidoRes = new ArrayList  <VOPostreCantidad>();
+		
+		
+		for(Es_Vendido esv : getSecEsVendido().getArrayEsVendido() ) {
+			VOPostreCantidad Vopc = new VOPostreCantidad(
+					esv.getPostre().getPrecio(),
+					esv.getPostre().getNombre(),
+					esv.getPostre().getCodigo(),
+					esv.getPostre().getTipoPostre(),
+					esv.getCantidad()
+					);
+			listaEsVendidoRes.add(Vopc);
+		}
+		return listaEsVendidoRes; 
+	}
+	
+	
 	
 }

@@ -63,9 +63,10 @@ public class principal {
 		//Ingreso el postre en la venta
 		try
 		{
-			f.agregarPostreEnVenta("P002", -40, 1);
 			f.agregarPostreEnVenta("P002", 10, 1);
-			f.agregarPostreEnVenta("P004", 1, 2); // agrego el mismo 2 veces
+			f.agregarPostreEnVenta("P002", 10, 1);
+			f.agregarPostreEnVenta("P004", 5, 1);
+			f.agregarPostreEnVenta("P004", 5, 1);// agrego el mismo 2 veces
 			System.out.println("Lista de ventas:");
 			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
 			for (VOVenta vovi: listaingreso) {
@@ -133,6 +134,14 @@ public class principal {
 	ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
 	for (VOVenta vovi: listaingreso) {
 		System.out.println(vovi);
+	}
+	
+	// Prueba Reuqeremiento 8
+	// FALTA REVISAR LA EXCEPTION
+	try {
+	    f.ListadoPostresVenta(1);   
+	} catch (NroVentaException e) {
+	    System.out.println(e.getMensaje());
 	}
 }
 

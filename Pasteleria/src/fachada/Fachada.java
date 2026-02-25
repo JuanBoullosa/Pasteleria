@@ -9,10 +9,13 @@ import logica.negocio.Light;
 import logica.negocio.Postre;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
+import logica.valueobjects.VOPostreCantidad;
 import logica.valueobjects.VOPostreDetallado;
 import logica.valueobjects.VOVenta;
 import logica.valueobjects.VOVentaIngreso;
 import logica.valueobjects.VOLightDetallado;
+import logica.excepciones.NroVentaException;
+import logica.negocio.Venta;
 
 public class Fachada {
 	
@@ -198,8 +201,23 @@ public class Fachada {
 	}
 	
 	
+	// Requerimiento 8 
 	
-	
-	
-	
+	public void ListadoPostresVenta(int numero) throws NroVentaException {
+
+	    Venta v = secVentas.obtenerVenta(numero);
+
+	    if (v == null) {
+	        String msg = "No existe venta con ese numero";
+	        throw new NroVentaException(msg);
+	    }
+
+	    ArrayList<VOPostreCantidad> lista = v.ObtenerListadoPostresVenta();
+
+	    for (VOPostreCantidad voc : lista) {
+	        System.out.println(voc);
+	    }
+	}
+
+
 }

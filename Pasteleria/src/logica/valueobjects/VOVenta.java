@@ -58,16 +58,5 @@ public class VOVenta extends VOVentaIngreso {
 	    
 	    return resu;
 	}	
-	
-	
-	
-	public void toVOVenta() {
-		System.out.println(
-				"\nDireccion Envio: "+ getDireccionEnvio() + 
-				"\nFecha: "+ getFecha() + 
-				"\nNumero: "+ getNumero() +
-				"\nMonto Total: "+ getMontoTotal() +
-				"\nEstado: "+ getEstado()
-				);
-	}
+
 }
