@@ -88,14 +88,14 @@ public class Venta implements Serializable {
 		ArrayList<VOPostreCantidad> listaEsVendidoRes = new ArrayList  <VOPostreCantidad>();
 		
 		
-		for(Es_Vendido esv : getSecEsVendido().getArrayEsVendido() ) {
+		for(Es_Vendido esv : getSecEsVendido().obtenerArrayEsVendido() ) {
 			VOPostreCantidad Vopc = new VOPostreCantidad(
-					esv.getPostre().getPrecio(),
-					esv.getPostre().getNombre(),
-					esv.getPostre().getCodigo(),
-					esv.getPostre().getTipoPostre(),
-					esv.getCantidad()
-					);
+											esv.getPostre().getPrecio(),
+											esv.getPostre().getNombre(),
+											esv.getPostre().getCodigo(),
+											esv.getPostre().getTipoPostre(),
+											esv.getCantidad()
+											);
 			listaEsVendidoRes.add(Vopc);
 		}
 		return listaEsVendidoRes; 

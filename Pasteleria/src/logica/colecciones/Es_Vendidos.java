@@ -146,8 +146,21 @@ public class Es_Vendidos implements Serializable{
 	    return total;
 	}
 	
+	/*
+	// REVISAR SI ESTA EN USO 
 	public ArrayList<Es_Vendido> getArrayEsVendido() {
 	    return arrayEsVendido;
+	}
+	*/
+	public ArrayList<Es_Vendido> obtenerArrayEsVendido() {
+
+	    ArrayList<Es_Vendido> copia = new ArrayList<>();
+
+	    for (Es_Vendido esv : arrayEsVendido) {
+	        copia.add(esv);
+	    }
+
+	    return copia;
 	}
 	
 	

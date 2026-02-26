@@ -19,6 +19,8 @@ import logica.excepciones.NroVentaException;
 import logica.negocio.Venta;
 import persistencia.*;
 import logica.valueobjects.VOEstadoSistema;
+import java.time.LocalDateTime;
+import logica.valueobjects.VORecaudado;
 
 public class Fachada {
 	
@@ -315,7 +317,20 @@ public class Fachada {
 			
 		}
 
-
-
+		// Req 10
+		public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDateTime fecha ) throws AlfanumericoException,PostreException
+		{
+			
+			if (!codigo.matches("^[a-zA-Z0-9]+$")) {
+		        String msg= "El codigo debe ser alfanumerico";
+		    	throw new AlfanumericoException(msg);
+		    }
+			if(!dicPostres.member(codigo)) {
+				String msg = "No existe un postre con ese codigo";
+				throw new PostreException(msg);
+			}	
+			VORecaudado vor = secVentas.obtenerVentaxFecha(codigo,fecha);
+			return vor;
+		}
 
 }

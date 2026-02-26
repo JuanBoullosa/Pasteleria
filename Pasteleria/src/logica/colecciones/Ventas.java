@@ -1,15 +1,19 @@
 package logica.colecciones;
 import java.util.ArrayList;
 import java.util.LinkedList;
+
+import logica.negocio.Es_Vendido;
 import logica.negocio.Light;
 import logica.negocio.Postre;
 import logica.negocio.Venta;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
+import logica.valueobjects.VORecaudado;
 import logica.valueobjects.VOVenta;
 import logica.valueobjects.VOVentaIngreso;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 public class Ventas implements Serializable {
 	private static final long serialVersionUID= 1L;
@@ -130,6 +134,33 @@ public class Ventas implements Serializable {
 			return ListRaVentaXEstadoRes ;
 		}
 	
-	
-	
+		//Req 10
+		public VORecaudado obtenerVentaxFecha(String codigo, LocalDateTime fecha)
+		{
+			float total = 0f;
+			int Cantidad = 0;
+			for (Venta v: listaVentas)
+			{
+				if(v.getEstado().equals("FINALIZADO")&& v.getFecha().equals(fecha) )
+				{
+					for (Es_Vendido esv : v.getSecEsVendido().obtenerArrayEsVendido()) {
+
+					    if (esv.getPostre().getCodigo().equals(codigo)) {
+
+					        total = total + (esv.getPostre().getPrecio() * esv.getCantidad());
+					        Cantidad = Cantidad + esv.getCantidad(); 					 
+					    }
+					}	
+					
+				}
+			}
+			return new VORecaudado(total,Cantidad);
+		}
+		
+		
+		
+			
 }
+	
+	
+
