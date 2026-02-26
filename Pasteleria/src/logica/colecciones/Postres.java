@@ -51,7 +51,7 @@ public class Postres implements Serializable {
 			ArrayList<VOPostre> ListaDePostresDetallado = new ArrayList<VOPostre>();
 			for (Postre p: arbolPostres.values()) {
 								
-				if (p instanceof Light) {		
+				if ("Light".equals(p.getTipoPostre())){		
 					Light l = (Light) p;
 					VOLight vopd = new VOLight(
 							l.getCodigo(),

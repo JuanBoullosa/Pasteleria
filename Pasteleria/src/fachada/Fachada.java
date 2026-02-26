@@ -77,7 +77,7 @@ public class Fachada {
 		}
 		Postre p;
 
-		if (voP.getTipoPostre().equals("Light")) {
+		if ("Light".equals(voP.getTipoPostre())) {
 
 		    VOLight vol = (VOLight) voP;
 
@@ -97,7 +97,7 @@ public class Fachada {
 		        voP.getPrecio()
 		    );
 		}
-		dicPostres.insert(p.getCodigo(), p);
+		dicPostres.insert(voP.getCodigo(), p);
 	  }
 
 	// Reqierimiento 2
@@ -185,7 +185,10 @@ public class Fachada {
 		    throw new IngresoCantidadException(msg);
 		}
 		
-		int antesTotal = secVentas.obtenerVenta(numVenta).obtenerDetalleVentas().getTotalUnidades();
+		//
+		//int antesTotal = secVentas.obtenerVenta(numVenta).obtenerDetalleVentas().getTotalUnidades();
+		Venta v = secVentas.obtenerVenta(numVenta);
+		int antesTotal = v.obtenerDetalleVentas().getTotalUnidades();
 		
 		if (antesTotal+cantidad>40)
 		{
