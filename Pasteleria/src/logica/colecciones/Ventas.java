@@ -134,7 +134,7 @@ public class Ventas implements Serializable {
 			return ListRaVentaXEstadoRes ;
 		}
 	
-<<<<<<< HEAD
+
 	//REQUERIMIENTO 7 parte a
 		public void eliminarVenta(int numVenta)
 		{
@@ -167,7 +167,7 @@ public class Ventas implements Serializable {
 
 		
 	
-=======
+
 		//Req 10
 		public VORecaudado obtenerVentaxFecha(String codigo, LocalDateTime fecha)
 		{
@@ -194,7 +194,7 @@ public class Ventas implements Serializable {
 		
 		
 			
->>>>>>> 604f9cd530d3d7f43f12ac13de87e24bf893a77a
+
 }
 	
 	
