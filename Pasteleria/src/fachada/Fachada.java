@@ -314,6 +314,39 @@ public class Fachada {
 			}
 			
 		}
+		
+		
+		//REQUERIMIENTO 7
+		public float finalizarVenta (int numVenta,String indicacion) throws ExisteVentaException,IndicacionException, FinalizadaException 
+		{
+			
+			if (secVentas.obtenerVenta(numVenta) == null)
+			{
+				String msg= "No existe venta con ese numero";
+			    throw new ExisteVentaException(msg);
+			}
+			if (!(indicacion.equals("CONFIRMAR") || indicacion.equals("CANCELAR"))) {
+
+			    String msg= "Indicacion no es valida: Debe ingresar CONFIRMAR O CANCELAR";
+			    throw new IndicacionException(msg);
+			}
+			if (secVentas.obtenerVenta(numVenta).getEstado().equals("FINALIZADA") )
+			{
+				String msg= "La venta ya se encuentra finalizada";
+			    throw new FinalizadaException(msg);
+			}
+			
+		    if ((secVentas.obtenerVenta(numVenta).getSecEsVendido() == null ) ||  (indicacion.equals("CANCELAR"))){
+		        secVentas.eliminarVenta(numVenta);
+		        return 0; //tengo que devolver 0 porque no se puede obtener el numero de venta ya que no existe mas
+		        
+		        
+		    }
+		    secVentas.confirmarVenta(numVenta);
+		    return secVentas.obtenerVenta(numVenta).getMontoTotal();
+		    
+		}
+		
 
 
 

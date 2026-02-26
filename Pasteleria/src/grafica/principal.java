@@ -22,113 +22,24 @@ public class principal {
 		
 		Fachada f = new Fachada();
 		
-		// requerimiento 12 - Recuperar
-	      try {
-	           
+		// REQUERIMIENTO 12 - RECUPERAR
+	      try { 
 	            f.recuperar();
 	            System.out.println("Se restauro el sistema correctamente.");
 	        } catch (Exception e) {
 	            System.out.println("No existe respaldo previo.");
 	        }
 	      
-	      
-		VOVentaIngreso voi1 = new VOVentaIngreso("Rio Danubio M107 S27", LocalDateTime.now());
-		VOVentaIngreso voi2 = new VOVentaIngreso("Carabelas M16 S16", LocalDateTime.now());
-		VOVentaIngreso voi3 = new VOVentaIngreso("Marquez Castro 243", LocalDateTime.now());
-		VOPostre vop1 = new VOPostre("P002", "Torta de Chocolate", 200);
-		VOLight vop4 = new VOLight("P004", "Torta de Coco", 350,"Estevia","Bajo en calorias");
-		
-		//Ingreso el postre 
-		try {
-			f.registrarPostre(vop1);
-			f.registrarPostre(vop4);
-		}
-		catch (AlfanumericoException e) {
-			System.out.println(e.darMensaje());
-		}
-		catch (PrecioException e) {
-			System.out.println(e.darMensaje());
-		}
-		catch (PostreException e) {
-			System.out.println(e.darMensaje());
-		
-		};
-		
-		
-		
-		//Ingreso las ventas
-		try
-		{
-			f.nuevaVenta(voi1);
-			f.nuevaVenta(voi2);
-			f.nuevaVenta(voi3);
-		}
-		catch (FechaException e)
-		{
-			System.out.println(e.darMensaje());
-		};
-		
-		
-		//Ingreso el postre en la venta
-		try
-		{
 
-			f.agregarPostreEnVenta("P002", 1, 1);
-			f.agregarPostreEnVenta("P002", 1, 1);
-			f.agregarPostreEnVenta("P002", 1, 1);
-			f.agregarPostreEnVenta("P002", 1, 1);// agrego el mismo 2 veces
-			System.out.println("Lista de ventas:");
-			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
-			for (VOVenta vovi: listaingreso) {
-				System.out.println(vovi);
-			}
-
-			f.agregarPostreEnVenta("P002", 9, 1);
-			f.agregarPostreEnVenta("P002", 1, 1);
-			f.agregarPostreEnVenta("P004", 1, 2); // agrego el mismo 2 veces
-			
-
-		}
-		catch (CantidadException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		catch (AlfanumericoException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		catch (PostreException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		catch (ExisteVentaException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		catch (IngresoCantidadException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		catch (LimiteUnidadesException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		;
 		
 		
-		
-		//elimino el postre en la venta
-		try
+		//VER POSTRES EN VENTAS
+		try 
 		{
-			f.eliminarOBorrarPostreEs_Vendidos("P002", 10, 1);			
-			
-			System.out.println("Lista de ListaDeVentasIngresadas:");
-			/*
-			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
-			for (VOVenta vovi: listaingreso) {
-				System.out.println(vovi);
-			}
-			*/
+			System.out.println("\nPostres de la venta 1");
+			f.ListadoPostresVenta(1);	
+			System.out.println("\nPostres de la venta 2");
+			f.ListadoPostresVenta(2);	
 		}
 		catch (Exception e)
 		{
@@ -136,61 +47,49 @@ public class principal {
 		}
 		
 
-	//Funcion para mostrar ventas ingresadas
-	//ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
-	//for (VOVenta vovi: listaingreso) {
-		//System.out.println(vovi);
-	//}
-	
-	/*
-	// Prueba Reuqeremiento 8
-	//FALTA REVISAR LA EXCEPTION
-	try {
-	    f.ListadoPostresVenta(1);   
-	} catch (NroVentaException e) {
-	    System.out.println(e.getMensaje());
-	}
-	*/
-	
-	
-	
-/*
-		catch (CantidadException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		catch (AlfanumericoException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		catch (PostreException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		catch (ExisteVentaException e)
-		{
-			System.out.println(e.darMensaje());
-		}
-		;*/
-		
-		//requerimiento 11
-		
-		  try {
-	            f.respaldar();
-	            System.out.println("Sistema respaldado correctamente.");
-	        } catch (Exception e) {
-	            System.out.println("Error al respaldar.");
-	        }
-		
-	
-		// Requ 8 
 		  
-		try {
-			f.ListadoVentasxEstado("P");
-		}catch (EstadoVentaException e) {
-			System.out.println(e.getMensaje());
+		  	//REQUERIMIENTO 7 FINALIZAR O ELIMINAR VENTA
+			System.out.println("\n-----------------------------------------------------------------------------------\n");
+
+			try
+			{
+				
+				//"CANCELAR" O "CONFIRMAR"
+				float monto = f.finalizarVenta(2, "CONFIRMAR");
+		        System.out.println("\n Venta finalizada. Monto a pagar: $" + monto);
+
 			}
+			catch (ExisteVentaException e)
+			{
+				System.out.println(e.darMensaje());
+			}
+			catch (IndicacionException e)
+			{
+				System.out.println(e.darMensaje());
+			}
+			catch (FinalizadaException e)
+			{
+				System.out.println(e.darMensaje());
+			};
+			
+			System.out.println("\n------------------------          Lista de ventas          ------------------------");
+			ArrayList<VOVenta> listaingreso = f.ListaDeVentasIngresadas();
+			for (VOVenta vovi: listaingreso) {
+				System.out.println(vovi);
+				System.out.println("\n-------------------------------------\n");
+
+			}
+			
+			//REQUERIMIENTO 11 - RESPALDAR
+			  try {
+		            f.respaldar();
+		            System.out.println("Sistema respaldado correctamente.");
+		        } catch (Exception e) {
+		            System.out.println("Error al respaldar.");
+		        }
+			
 		}
+		
 		
 
 }

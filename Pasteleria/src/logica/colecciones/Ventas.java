@@ -130,6 +130,36 @@ public class Ventas implements Serializable {
 			return ListRaVentaXEstadoRes ;
 		}
 	
+	//REQUERIMIENTO 7 parte a
+		public void eliminarVenta(int numVenta)
+		{
+			for(int i =0 ; i < listaVentas.size(); i++ )
+			{
+				if(listaVentas.get(i).getNumero() == numVenta)
+					{
+						listaVentas.remove(i);
+						return;
+					}
+			}
+		}
+	//REQUERIMIENTO 7 parte b
+	    public void confirmarVenta(int numVenta) {
+	        for (Venta v : listaVentas) {
+	            if (v.getNumero() == numVenta) {
+	                v.setEstado("FINALIZADA");
+	                return;
+	            }
+	        }
+	    }
+		
+		
+		
+		
+		
+		
 	
+
+
+		
 	
 }
