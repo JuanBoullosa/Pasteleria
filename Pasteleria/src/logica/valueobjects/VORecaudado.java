@@ -4,28 +4,30 @@ import java.time.LocalDateTime;
 
 public class VORecaudado {
 
-	private int numeroVenta;
-	private LocalDateTime fecha;
+	private float montoRecaudado;
+	private int totalUnidades;
 	
 	
-	
-	public VORecaudado(int numeroVenta, LocalDateTime fecha) {
+	public VORecaudado(float moontoRecaudado, int totalUnidades) {
 		super();
-		this.numeroVenta = numeroVenta;
-		this.fecha = fecha;
+		this.montoRecaudado = moontoRecaudado;
+		this.totalUnidades = totalUnidades;
 	}
-	public int getNumeroVenta() {
-		return numeroVenta;
+	public float getMoontoRecaudado() {
+		return montoRecaudado;
 	}
-	public void setNumeroVenta(int numeroVenta) {
-		this.numeroVenta = numeroVenta;
+	public void setMoontoRecaudado(float moontoRecaudado) {
+		this.montoRecaudado = moontoRecaudado;
 	}
-	public LocalDateTime getFecha() {
-		return fecha;
+	public int getTotalUnidades() {
+		return totalUnidades;
 	}
-	public void setFecha(LocalDateTime fecha) {
-		this.fecha = fecha;
+	public void setTotalUnidades(int totalUnidades) {
+		this.totalUnidades = totalUnidades;
 	}
+	
+	
+	
 	
 	
 	

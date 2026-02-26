@@ -19,6 +19,8 @@ import logica.excepciones.NroVentaException;
 import logica.negocio.Venta;
 import persistencia.*;
 import logica.valueobjects.VOEstadoSistema;
+import java.time.LocalDateTime;
+import logica.valueobjects.VORecaudado;
 
 public class Fachada {
 	
@@ -347,8 +349,6 @@ public class Fachada {
 		    
 		}
 		
-
-
 
 
 }
