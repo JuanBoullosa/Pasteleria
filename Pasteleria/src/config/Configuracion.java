@@ -12,7 +12,7 @@ public class Configuracion {
     public Configuracion() {
         try {
             Properties p = new Properties();
-            String nomArch = "config/sistema.properties";
+            String nomArch = "src/config/sistema.properties";
 
             // Abro el archivo properties y leo los datos de configuración
             p.load(new FileInputStream(nomArch));

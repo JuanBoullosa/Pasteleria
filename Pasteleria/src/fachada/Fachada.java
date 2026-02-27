@@ -24,14 +24,36 @@ import logica.valueobjects.VORecaudado;
 import logica.monitor.*;
 import config.Configuracion;
 
-public class Fachada {
+import interfaz.IFachada;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class Fachada extends UnicastRemoteObject implements IFachada {
 	
 	private Postres dicPostres;
 	private Ventas  secVentas;
 	private Monitor monitor;
 	
-	public Fachada()
+	
+	///SOLO PARA PRUEBAS locales 
+	public Monitor getMonitor() {
+		return monitor;
+	}
+	public void setMonitor(Monitor monitor) {
+		this.monitor = monitor;
+	}
+	public Postres getDicPostres() {
+		return dicPostres;
+	}
+	public Ventas getSecVentas() {
+		return secVentas;
+	}
+
+
+
+	public Fachada() throws RemoteException
 	{
+		super();
 		dicPostres = new Postres();
 		secVentas = new Ventas();
 		monitor = new Monitor();
@@ -40,7 +62,7 @@ public class Fachada {
 	
 
 	//Requerimiento 1
-	public void registrarPostre(VOPostre voP)throws AlfanumericoException, PostreException, PrecioException
+	public void registrarPostre(VOPostre voP)throws AlfanumericoException, PostreException, PrecioException ,RemoteException
 	{
 		monitor.comienzoEscritura();
 	    if (!voP.getCodigo().matches("^[a-zA-Z0-9]+$")) {
@@ -86,7 +108,7 @@ public class Fachada {
 	  }
 
 	// Reqierimiento 2
-	public ArrayList<VOPostre> ListadoGeneralPostre() 
+	public ArrayList<VOPostre> ListadoGeneralPostre() throws RemoteException
 	{
 		monitor.comienzoLectura();
 		ArrayList<VOPostre> resu = dicPostres.obtenerPostresDetallado();
@@ -95,7 +117,7 @@ public class Fachada {
 	}
 	
 	//Requerimiento 3
-	public VOPostreDetallado ListarPostreDetallado(String codigo) throws AlfanumericoException,PostreException 
+	public VOPostreDetallado ListarPostreDetallado(String codigo) throws AlfanumericoException,PostreException , RemoteException
 	{
 		monitor.comienzoLectura();
 		if (!codigo.matches("^[a-zA-Z0-9]+$")) {
@@ -138,7 +160,7 @@ public class Fachada {
 	
 	
 	//Requerimiento 4
-	public void nuevaVenta(VOVentaIngreso vovi) throws FechaException 
+	public void nuevaVenta(VOVentaIngreso vovi) throws FechaException ,RemoteException
 	{
 		monitor.comienzoEscritura();
 		if (secVentas.FechaInvalida(vovi))
@@ -153,7 +175,7 @@ public class Fachada {
 	
 	
 	//Requerimiento 5
-	public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException,IngresoCantidadException
+	public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException,IngresoCantidadException, RemoteException
 	{
 		monitor.comienzoEscritura();
 		if(cantidad <= 0)
@@ -186,9 +208,6 @@ public class Fachada {
 			String msg= "La cantidad ingresado es mayor que 40";
 		    throw new IngresoCantidadException(msg);
 		}
-		
-		//
-		//int antesTotal = secVentas.obtenerVenta(numVenta).obtenerDetalleVentas().getTotalUnidades();
 		Venta v = secVentas.obtenerVenta(numVenta);
 		int antesTotal = v.obtenerDetalleVentas().getTotalUnidades();
 		
@@ -208,7 +227,7 @@ public class Fachada {
 	
 	
 	//Requerimiento 6
-	public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException
+	public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, RemoteException
 	{
 		monitor.comienzoEscritura();
 		if(cantidad <= 0)
@@ -242,11 +261,68 @@ public class Fachada {
 	}
 	
 	
+	//REQUERIMIENTO 7
+			public float finalizarVenta (int numVenta,String indicacion) throws ExisteVentaException,IndicacionException, FinalizadaException, RemoteException 
+			{
+				monitor.comienzoEscritura();
+				if (secVentas.obtenerVenta(numVenta) == null)
+				{
+					monitor.terminoEscritura();
+					String msg= "No existe venta con ese numero";
+				    throw new ExisteVentaException(msg);
+				}
+				if (!(indicacion.equals("CONFIRMAR") || indicacion.equals("CANCELAR"))) {
+					monitor.terminoEscritura();
+				    String msg= "Indicacion no es valida: Debe ingresar CONFIRMAR O CANCELAR";
+				    throw new IndicacionException(msg);
+				}
+				if (secVentas.obtenerVenta(numVenta).getEstado().equals("FINALIZADA") )
+				{
+					monitor.terminoEscritura();
+					String msg= "La venta ya se encuentra finalizada";
+				    throw new FinalizadaException(msg);
+				}
+				
+			    if ((secVentas.obtenerVenta(numVenta).getSecEsVendido() == null ) ||  (indicacion.equals("CANCELAR"))){
+			        secVentas.eliminarVenta(numVenta);
+			        monitor.terminoEscritura();
+			        return 0; //tengo que devolver 0 porque no se puede obtener el numero de venta ya que no existe mas
+			        
+			        
+			    }
+			    secVentas.confirmarVenta(numVenta);
+			    float resu =  secVentas.obtenerVenta(numVenta).getMontoTotal();
+			    monitor.terminoEscritura();
+			    return resu;
+			}
+
+			// Requerimiento 8 
+			
+			public void ListadoVentasxEstado(String Estado) throws EstadoVentaException, RemoteException
+			{
+				// Estado = Estado.toUpperCase();
+				monitor.comienzoLectura();
+				if (!(Estado.equals("T") || Estado.equals("P") || Estado.equals("F"))) {
+					monitor.terminoLectura();	
+				    String msg= "Error, El Estado debe ser : \nT = todas las ventas \nP = ventas en proceso \nF = ventas finalizadas";
+				    throw new EstadoVentaException(msg);
+				}
+				
+				LinkedList <VOVenta> lista = secVentas.ListaVentaXEstado(Estado);
+				monitor.terminoLectura();
+				//PARA MOSTRAR HACEMES UN FOR
+				for(VOVenta v : lista)
+				{
+					System.out.println(v.toString());		
+				}
+				
+			}
 
 	
 	// Requerimiento 9 
 	
-	public void ListadoPostresVenta(int numero) throws NroVentaException {
+	public void ListadoPostresVenta(int numero) throws NroVentaException, RemoteException 
+	{
 
 		monitor.comienzoLectura();
 		Venta v = secVentas.obtenerVenta(numero);
@@ -264,9 +340,29 @@ public class Fachada {
 	    }
 	}
 	
+	// Requerimiento 10
+			public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDateTime fecha ) throws AlfanumericoException,PostreException, RemoteException
+			{
+				monitor.comienzoLectura();
+				if (!codigo.matches("^[a-zA-Z0-9]+$")) {
+					monitor.terminoLectura();
+			        String msg= "El codigo debe ser alfanumerico";
+			    	throw new AlfanumericoException(msg);
+			    }
+				if(!dicPostres.member(codigo)) {
+					monitor.terminoLectura();
+					String msg = "No existe un postre con ese codigo";
+					throw new PostreException(msg);
+				}	
+				VORecaudado vor = secVentas.obtenerVentaxFecha(codigo,fecha);
+				monitor.terminoLectura();
+				return vor;
+			}
+			
+	
 	//requerimiento 11
 	
-		public void respaldar() throws RespaldoException {
+		public void respaldar() throws RespaldoException, RemoteException {
 			monitor.comienzoEscritura();	
 		    Persistencia p = new Persistencia();
 
@@ -282,7 +378,8 @@ public class Fachada {
 		
 		//requerimiento 12
 		
-		public void recuperar() throws RecuperarException {
+		public void recuperar() throws RecuperarException, RemoteException 
+		{
 			monitor.comienzoEscritura();
 		    Persistencia p = new Persistencia();
 
@@ -292,8 +389,10 @@ public class Fachada {
 		    monitor.terminoEscritura();
 		}
 
+		
+		
 		    
-		 public VOEstadoSistema exportarDatos() {
+		 public VOEstadoSistema exportarDatos()  {
 		     VOEstadoSistema vo = new VOEstadoSistema(dicPostres, secVentas);
 		     return vo;
 		    }
@@ -302,6 +401,8 @@ public class Fachada {
 		        this.dicPostres = vo.getPostres();
 		        this.secVentas = vo.getVentas();
 		    }
+		
+		 
 		 /*
 		//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
 		public ArrayList<VOVenta> ListaDeVentasIngresadas()
@@ -310,85 +411,7 @@ public class Fachada {
 		}
 		*/
 		
-		// Requerimiento 8 
-		
-		public void ListadoVentasxEstado(String Estado) throws EstadoVentaException
-		{
-			// Estado = Estado.toUpperCase();
-			monitor.comienzoLectura();
-			if (!(Estado.equals("T") || Estado.equals("P") || Estado.equals("F"))) {
-				monitor.terminoLectura();	
-			    String msg= "Error, El Estado debe ser : \nT = todas las ventas \nP = ventas en proceso \nF = ventas finalizadas";
-			    throw new EstadoVentaException(msg);
-			}
-			
-			LinkedList <VOVenta> lista = secVentas.ListaVentaXEstado(Estado);
-			monitor.terminoLectura();
-			//PARA MOSTRAR HACEMES UN FOR
-			for(VOVenta v : lista)
-			{
-				System.out.println(v.toString());		
-			}
-			
-		}
-		
-		
-		//REQUERIMIENTO 7
-		public float finalizarVenta (int numVenta,String indicacion) throws ExisteVentaException,IndicacionException, FinalizadaException 
-		{
-			monitor.comienzoEscritura();
-			if (secVentas.obtenerVenta(numVenta) == null)
-			{
-				monitor.terminoEscritura();
-				String msg= "No existe venta con ese numero";
-			    throw new ExisteVentaException(msg);
-			}
-			if (!(indicacion.equals("CONFIRMAR") || indicacion.equals("CANCELAR"))) {
-				monitor.terminoEscritura();
-			    String msg= "Indicacion no es valida: Debe ingresar CONFIRMAR O CANCELAR";
-			    throw new IndicacionException(msg);
-			}
-			if (secVentas.obtenerVenta(numVenta).getEstado().equals("FINALIZADA") )
-			{
-				monitor.terminoEscritura();
-				String msg= "La venta ya se encuentra finalizada";
-			    throw new FinalizadaException(msg);
-			}
-			
-		    if ((secVentas.obtenerVenta(numVenta).getSecEsVendido() == null ) ||  (indicacion.equals("CANCELAR"))){
-		        secVentas.eliminarVenta(numVenta);
-		        monitor.terminoEscritura();
-		        return 0; //tengo que devolver 0 porque no se puede obtener el numero de venta ya que no existe mas
-		        
-		        
-		    }
-		    secVentas.confirmarVenta(numVenta);
-		    float resu =  secVentas.obtenerVenta(numVenta).getMontoTotal();
-		    monitor.terminoEscritura();
-		    return resu;
-		}
-		
-
-		// Req 10
-		public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDateTime fecha ) throws AlfanumericoException,PostreException
-		{
-			monitor.comienzoLectura();
-			if (!codigo.matches("^[a-zA-Z0-9]+$")) {
-				monitor.terminoLectura();
-		        String msg= "El codigo debe ser alfanumerico";
-		    	throw new AlfanumericoException(msg);
-		    }
-			if(!dicPostres.member(codigo)) {
-				monitor.terminoLectura();
-				String msg = "No existe un postre con ese codigo";
-				throw new PostreException(msg);
-			}	
-			VORecaudado vor = secVentas.obtenerVentaxFecha(codigo,fecha);
-			monitor.terminoLectura();
-			return vor;
-		}
-		
-		
+		 
 		//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
 		public ArrayList<VOVenta> ListaDeVentasIngresadas()
 		{

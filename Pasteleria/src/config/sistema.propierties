@@ -1,3 +1,3 @@
 ipServidor=127.0.0.1
-puertoServidor=8090
+puertoServidor=1099
 rutaRespaldo=pasteleria.dat
