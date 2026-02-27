@@ -22,6 +22,7 @@ import logica.valueobjects.VOEstadoSistema;
 import java.time.LocalDateTime;
 import logica.valueobjects.VORecaudado;
 import logica.monitor.*;
+import config.Configuracion;
 
 public class Fachada {
 	
@@ -270,8 +271,10 @@ public class Fachada {
 		    Persistencia p = new Persistencia();
 
 		    VOEstadoSistema vo = this.exportarDatos();
+		    Configuracion config = new Configuracion();
+		    String ruta = config.getrutaRespaldo();
 
-		    p.respaldar("pasteleria.dat", vo);
+		    p.respaldar(ruta, vo);
 		    monitor.terminoEscritura();
 		}
 
