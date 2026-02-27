@@ -33,8 +33,16 @@ public class Fachada {
 		secVentas = new Ventas();
 	}
 	
-	
-	
+	//SOLO PARA USAR EN EL PRINCIPAL los GER , Luego BORRAR	
+	public Postres getDicPostres() {
+		return dicPostres;
+	}
+	public Ventas getSecVentas() {
+		return secVentas;
+	}
+
+
+/*
 	// CREO QUE NO LO ESTAMOS USANDO 
 	private Postre convertirAPostre(VOPostre vo) {
 
@@ -56,6 +64,8 @@ public class Fachada {
 	            vo.getPrecio()
 	    );
 	}
+	
+	*/
 	
 	
 	//Requerimiento 1

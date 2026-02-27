@@ -13,10 +13,10 @@ public class VORecaudado {
 		this.montoRecaudado = moontoRecaudado;
 		this.totalUnidades = totalUnidades;
 	}
-	public float getMoontoRecaudado() {
+	public float getMontoRecaudado() {
 		return montoRecaudado;
 	}
-	public void setMoontoRecaudado(float moontoRecaudado) {
+	public void setMontoRecaudado(float moontoRecaudado) {
 		this.montoRecaudado = moontoRecaudado;
 	}
 	public int getTotalUnidades() {
@@ -26,6 +26,14 @@ public class VORecaudado {
 		this.totalUnidades = totalUnidades;
 	}
 	
+	public String toString() {
+	    String resu;
+
+	    resu = "\n Monto total Recacudado" + " - " + getMontoRecaudado();
+	    resu = resu + "\n Total Unidades " + " - "+  getTotalUnidades();
+	    
+	    return resu;
+	}	
 	
 	
 	
