@@ -19,7 +19,7 @@ public class MainServidor
 		{
 			//obtengo ip y puerto de un archivo de configuracion 
 			Properties p = new Properties();
-			String nomArch = "src/config/sistema.properties";
+			String nomArch = "config/datos.properties";
 			p.load (new FileInputStream (nomArch));
 			String ip = p.getProperty("ipServidor");
 			String puerto = p.getProperty("puertoServidor");

@@ -20,7 +20,7 @@ public class MainCliente
 		{
 			//obtengo ip y puerto de un archivo de configuracion
 			Properties p = new Properties();
-			String nomArch = "config/config.properties";
+			String nomArch = "config/datos.properties";
 			p.load (new FileInputStream (nomArch));
 			String ip = p.getProperty("ipServidor");
 			String puerto = p.getProperty("puertoServidor");

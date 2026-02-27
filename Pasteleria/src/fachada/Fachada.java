@@ -18,7 +18,7 @@ import logica.valueobjects.VOLightDetallado;
 import logica.excepciones.NroVentaException;
 import logica.negocio.Venta;
 import persistencia.*;
-import logica.valueobjects.VOEstadoSistema;
+import logica.valueobjects.VOPersistencia;
 import java.time.LocalDateTime;
 import logica.valueobjects.VORecaudado;
 import logica.monitor.*;
@@ -27,6 +27,7 @@ import config.Configuracion;
 import interfaz.IFachada;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
 
 public class Fachada extends UnicastRemoteObject implements IFachada {
 	
@@ -366,11 +367,11 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			monitor.comienzoEscritura();	
 		    Persistencia p = new Persistencia();
 
-		    VOEstadoSistema vo = this.exportarDatos();
+		    VOPersistencia vo = this.exportarDatos();
 		    Configuracion config = new Configuracion();
-		    String ruta = config.getrutaRespaldo();
+		    String nomArch = config.getnomArchivo();
 
-		    p.respaldar(ruta, vo);
+		    p.respaldar(nomArch, vo);
 		    monitor.terminoEscritura();
 		}
 
@@ -383,21 +384,21 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			monitor.comienzoEscritura();
 		    Persistencia p = new Persistencia();
 
-		    VOEstadoSistema estado = p.recuperar("pasteleria.dat");
+		    VOPersistencia persistencia = p.recuperar("pasteleria.dat");
 
-		    this.importarDatos(estado);
+		    this.importarDatos(persistencia);
 		    monitor.terminoEscritura();
 		}
 
 		
 		
 		    
-		 public VOEstadoSistema exportarDatos()  {
-		     VOEstadoSistema vo = new VOEstadoSistema(dicPostres, secVentas);
+		 public VOPersistencia exportarDatos()  {
+			 VOPersistencia vo = new VOPersistencia(dicPostres, secVentas);
 		     return vo;
 		    }
 		
-		 public void importarDatos(VOEstadoSistema vo) {
+		 public void importarDatos(VOPersistencia vo) {
 		        this.dicPostres = vo.getPostres();
 		        this.secVentas = vo.getVentas();
 		    }
@@ -421,30 +422,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			return resu;
 		}
 		
-		
-		/*
-		// CREO QUE NO LO ESTAMOS USANDO 
-		private Postre convertirAPostre(VOPostre vo) {
-
-		    if (vo instanceof VOLight) {
-		        VOLight vl = (VOLight) vo;
-
-		        return new Light(
-		                vl.getCodigo(),
-		                vl.getNombre(),
-		                vl.getPrecio(),
-		                vl.getEndulzante(),
-		                vl.getDescripcion()
-		        );
-		    }
-
-		    return new Postre(
-		            vo.getCodigo(),
-		            vo.getNombre(),
-		            vo.getPrecio()
-		    );
-		}
-		*/
 		
 		
 		
