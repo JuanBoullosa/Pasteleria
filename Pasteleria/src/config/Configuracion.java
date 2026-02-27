@@ -7,19 +7,19 @@ public class Configuracion {
 	
 	private String ipServidor;
     private String puertoServidor;
-    private String rutaRespaldo;
+    private String nomArchivo;
 
     public Configuracion() {
         try {
             Properties p = new Properties();
-            String nomArch = "src/config/sistema.properties";
+            String nomArch = "config/datos.properties";
 
             // Abro el archivo properties y leo los datos de configuración
             p.load(new FileInputStream(nomArch));
 
             ipServidor = p.getProperty("ipServidor");
             puertoServidor = p.getProperty("puertoServidor");
-            rutaRespaldo = p.getProperty("rutaRespaldo");
+            nomArchivo = p.getProperty("nomArchivo");
 
         }
         catch (IOException e) {
@@ -37,8 +37,8 @@ public class Configuracion {
         return puertoServidor;
     }
     
-    public String getrutaRespaldo() 
+    public String getnomArchivo() 
     {
-        return rutaRespaldo;
+        return nomArchivo;
     }
 }
