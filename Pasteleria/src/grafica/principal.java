@@ -22,13 +22,7 @@ public class principal {
 		
 		Fachada f = new Fachada();
 		
-		// REQUERIMIENTO 12 - RECUPERAR
-	      try { 
-	            f.recuperar();
-	            System.out.println("Se restauro el sistema correctamente.");
-	        } catch (Exception e) {
-	            System.out.println("No existe respaldo previo.");
-	        }
+		
 	      
 
 		
@@ -88,10 +82,17 @@ public class principal {
 		            System.out.println("Error al respaldar.");
 		        }
 			
-		}
-		
+			
+	// REQUERIMIENTO 12 - RECUPERAR
+    try { 
+          f.recuperar();
+          System.out.println("Se restauro el sistema correctamente.");
+      } catch (Exception e) {
+          System.out.println("No existe respaldo previo.");
+      }
 		
 
+}
 }
 
 		

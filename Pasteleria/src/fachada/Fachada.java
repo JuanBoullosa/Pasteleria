@@ -18,7 +18,7 @@ import logica.valueobjects.VOLightDetallado;
 import logica.excepciones.NroVentaException;
 import logica.negocio.Venta;
 import persistencia.*;
-import logica.valueobjects.VOEstadoSistema;
+import logica.valueobjects.VOPersistencia;
 import java.time.LocalDateTime;
 import logica.valueobjects.VORecaudado;
 import logica.monitor.*;
@@ -270,11 +270,11 @@ public class Fachada {
 			monitor.comienzoEscritura();	
 		    Persistencia p = new Persistencia();
 
-		    VOEstadoSistema vo = this.exportarDatos();
+		    VOPersistencia vo = this.exportarDatos();
 		    Configuracion config = new Configuracion();
-		    String ruta = config.getrutaRespaldo();
+		    String nombre = config.getnomArchivo();
 
-		    p.respaldar(ruta, vo);
+		    p.respaldar(nombre, vo);
 		    monitor.terminoEscritura();
 		}
 
@@ -284,21 +284,23 @@ public class Fachada {
 		
 		public void recuperar() throws RecuperarException {
 			monitor.comienzoEscritura();
+			Configuracion config = new Configuracion();
+			String nombre = config.getnomArchivo();
 		    Persistencia p = new Persistencia();
 
-		    VOEstadoSistema estado = p.recuperar("pasteleria.dat");
+		    VOPersistencia persistencia = p.recuperar(nombre);
 
-		    this.importarDatos(estado);
+		    this.importarDatos(persistencia);
 		    monitor.terminoEscritura();
 		}
 
 		    
-		 public VOEstadoSistema exportarDatos() {
-		     VOEstadoSistema vo = new VOEstadoSistema(dicPostres, secVentas);
+		 public VOPersistencia exportarDatos() {
+		     VOPersistencia vo = new VOPersistencia(dicPostres, secVentas);
 		     return vo;
 		    }
 		
-		 public void importarDatos(VOEstadoSistema vo) {
+		 public void importarDatos(VOPersistencia vo) {
 		        this.dicPostres = vo.getPostres();
 		        this.secVentas = vo.getVentas();
 		    }

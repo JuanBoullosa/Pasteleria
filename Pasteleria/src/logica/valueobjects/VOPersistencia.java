@@ -3,13 +3,13 @@ package logica.valueobjects;
 	import java.io.Serializable;
 	import logica.colecciones.*;
 
-	public class VOEstadoSistema implements Serializable {
+	public class VOPersistencia implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Postres postres;
 	private Ventas ventas;
 
-	public VOEstadoSistema(Postres postres, Ventas ventas) {
+	public VOPersistencia(Postres postres, Ventas ventas) {
 	    this.postres = postres;
 	    this.ventas = ventas;
 	}

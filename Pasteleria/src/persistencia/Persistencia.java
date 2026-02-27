@@ -3,10 +3,10 @@ package persistencia;
 	import java.io.*;
 	import logica.excepciones.RespaldoException;
 	import logica.excepciones.RecuperarException;
-	import logica.valueobjects.VOEstadoSistema;
+	import logica.valueobjects.VOPersistencia;
 
 	public class Persistencia {
-		public void respaldar (String nomArch, VOEstadoSistema vo)
+		public void respaldar (String nomArch, VOPersistencia vo)
 				throws RespaldoException
 				{try{
 					
@@ -29,7 +29,7 @@ package persistencia;
 				}
 
 				
-				public VOEstadoSistema recuperar (String nomArch)
+				public VOPersistencia recuperar (String nomArch)
 				throws RecuperarException{
 				try {
 				File archivo = new File (nomArch);
@@ -40,7 +40,7 @@ package persistencia;
 				FileInputStream f = new FileInputStream(nomArch);
 				ObjectInputStream o = new ObjectInputStream(f);
 				// Leo  desde el archivo a través del flujo
-				VOEstadoSistema vo = (VOEstadoSistema) o.readObject();
+				VOPersistencia vo = (VOPersistencia) o.readObject();
 				o.close();
 				f.close();
 				return vo;
