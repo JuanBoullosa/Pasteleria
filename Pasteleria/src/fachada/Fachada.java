@@ -383,8 +383,9 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		{
 			monitor.comienzoEscritura();
 		    Persistencia p = new Persistencia();
+		    Configuracion config = new Configuracion();
 
-		    VOPersistencia persistencia = p.recuperar("pasteleria.dat");
+		    VOPersistencia persistencia = p.recuperar(config.getnomArchivo());
 
 		    this.importarDatos(persistencia);
 		    monitor.terminoEscritura();

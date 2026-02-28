@@ -237,31 +237,7 @@ public class principal {
 					}
 					
 					
-					//REQUERIMIENTO 11 - RESPALDAR
-					  try {
-				            f.respaldar();
-				            System.out.println("Sistema respaldado correctamente.");
-				        } catch (Exception e) {
-				            System.out.println("Error al respaldar.");
-				        }
-					  
-					// REQUERIMIENTO 12 - RECUPERAR
-				      try { 
-				            f.recuperar();
-				            System.out.println("Se restauro el sistema correctamente.");
-				        } catch (Exception e) {
-				            System.out.println("No existe respaldo previo.");
-				        }
-		
-				        
-		} catch (RemoteException e) {
-	        e.printStackTrace();
-	    }	
-		
-	}	
-}
-		
-/*	
+					
 
 
 		
@@ -317,16 +293,42 @@ public class principal {
 
 			}
 			
-			
-			
-		}
 		
 		
+		//REQUERIMIENTO 11 - RESPALDAR
+		  try {
+	            f.respaldar();
+	            System.out.println("Sistema respaldado correctamente.");
+	        } catch (Exception e) {
+	            System.out.println("Error al respaldar.");
+	        }
 
-}
-
 		
-*/	
+		// REQUERIMIENTO 12 - RECUPERAR
+	        try { 
+	            f.recuperar();
+	            System.out.println("Se restauro el sistema correctamente.");
+	        } 
+	        catch (RecuperarException e) {
+	            System.out.println(e.getMessage());
+	        }
+	        catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	    } 
+	    catch (RemoteException e) {
+	        e.printStackTrace();
+	    }
+
+	} 
+	}
+
+
+	
+
+
+			
 		
 	
 		
