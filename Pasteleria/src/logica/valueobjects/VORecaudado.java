@@ -1,9 +1,14 @@
 package logica.valueobjects;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class VORecaudado {
+public class VORecaudado implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private float montoRecaudado;
 	private int totalUnidades;
 	

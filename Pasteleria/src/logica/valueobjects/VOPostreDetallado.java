@@ -1,9 +1,15 @@
 package logica.valueobjects;
 
+import java.io.Serializable;
+
 import logica.negocio.Postre;
 
-public class VOPostreDetallado {
+public class VOPostreDetallado implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String codigo;
 	private String nombre;
 	private float precio;

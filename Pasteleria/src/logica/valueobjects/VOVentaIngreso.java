@@ -1,11 +1,16 @@
 package logica.valueobjects;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import logica.valueobjects.VOVenta;
 import logica.negocio.Venta;
 
-public class VOVentaIngreso {
+public class VOVentaIngreso implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String direccionEnvio;
 	private LocalDateTime fecha;
 	
@@ -30,6 +35,11 @@ public class VOVentaIngreso {
 	}
 	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
+	}
+
+	public String getCodigo() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

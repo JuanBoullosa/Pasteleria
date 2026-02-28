@@ -1,6 +1,15 @@
 package logica.valueobjects;
 
-public class VOLightDetallado extends VOPostreDetallado {
+import java.io.Serializable;
+
+public class VOLightDetallado extends VOPostreDetallado implements Serializable {
+	
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String endulzante;
 	private String descripcion;
 	

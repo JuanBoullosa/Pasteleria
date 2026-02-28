@@ -1,13 +1,18 @@
 package logica.valueobjects;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import logica.negocio.Postre;
 import logica.negocio.Venta;
 
-public class VOVenta extends VOVentaIngreso {
+public class VOVenta extends VOVentaIngreso implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int numero;
 	private float montoTotal;
 	private String estado;
