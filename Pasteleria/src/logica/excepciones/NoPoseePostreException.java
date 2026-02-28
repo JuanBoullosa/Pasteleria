@@ -1,23 +1,23 @@
 package logica.excepciones;
 
-public class IndicacionException extends Exception {
+public class NoPoseePostreException extends Exception{
 
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private String mensaje;
-	public IndicacionException(String mensaje)
+	
+	public NoPoseePostreException(String mensaje)
 	{
 		this.mensaje = mensaje;
 		
 	}
-	
 	public String darMensaje()
 	{
 		return mensaje;
 	}
-	
 }
 
 

@@ -7,14 +7,17 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Properties;
 
 import interfaz.IFachada;
 import logica.excepciones.*;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
+import logica.valueobjects.VOPostreCantidad;
 import logica.valueobjects.VOPostreDetallado;
 import logica.valueobjects.VORecaudado;
 import logica.valueobjects.VOVenta;
@@ -42,7 +45,7 @@ public class MainCliente
             System.out.println("Conectado al servidor RMI: " + ruta);
             
             
-           	/*
+           	
 			// REQUERIMIENTO 12 - RECUPERAR
             System.out.println("\n---------------------------------------------------------------");
             System.out.println("REQUERIMIENTO 12 - RECUPERAR ARCHIVO");
@@ -52,7 +55,7 @@ public class MainCliente
 				System.out.println("No existe respaldo previo.");
 				e.printStackTrace();
 			}
-			*/
+			
 			          
             //REQUERIMIENTO 1 - REGISTRAR POSTRE
 			System.out.println("\n---------------------------------------------------------------");
@@ -167,9 +170,9 @@ public class MainCliente
 			
 			try {
 			
-				fachada.agregarPostreEnVenta("P001", 5, 1); //CODIGO, UNIDADES, NUMERO VENTA
-				fachada.agregarPostreEnVenta("P002", 5, 1); 
-				System.out.println("\nIngreso correctamente 2 unidades de P001 a la venta 1 y 2 unidades del P002 a la venta numero 2");
+				fachada.agregarPostreEnVenta("P001", 4, 1); //CODIGO, UNIDADES, NUMERO VENTA
+				fachada.agregarPostreEnVenta("P002", 2, 2); 
+				System.out.println("\nIngreso correctamente 4 unidades de P001 a la venta 1 y 2 unidades del P002 a la venta numero 2");
 				
 			}
 			catch (CantidadException e)
@@ -212,7 +215,7 @@ public class MainCliente
 			
 			try
 			{
-				fachada.eliminarOBorrarPostreEs_Vendidos("P002", 1, 1);	 //CODIGO, UNIDADES, NUMERO VENTA
+				fachada.eliminarOBorrarPostreEs_Vendidos("P001", 2, 1);	 //CODIGO, UNIDADES, NUMERO VENTA
 				System.out.println("\nElimino dos postres P001 a la venta 1");
 				fachada.eliminarOBorrarPostreEs_Vendidos("P002", 2, 2);
 				System.out.println("\nElimino dos postres P002 a la venta 2 y como tiene unidad cero es eliminada de la venta");
@@ -271,53 +274,86 @@ public class MainCliente
 				e.printStackTrace();
 			};
 			
-			/*
+			
 			//REQUERIMIENTO 8 - LISTADO DE VENTAS SEGUN INDICACION T = TODAS, P = EN PROCESO Y F = FINALIZADA
 			System.out.println("\n---------------------------------------------------------------");
 			System.out.println("REQUERIMIENTO 8 - LISTADO DE VENTAS SEGUN INDICACION T = TODAS, P = EN PROCESO Y F = FINALIZADA");
 			
 			try{
+				
 				System.out.println("\nVentas en PROCESO:");
 				fachada.ListadoVentasxEstado("P");
+				LinkedList<VOVenta> lista2 = fachada.ListadoVentasxEstado("P");
+				for (VOVenta voV2: lista2) {
+					System.out.println(voV2.toString());
+					
+				}
+				
 				
 				System.out.println("\nVentas FINALIZADA :");
 				fachada.ListadoVentasxEstado("F");
+				LinkedList<VOVenta> lista3 = fachada.ListadoVentasxEstado("F");
+				for (VOVenta voV3: lista3) {
+					System.out.println(voV3.toString());
+					
+				}
 				
 				System.out.println("\nTodas las ventas(menos eliminadas):");
 				fachada.ListadoVentasxEstado("T");
+				LinkedList<VOVenta> lista4 = fachada.ListadoVentasxEstado("T");
+				for (VOVenta voV4: lista4) {
+					System.out.println(voV4.toString());
+					
+				}
+				
 			}catch(EstadoVentaException e){
 				System.out.println(e.getMensaje());
 				e.printStackTrace();
 			};
-			*/
 			
 			
-			/*
+			
+			
+			
 			//REQUERIMIENTO 9 - LISTADO DE POSTRES EN UNA VENTA
 			System.out.println("\n---------------------------------------------------------------");
 			System.out.println("REQUERIMIENTO 9 - LISTADO DE POSTRES EN UNA VENTA ");
 			
 			try {
-				System.out.println("\nTodos los Postres Venta 1 ");
+				System.out.println("\nTodos los Postres Venta 1: ");
 				fachada.ListadoPostresVenta(1);
-				System.out.println("\nTodos los Postres Venta 2 ");
-				fachada.ListadoPostresVenta(2);
+				ArrayList<VOPostreCantidad> lista2 = fachada.ListadoPostresVenta(1);
+				for (VOPostreCantidad vopd: lista2) {
+					System.out.println(vopd.toString());
+				}
+				
+				System.out.println("\nTodos los Postres Venta 3: ");
+				fachada.ListadoPostresVenta(3);
+				ArrayList<VOPostreCantidad> lista3 = fachada.ListadoPostresVenta(3);
+				for (VOPostreCantidad vopd: lista3) {
+					System.out.println(vopd.toString());
+				}
 				
 			}catch(NroVentaException e) {
 				System.out.println(e.getMensaje());
 				e.printStackTrace();
 			}
-			*/
+			catch(NoPoseePostreException e) {
+				System.out.println(e.darMensaje());
+				e.printStackTrace();
+			}
+	
 			
-			/*
+			
+			
 			//REQUERIMIENTO 10 - RECAUDACION POR POSTRE Y FECHA
 			System.out.println("\n---------------------------------------------------------------");
 			System.out.println("REQUERIMIENTO 10 - RECAUDACION POR POSTRE Y FECHA");
 			
 			try {
-				System.out.println("\nMonto total recaudado y total de unidades vendidas del postre");
-				LocalDateTime fecha = null;
-				VORecaudado vor = fachada.recaudacionXPostreXfecha("P001",fecha );
+				System.out.println("\nMonto total recaudado y total de unidades vendidas del postre 1:");
+				//LocalDateTime fecha = LocalDateTime.of(null,null);
+				VORecaudado vor = fachada.recaudacionXPostreXfecha("P001", LocalDateTime.now() );
 				System.out.println(vor.toString());
 			}catch(AlfanumericoException e) {
 				System.out.println(e.darMensaje());
@@ -327,7 +363,7 @@ public class MainCliente
 				System.out.println(e.darMensaje());
 				e.printStackTrace();
 			}
-			*/
+			
 			
 			
 			
@@ -374,3 +410,5 @@ public class MainCliente
 		} 
 	}
 }
+
+

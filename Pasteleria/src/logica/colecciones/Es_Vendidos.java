@@ -1,9 +1,14 @@
 package logica.colecciones;
 import java.util.ArrayList;
+import java.util.LinkedList;
+
 import logica.negocio.Es_Vendido;
 import logica.negocio.Postre;
+import logica.negocio.Venta;
 import logica.valueobjects.VOPostre;
 import logica.valueobjects.VOPostreDetallado;
+import logica.valueobjects.VOVenta;
+
 import java.io.Serializable;
 
 
@@ -63,6 +68,8 @@ public class Es_Vendidos implements Serializable{
 	}
 	
 	
+	
+	
 	//Requerimiento 6
 	//Funcion aux 1 - Requerimiento 6 - restar o eliminar cantidad postre valido en Es_Vendidos
 	public void eliminarPostreEs_Vendidos(Postre p, int unidades) 
@@ -76,7 +83,7 @@ public class Es_Vendidos implements Serializable{
 
 	            int cantidad = ev.getCantidad();
 
-	            if (cantidad - unidades > 0) {
+	            if (cantidad - unidades >  0) {
 	                ev.restarCantidad(unidades);
 	            } else {
 	                arrayEsVendido.remove(i); 
@@ -86,6 +93,9 @@ public class Es_Vendidos implements Serializable{
 	       }
 		}
 	}
+	
+	
+	
 	
 	
 	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,6 +162,8 @@ public class Es_Vendidos implements Serializable{
 	    return arrayEsVendido;
 	}
 	*/
+	
+	//REQUERIMIENTO 9 
 	public ArrayList<Es_Vendido> obtenerArrayEsVendido() {
 
 	    ArrayList<Es_Vendido> copia = new ArrayList<>();
@@ -162,6 +174,8 @@ public class Es_Vendidos implements Serializable{
 
 	    return copia;
 	}
+	
+
 	
 	
 }	

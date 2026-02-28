@@ -8,6 +8,7 @@ import logica.negocio.Postre;
 import logica.negocio.Venta;
 import logica.valueobjects.VOLight;
 import logica.valueobjects.VOPostre;
+import logica.valueobjects.VOPostreCantidad;
 import logica.valueobjects.VOPostreDetallado;
 import logica.valueobjects.VORecaudado;
 import logica.valueobjects.VOVenta;
@@ -133,8 +134,19 @@ public class Ventas implements Serializable {
 		    }	
 			return ListRaVentaXEstadoRes ;
 		}
+		
+		//REQUERIMIENTO 9
+		public LinkedList <VOVenta> obtenerListaPostresVenta (Venta v){
+			LinkedList <VOVenta> lista = new LinkedList<>();
+			
+			for (Venta v1: listaVentas ) {
+				VOVenta vov = new VOVenta(v1);	
+				lista.add(vov);		
+			}
+			return lista ;
+		}
 	
-
+		
 	//REQUERIMIENTO 7 parte a
 		public void eliminarVenta(int numVenta)
 		{
@@ -156,11 +168,7 @@ public class Ventas implements Serializable {
 	            }
 	        }
 	    }
-		
-		
-		
-		
-		
+
 		
 	
 

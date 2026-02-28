@@ -4,6 +4,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
+
 
 import logica.valueobjects.*;
 import logica.excepciones.*;
@@ -34,10 +36,10 @@ public interface IFachada extends Remote {
     public float finalizarVenta (int numVenta,String indicacion) throws ExisteVentaException,IndicacionException, FinalizadaException, RemoteException;
   		
   	// Requerimiento 8 
-  	public void ListadoVentasxEstado(String Estado) throws EstadoVentaException, RemoteException;
+    public LinkedList <VOVenta> ListadoVentasxEstado(String Estado) throws EstadoVentaException, RemoteException;
   	
   	// Requerimiento 9 
-  	public void ListadoPostresVenta(int numero) throws NroVentaException, RemoteException;
+	public ArrayList<VOPostreCantidad> ListadoPostresVenta(int numero) throws NroVentaException, RemoteException, NoPoseePostreException;
   	
   	// Requerimiento 10
   	public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDateTime fecha ) throws AlfanumericoException,PostreException, RemoteException;

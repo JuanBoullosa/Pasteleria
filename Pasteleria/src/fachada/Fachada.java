@@ -299,7 +299,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 
 			// Requerimiento 8 
 			
-			public void ListadoVentasxEstado(String Estado) throws EstadoVentaException, RemoteException
+			public LinkedList <VOVenta> ListadoVentasxEstado(String Estado) throws EstadoVentaException, RemoteException
 			{
 				// Estado = Estado.toUpperCase();
 				monitor.comienzoLectura();
@@ -311,18 +311,13 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 				
 				LinkedList <VOVenta> lista = secVentas.ListaVentaXEstado(Estado);
 				monitor.terminoLectura();
-				//PARA MOSTRAR HACEMES UN FOR
-				for(VOVenta v : lista)
-				{
-					System.out.println(v.toString());		
-				}
-				
+				return lista;
 			}
 
 	
 	// Requerimiento 9 
 	
-	public void ListadoPostresVenta(int numero) throws NroVentaException, RemoteException 
+	public ArrayList<VOPostreCantidad> ListadoPostresVenta(int numero) throws NroVentaException, RemoteException, NoPoseePostreException
 	{
 
 		monitor.comienzoLectura();
@@ -333,13 +328,19 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 	        String msg = "No existe venta con ese numero";
 	        throw new NroVentaException(msg);
 	    }
-
-	    ArrayList<VOPostreCantidad> lista = v.ObtenerListadoPostresVenta();
-	    monitor.terminoLectura();
-	    for (VOPostreCantidad voc : lista) {
-	        System.out.println(voc);
+	    if (secVentas.obtenerVenta(numero).getSecEsVendido() == null) {
+	    	monitor.terminoLectura();
+	        String msg = "La venta no posee ningun postre";
+	        throw new NoPoseePostreException(msg);
 	    }
+	    ArrayList<VOPostreCantidad> lista = secVentas.obtenerVenta(numero).ObtenerListadoPostresVenta();
+		monitor.terminoLectura();
+	    return lista;
 	}
+	
+	
+	
+	
 	
 	// Requerimiento 10
 			public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDateTime fecha ) throws AlfanumericoException,PostreException, RemoteException
