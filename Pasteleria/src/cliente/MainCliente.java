@@ -352,8 +352,8 @@ public class MainCliente
 			
 			try {
 				System.out.println("\nMonto total recaudado y total de unidades vendidas del postre 1:");
-				//LocalDateTime fecha = LocalDateTime.of(null,null);
-				VORecaudado vor = fachada.recaudacionXPostreXfecha("P001", LocalDateTime.now() );
+				LocalDate fecha = LocalDate.of(2026, 2, 28);
+				VORecaudado vor = fachada.recaudacionXPostreXfecha("P001", fecha );
 				System.out.println(vor.toString());
 			}catch(AlfanumericoException e) {
 				System.out.println(e.darMensaje());

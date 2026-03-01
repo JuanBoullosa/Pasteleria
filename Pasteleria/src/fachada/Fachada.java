@@ -19,6 +19,8 @@ import logica.excepciones.NroVentaException;
 import logica.negocio.Venta;
 import persistencia.*;
 import logica.valueobjects.VOPersistencia;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import logica.valueobjects.VORecaudado;
 import logica.monitor.*;
@@ -343,7 +345,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 	
 	
 	// Requerimiento 10
-			public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDateTime fecha ) throws AlfanumericoException,PostreException, RemoteException
+			public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDate fecha ) throws AlfanumericoException,PostreException, RemoteException
 			{
 				monitor.comienzoLectura();
 				if (!codigo.matches("^[a-zA-Z0-9]+$")) {

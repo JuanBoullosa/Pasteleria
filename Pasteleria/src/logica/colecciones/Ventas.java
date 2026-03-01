@@ -14,6 +14,7 @@ import logica.valueobjects.VORecaudado;
 import logica.valueobjects.VOVenta;
 import logica.valueobjects.VOVentaIngreso;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Ventas implements Serializable {
@@ -177,13 +178,13 @@ public class Ventas implements Serializable {
 	
 
 		//Req 10
-		public VORecaudado obtenerVentaxFecha(String codigo, LocalDateTime fecha)
+		public VORecaudado obtenerVentaxFecha(String codigo, LocalDate fecha)
 		{
 			float total = 0f;
 			int Cantidad = 0;
 			for (Venta v: listaVentas)
 			{
-				if(v.getEstado().equals("FINALIZADA")&& v.getFecha().equals(fecha) )
+				if(v.getEstado().equals("FINALIZADA")&& v.getFecha().toLocalDate().equals(fecha) )
 				{
 					for (Es_Vendido esv : v.getSecEsVendido().obtenerArrayEsVendido()) {
 

@@ -2,11 +2,11 @@ package interfaz;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-
+//import fachada.LocalDate;
 import logica.valueobjects.*;
 import logica.excepciones.*;
 
@@ -42,7 +42,7 @@ public interface IFachada extends Remote {
 	public ArrayList<VOPostreCantidad> ListadoPostresVenta(int numero) throws NroVentaException, RemoteException, NoPoseePostreException;
   	
   	// Requerimiento 10
-  	public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDateTime fecha ) throws AlfanumericoException,PostreException, RemoteException;
+	public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDate fecha ) throws AlfanumericoException,PostreException, RemoteException;
 
  	//requerimiento 11
   	public void respaldar() throws RespaldoException, RemoteException;
