@@ -37,7 +37,7 @@ public class VentanaListadoGeneral extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaListadoGeneral() {
-		setTitle("Listado Generak de Postres");
+		setTitle("Listado general de postres");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
