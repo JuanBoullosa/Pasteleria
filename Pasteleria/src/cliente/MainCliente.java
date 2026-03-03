@@ -121,9 +121,9 @@ public class MainCliente
 		    System.out.println("\n---------------------------------------------------------------");
 	    	System.out.println("REQUERIMIENTO 3 - DETALLE DE UN POSTRE");
 	        try {
-	        	System.out.println("\nListado detallado de un postre: P001 y P002");
-	            VOPostreDetallado det = fachada.ListarPostreDetallado("P001");
-	            VOPostreDetallado det2 = fachada.ListarPostreDetallado("P002");
+	        	System.out.println("\nListado detallado de un postre: ");
+	            VOPostreDetallado det = fachada.ListarPostreDetallado("A01");
+	            VOPostreDetallado det2 = fachada.ListarPostreDetallado("A001");
 	            System.out.println(det);
 	            System.out.println(det2);
 	        }	catch (AlfanumericoException e) {
