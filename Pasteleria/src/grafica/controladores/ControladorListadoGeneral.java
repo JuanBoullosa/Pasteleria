@@ -6,22 +6,16 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Properties;
 
-import javax.swing.JOptionPane;
-
-import grafica.ventanas.VentanaAltaPostre;
-import interfaz.IFachada;
-import logica.excepciones.AlfanumericoException;
-import logica.excepciones.PostreException;
-import logica.excepciones.PrecioException;
-import logica.valueobjects.VOLight;
-import logica.valueobjects.VOPostre;
 import grafica.ventanas.VentanaListadoGeneral;
-import javax.swing.JOptionPane;
+import interfaz.IFachada;
+import logica.valueobjects.VOPostre;
+
 public class ControladorListadoGeneral {
-	private IFachada fachada;
+
+    private IFachada fachada;
     private VentanaListadoGeneral ven;
 
-    public ControladorListadoGeneral (VentanaListadoGeneral ven) {
+    public ControladorListadoGeneral(VentanaListadoGeneral ven) {
         this.ven = ven;
 
         try {
@@ -33,24 +27,31 @@ public class ControladorListadoGeneral {
             String puerto = p.getProperty("puertoServidor");
 
             String ruta = "//" + ip + ":" + puerto + "/Pasteleria";
-
-            // IMPORTANTE: asignar al atributo fac
             fachada = (IFachada) Naming.lookup(ruta);
 
         } catch (Exception e) {
             e.printStackTrace();
             ven.mostrarMensaje("No se pudo conectar con el servidor.");
         }
-        
-        try {
-			ArrayList<VOPostre> lista = fachada.ListadoGeneralPostre();
-			ven.cargarTabla(lista);
-        	} 	
-        	catch (Exception e) {
-    			System.out.println("Error lista");
-    			e.printStackTrace();
-    		};
     }
-    
-    
+
+    // ✅ ESTE método faltaba: trae la lista y se la pasa a la ventana
+    public void cargarListado() {
+        try {
+            if (fachada == null) {
+                ven.mostrarMensaje("Fachada no disponible.");
+                return;
+            }
+
+            ArrayList<VOPostre> lista = fachada.ListadoGeneralPostre();
+            ven.cargarTabla(lista);
+
+        } catch (RemoteException e) {
+            ven.mostrarMensaje("Error de conexión con el servidor.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            ven.mostrarMensaje("Error al cargar el listado.");
+            e.printStackTrace();
+        }
+    }
 }

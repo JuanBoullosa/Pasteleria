@@ -130,6 +130,15 @@ public class Menu{
 		});
 		
 		//Requermiento 2
+		btn_2ListadoGralPostres.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		        VentanaListadoGeneral ventana = new VentanaListadoGeneral();
+		        ventana.setVisible(true);
+
+		        frmMenuPrincipal.setVisible(false); 
+		    }
+		});
 		
 		//Requermiento 3
 		
