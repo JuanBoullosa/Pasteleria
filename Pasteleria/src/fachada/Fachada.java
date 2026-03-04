@@ -169,7 +169,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		if (secVentas.FechaInvalida(vovi))
 		{
 			monitor.terminoEscritura();
-			String msg= "La fecha no es valida";
+			String msg= "Fecha no valida, la misma tiene que ser igual o posterior a ultima venta ingresada";
 		    throw new FechaException(msg);
         }
 		secVentas.altaVenta(vovi);

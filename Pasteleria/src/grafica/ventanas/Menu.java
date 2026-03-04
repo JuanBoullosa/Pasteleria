@@ -153,6 +153,15 @@ public class Menu{
 		    }
 		});
 		//Requermiento 5
+		btn_5IngresoPostreaVenta.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		    	VentanaAgregarPostreEnVenta ventana = new VentanaAgregarPostreEnVenta();
+		        ventana.setVisible(true);
+
+		        frmMenuPrincipal.setVisible(false); 
+		    }
+		});
 		
 		//Requermiento 6
 		

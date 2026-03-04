@@ -163,17 +163,15 @@ public class MainCliente
 				e.printStackTrace();
 			};
             
-			
+			/*
 			System.out.println("\n---------------------------------------------------------------");
 			//REQUERIMIENTO 5 - INGRESO UN POSTRE A UNA VENTA
 			System.out.println("REQUERIMIENTO 5 - INGRESO UN POSTRE A UNA VENTA ");
 			
 			
 			try {
-			
-				fachada.agregarPostreEnVenta("P001", 4, 10); //CODIGO, UNIDADES, NUMERO VENTA
-				fachada.agregarPostreEnVenta("P002", 2, 7); 
-				System.out.println("\nIngreso correctamente 4 unidades de P001 a la venta 1 y 2 unidades del P002 a la venta numero 2");
+					fachada.agregarPostreEnVenta ("A020"	, 2, 1);
+					System.out.println("\nIngreso correctamente 4 unidades de P001 a la venta 1 y 2 unidades del P002 a la venta numero 2");
 				
 			}
 			catch (CantidadException e)
@@ -207,6 +205,9 @@ public class MainCliente
 				e.printStackTrace();
 			}
 			;
+			*/
+			
+			
 			
 			/*
 			

@@ -55,7 +55,10 @@ public class ControladorNuevaVenta {
 				     int a = Integer.parseInt(anio);
 
 				     LocalDate fecha = LocalDate.of(a, m, d);
-
+				     if (fecha.isAfter(LocalDate.now())) {
+				    	    ven.mostrarError("La fecha no puede ser mayor a la fecha actual.");
+				    	    return;
+				    	}
 				     VOVentaIngreso vov = new VOVentaIngreso(direccion, fecha);
 
 				     fachada.nuevaVenta(vov);
@@ -68,32 +71,16 @@ public class ControladorNuevaVenta {
 	    	}
 			catch (FechaException e)
 			{
-				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				ven.mostrarInfo(e.darMensaje());;
 			}
-
 			catch (NumberFormatException e) {
 		         ven.mostrarError("Ingrese correctamente la fecha.");
 		    }catch (Exception e) {
 		         ven.mostrarError("Error al iniciar venta: " + e.getMessage());
-		         e.printStackTrace();
 		    }
-			  
-
 	
-		
-	
-		
-		
-		
-		
-		
 		
 	}
-	
-	
-	
-	
 	
 }
 

@@ -67,6 +67,7 @@ public class VentanaNuevaVenta extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Agrego new controlador
 		controlador  = new ControladorNuevaVenta(this);
 		
 		JLabel lblFechaVenta = new JLabel("Fecha:");
@@ -112,12 +113,15 @@ public class VentanaNuevaVenta extends JFrame {
 		btnIniciar.setBounds(73, 156, 89, 23);
 		contentPane.add(btnIniciar);
 		
+		
+		//Mando al menu nuevamente
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    Menu menu = new Menu();
 			    menu.mostrar();  
 			    setVisible(false);
+			    dispose();
 			}
 		});
 		btnCancelar.setBounds(189, 156, 89, 23);
