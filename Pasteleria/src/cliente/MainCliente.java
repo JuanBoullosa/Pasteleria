@@ -122,8 +122,8 @@ public class MainCliente
 	    	System.out.println("REQUERIMIENTO 3 - DETALLE DE UN POSTRE");
 	        try {
 	        	System.out.println("\nListado detallado de un postre: ");
-	            VOPostreDetallado det = fachada.ListarPostreDetallado("A01");
-	            VOPostreDetallado det2 = fachada.ListarPostreDetallado("A001");
+	            VOPostreDetallado det = fachada.ListarPostreDetallado("P001");
+	            VOPostreDetallado det2 = fachada.ListarPostreDetallado("P002");
 	            System.out.println(det);
 	            System.out.println(det2);
 	        }	catch (AlfanumericoException e) {
@@ -163,7 +163,7 @@ public class MainCliente
 				e.printStackTrace();
 			};
             
-			/*
+			
 			System.out.println("\n---------------------------------------------------------------");
 			//REQUERIMIENTO 5 - INGRESO UN POSTRE A UNA VENTA
 			System.out.println("REQUERIMIENTO 5 - INGRESO UN POSTRE A UNA VENTA ");
@@ -171,8 +171,8 @@ public class MainCliente
 			
 			try {
 			
-				fachada.agregarPostreEnVenta("P001", 4, 1); //CODIGO, UNIDADES, NUMERO VENTA
-				fachada.agregarPostreEnVenta("P002", 2, 2); 
+				fachada.agregarPostreEnVenta("P001", 4, 10); //CODIGO, UNIDADES, NUMERO VENTA
+				fachada.agregarPostreEnVenta("P002", 2, 7); 
 				System.out.println("\nIngreso correctamente 4 unidades de P001 a la venta 1 y 2 unidades del P002 a la venta numero 2");
 				
 			}
@@ -207,7 +207,7 @@ public class MainCliente
 				e.printStackTrace();
 			}
 			;
-			*/
+			
 			/*
 			
 			//REQUERIMIENTO 6 - ELIMINO UN POSTRE EN UNA VENTA

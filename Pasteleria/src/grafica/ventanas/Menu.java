@@ -148,7 +148,15 @@ public class Menu{
 		//Requermiento 6
 		
 		//Requermiento 7
-		
+		btn_7Finaliza_o_Cancela.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		        VentanaFinalizaVenta ventana = new VentanaFinalizaVenta();
+		        ventana.setVisible(true);
+
+		        frmMenuPrincipal.setVisible(false); 
+		    }
+		});
 		//Requermiento 8
 		
 		//Requermiento 9
