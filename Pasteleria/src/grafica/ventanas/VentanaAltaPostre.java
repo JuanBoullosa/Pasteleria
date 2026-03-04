@@ -15,6 +15,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JOptionPane;
 
 import grafica.controladores.ControladorAltaPostre;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VentanaAltaPostre extends JFrame {
 
@@ -107,7 +109,7 @@ public class VentanaAltaPostre extends JFrame {
         chckbxLight.setBounds(154, 132, 81, 23);
 
         JButton btnAgregar = new JButton("Agregar");
-        btnAgregar.setBounds(270, 249, 130, 31);
+        btnAgregar.setBounds(115, 253, 130, 31);
         btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 18));
         contentPane.setLayout(null);
         contentPane.add(lblCodigo);
@@ -135,6 +137,18 @@ public class VentanaAltaPostre extends JFrame {
             contentPane.revalidate();
             contentPane.repaint();
         });
+        
+        /////////////////////////////////////  IMPORTANTE ////////////////////////////////////
+        //Agregar este botn en todas las Ventanas 
+        JButton btnVolver = new JButton("Volver");
+        btnVolver.addActionListener(e -> {
+            Menu menu = new Menu();
+            menu.mostrar();  
+            setVisible(false);      
+        });
+        btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        btnVolver.setBounds(352, 253, 128, 31);
+        contentPane.add(btnVolver);
 
         btnAgregar.addActionListener(e -> {
             String codigo = tfCodigo.getText();
@@ -146,6 +160,8 @@ public class VentanaAltaPostre extends JFrame {
 
             controlador.altaPostre(codigo, nombre, precioTxt, esLight, edulcorante, descripcion);
         });
+        
+
     }
 
     
