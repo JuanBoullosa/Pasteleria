@@ -70,7 +70,7 @@ public class VentanaAltaPostre extends JFrame {
         lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
         JLabel lblTipo = new JLabel("Tipo");
-        lblTipo.setBounds(29, 131, 30, 20);
+        lblTipo.setBounds(29, 131, 56, 20);
         lblTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
         tfCodigo = new JTextField();
@@ -126,7 +126,9 @@ public class VentanaAltaPostre extends JFrame {
         contentPane.add(tfDescripcion);
         contentPane.add(btnAgregar);
 
-        chckbxLight.addActionListener(e -> {
+        chckbxLight.addActionListener(
+        		new ActionListener() {
+        			public void actionPerformed(ActionEvent e) {
             boolean seleccionado = chckbxLight.isSelected();
 
             lblEdulcorante.setVisible(seleccionado);
@@ -136,32 +138,42 @@ public class VentanaAltaPostre extends JFrame {
 
             contentPane.revalidate();
             contentPane.repaint();
-        });
+        			}
+        	}
+        );
         
         /////////////////////////////////////  IMPORTANTE ////////////////////////////////////
         //Agregar este botn en todas las Ventanas 
         JButton btnVolver = new JButton("Volver");
-        btnVolver.addActionListener(e -> {
-            Menu menu = new Menu();
-            menu.mostrar();  
-            setVisible(false);      
-        });
         btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
         btnVolver.setBounds(352, 253, 128, 31);
         contentPane.add(btnVolver);
-
-        btnAgregar.addActionListener(e -> {
-            String codigo = tfCodigo.getText();
-            String nombre = tfNombre.getText();
-            String precioTxt = tfPrecio.getText();
-            boolean esLight = chckbxLight.isSelected();
-            String edulcorante = tfEdulcorante.getText();
-            String descripcion = tfDescripcion.getText();
-
-            controlador.altaPostre(codigo, nombre, precioTxt, esLight, edulcorante, descripcion);
-        });
         
+        btnVolver.addActionListener(
+        	    new ActionListener() {
+        	        public void actionPerformed(ActionEvent e) {
+        	        	Menu menu = new Menu();
+        	            menu.mostrar();  
+        	            setVisible(false); 
+        	        }
+        	    }
+        );
+        
+        btnAgregar.addActionListener(
+        	    new ActionListener() {
+        	        public void actionPerformed(ActionEvent e) {
+        	        	String codigo = tfCodigo.getText();
+        	            String nombre = tfNombre.getText();
+        	            String precioTxt = tfPrecio.getText();
+        	            boolean esLight = chckbxLight.isSelected();
+        	            String edulcorante = tfEdulcorante.getText();
+        	            String descripcion = tfDescripcion.getText();
 
+        	            controlador.altaPostre(codigo, nombre, precioTxt, esLight, edulcorante, descripcion); 
+        	        }
+        	    }
+        );
+      
     }
 
     
