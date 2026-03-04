@@ -60,10 +60,10 @@ public class Menu{
 		btn_2ListadoGralPostres.setBounds(22, 37, 291, 23);
 		frmMenuPrincipal.getContentPane().add(btn_2ListadoGralPostres);
 		
-		JButton btn_4ListaDeVentas = new JButton("4 - LISTA DE VENTAS");
-		btn_4ListaDeVentas.setHorizontalAlignment(SwingConstants.LEFT);
-		btn_4ListaDeVentas.setBounds(22, 85, 291, 23);
-		frmMenuPrincipal.getContentPane().add(btn_4ListaDeVentas);
+		JButton btn_4AltaVenta = new JButton("4 - NUEVA VENTA");
+		btn_4AltaVenta.setHorizontalAlignment(SwingConstants.LEFT);
+		btn_4AltaVenta.setBounds(22, 85, 291, 23);
+		frmMenuPrincipal.getContentPane().add(btn_4AltaVenta);
 		
 		JButton btn_5IngresoPostreaVenta = new JButton("5 - INGRESAR UN POSTRE A UNA VENTA");
 		btn_5IngresoPostreaVenta.setHorizontalAlignment(SwingConstants.LEFT);
@@ -134,7 +134,15 @@ public class Menu{
 		//Requermiento 3
 		
 		//Requermiento 4
-		
+		btn_4AltaVenta.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		        VentanaNuevaVenta ventana = new VentanaNuevaVenta();
+		        ventana.setVisible(true);
+
+		        frmMenuPrincipal.setVisible(false); 
+		    }
+		});
 		//Requermiento 5
 		
 		//Requermiento 6

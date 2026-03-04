@@ -115,9 +115,9 @@ public class VentanaNuevaVenta extends JFrame {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				dispose();
-				
+			    Menu menu = new Menu();
+			    menu.mostrar();  
+			    setVisible(false);
 			}
 		});
 		btnCancelar.setBounds(189, 156, 89, 23);
@@ -157,3 +157,4 @@ public class VentanaNuevaVenta extends JFrame {
 
 	
 }
+
