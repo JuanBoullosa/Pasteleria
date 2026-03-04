@@ -17,7 +17,7 @@ public class VOVenta extends VOVentaIngreso implements Serializable{
 	private float montoTotal;
 	private String estado;
 	
-	public VOVenta(String direccionEnvio, LocalDateTime fecha, int numero, float montoTotal, String estado) {
+	public VOVenta(String direccionEnvio, LocalDate fecha, int numero, float montoTotal, String estado) {
 		super(direccionEnvio, fecha);
 		this.numero = numero;
 		this.montoTotal = montoTotal;

@@ -135,22 +135,22 @@ public class MainCliente
 	            e.printStackTrace();
 			
 			};
-			//REQUERIMIENTO 4 - LISTA DE VENTAS
+			//REQUERIMIENTO 4 - CREO UNA VENTA
 			System.out.println("\n---------------------------------------------------------------");
-			System.out.println("REQUERIMIENTO 4 - LISTA DE VENTAS");
+			System.out.println("REQUERIMIENTO 4 - CREO UNA VENTA");
 		    
 			try
 			{
 				// VENTA 1
-				VOVentaIngreso voi1 = new VOVentaIngreso("Rio Danubio M107 S23", LocalDateTime.now());
+				VOVentaIngreso voi1 = new VOVentaIngreso("Rio Danubio M107 S23", LocalDate.now());
 	    	    fachada.nuevaVenta(voi1);
 	            System.out.println("\nLa 1era venta ingresada tiene direccion: " + voi1.getDireccionEnvio());
 				// VENTA 2
-	            VOVentaIngreso voi2 = new VOVentaIngreso("Carabelas entre Mamboreta y Guazubira", LocalDateTime.now());
+	            VOVentaIngreso voi2 = new VOVentaIngreso("Carabelas entre Mamboreta y Guazubira", LocalDate.now());
 	    	    fachada.nuevaVenta(voi2);
 				System.out.println("La 2da venta ingresada tiene el codigo: " + voi2.getDireccionEnvio());
 	            // VENTA 3
-				VOVentaIngreso voi3 = new VOVentaIngreso("Marquez Castro esq. Av. Giannattasio", LocalDateTime.now());
+				VOVentaIngreso voi3 = new VOVentaIngreso("Marquez Castro esq. Av. Giannattasio", LocalDate.now());
 	    	    fachada.nuevaVenta(voi3);
 				System.out.println("La 3era venta ingresada tiene el codigo: " + voi3.getDireccionEnvio());
 				
@@ -162,7 +162,8 @@ public class MainCliente
 				System.out.println(e.darMensaje());
 				e.printStackTrace();
 			};
-
+            
+			/*
 			System.out.println("\n---------------------------------------------------------------");
 			//REQUERIMIENTO 5 - INGRESO UN POSTRE A UNA VENTA
 			System.out.println("REQUERIMIENTO 5 - INGRESO UN POSTRE A UNA VENTA ");
@@ -206,7 +207,8 @@ public class MainCliente
 				e.printStackTrace();
 			}
 			;
-			
+			*/
+			/*
 			
 			//REQUERIMIENTO 6 - ELIMINO UN POSTRE EN UNA VENTA
 			System.out.println("\n---------------------------------------------------------------");
@@ -274,7 +276,7 @@ public class MainCliente
 				e.printStackTrace();
 			};
 			
-			
+			*/
 			//REQUERIMIENTO 8 - LISTADO DE VENTAS SEGUN INDICACION T = TODAS, P = EN PROCESO Y F = FINALIZADA
 			System.out.println("\n---------------------------------------------------------------");
 			System.out.println("REQUERIMIENTO 8 - LISTADO DE VENTAS SEGUN INDICACION T = TODAS, P = EN PROCESO Y F = FINALIZADA");
@@ -313,7 +315,7 @@ public class MainCliente
 			
 			
 			
-			
+			/*
 			
 			//REQUERIMIENTO 9 - LISTADO DE POSTRES EN UNA VENTA
 			System.out.println("\n---------------------------------------------------------------");
@@ -379,7 +381,7 @@ public class MainCliente
 		        }
 			
             
-            
+            */
             
             
             

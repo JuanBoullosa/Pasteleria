@@ -184,7 +184,7 @@ public class Ventas implements Serializable {
 			int Cantidad = 0;
 			for (Venta v: listaVentas)
 			{
-				if(v.getEstado().equals("FINALIZADA")&& v.getFecha().toLocalDate().equals(fecha) )
+				if(v.getEstado().equals("FINALIZADA")&& v.getFecha().equals(fecha) )
 				{
 					for (Es_Vendido esv : v.getSecEsVendido().obtenerArrayEsVendido()) {
 

@@ -1,5 +1,6 @@
 package logica.negocio;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -16,13 +17,13 @@ public class Venta implements Serializable {
 	private static final long serialVersionUID= 1L;
 	
 	private int numero;
-	private LocalDateTime fecha;
+	private LocalDate fecha;
 	private String direccion;
 	private String estado;
 	private float montoTotal;
 	private Es_Vendidos SecEsVendido;
 	
-	public Venta(int numero, LocalDateTime fecha, String direccion, String estado, float montoTotal,
+	public Venta(int numero, LocalDate fecha, String direccion, String estado, float montoTotal,
 			Es_Vendidos secEsVendido) {
 		super();
 		this.numero = numero;
@@ -38,10 +39,10 @@ public class Venta implements Serializable {
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
-	public LocalDateTime getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
-	public void setFecha(LocalDateTime fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 	public String getDireccion() {

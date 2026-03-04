@@ -1,6 +1,7 @@
 package logica.valueobjects;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import logica.valueobjects.VOVenta;
 import logica.negocio.Venta;
@@ -12,9 +13,9 @@ public class VOVentaIngreso implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String direccionEnvio;
-	private LocalDateTime fecha;
+	private LocalDate fecha;
 	
-	public VOVentaIngreso(String direccionEnvio, LocalDateTime fecha) {
+	public VOVentaIngreso(String direccionEnvio, LocalDate fecha) {
 		this.direccionEnvio = direccionEnvio;
 		this.fecha = fecha;
 	}
@@ -30,10 +31,10 @@ public class VOVentaIngreso implements Serializable {
 	public void setDireccionEnvio(String direccionEnvio) {
 		this.direccionEnvio = direccionEnvio;
 	}
-	public LocalDateTime getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
-	public void setFecha(LocalDateTime fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 
