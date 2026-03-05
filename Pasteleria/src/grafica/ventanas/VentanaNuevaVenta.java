@@ -134,7 +134,7 @@ public class VentanaNuevaVenta extends JFrame {
 	}
 		
 		
-		// ===== Métodos para mensajes =====
+		//Métodos para mensajes
 
 	    public void mostrarInfo(String msg) {
 	        JOptionPane.showMessageDialog(this, msg);
