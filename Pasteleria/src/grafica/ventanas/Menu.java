@@ -189,6 +189,16 @@ public class Menu{
 		});
 		//Requermiento 8
 		
+		btn_8ListadoVentas.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		        VentanaListadoVentasxEstado ventana = new VentanaListadoVentasxEstado();
+		        ventana.setVisible(true);
+
+		        frmMenuPrincipal.setVisible(false); 
+		    }
+		});
+		
 		//Requermiento 9
 		
 		//Requermiento 10
