@@ -230,7 +230,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 	
 	
 	//Requerimiento 6
-	public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, RemoteException
+	public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, RemoteException, NumberFormatException
 	{
 		monitor.comienzoEscritura();
 		if(cantidad <= 0)

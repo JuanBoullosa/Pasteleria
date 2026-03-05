@@ -2,13 +2,19 @@ package grafica.ventanas;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import grafica.controladores.ControladorAgregarPostreVenta;
+import grafica.controladores.ControladorEliminarOBorrarPostre;
 
 public class VentanaEliminarOBorrarPostre extends JFrame {
 
@@ -16,6 +22,12 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 	private JTextField tfCodigoPostre;
 	private JTextField tfCantidad;
 	private JTextField tfNumeroVenta;
+	
+	
+	private JButton btnEliminar;
+	private JButton btnCancelar;
+	
+	private ControladorEliminarOBorrarPostre controlador;
 
 	/**
 	 * Launch the application.
@@ -47,6 +59,9 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 		
 		contentPane.setLayout(null);
 		
+		controlador  = new ControladorEliminarOBorrarPostre(this);
+
+		
 		JLabel lblCodigoPostre = new JLabel("Codigo postre:");
 		lblCodigoPostre.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblCodigoPostre.setBounds(10, 25, 150, 30);
@@ -54,25 +69,13 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 		
 		JLabel lblCantidad = new JLabel("Cantidad:");
 		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCantidad.setBounds(10, 75, 150, 30);
+		lblCantidad.setBounds(10, 125, 150, 30);
 		contentPane.add(lblCantidad);
 		
 		JLabel lblNumeroVenta = new JLabel("Numero de venta:");
 		lblNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNumeroVenta.setBounds(10, 125, 150, 30);
+		lblNumeroVenta.setBounds(10, 72, 150, 30);
 		contentPane.add(lblNumeroVenta);
-		
-
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnCancelar.setBounds(195, 200, 120, 30);
-		contentPane.add(btnCancelar);
-		
-		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnEliminar.setBounds(60, 200, 120, 30);
-		contentPane.add(btnEliminar);
 		
 		tfCodigoPostre = new JTextField();
 		tfCodigoPostre.setBounds(200, 25, 150, 30);
@@ -81,13 +84,67 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 		
 		tfCantidad = new JTextField();
 		tfCantidad.setColumns(10);
-		tfCantidad.setBounds(200, 75, 150, 30);
+		tfCantidad.setBounds(200, 128, 150, 30);
 		contentPane.add(tfCantidad);
 		
 		tfNumeroVenta = new JTextField();
 		tfNumeroVenta.setColumns(10);
-		tfNumeroVenta.setBounds(200, 125, 150, 30);
+		tfNumeroVenta.setBounds(200, 75, 150, 30);
 		contentPane.add(tfNumeroVenta);
+		
+		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			    Menu menu = new Menu();
+			    menu.mostrar();  
+			    setVisible(false);
+			    dispose();
+			}
+		});
+		btnCancelar.setBounds(195, 200, 120, 30);
+		contentPane.add(btnCancelar);
+		
+		btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String codigo = tfCodigoPostre.getText().trim();
+				String numventa = tfNumeroVenta.getText().trim();
+				String cant = tfCantidad.getText().trim();
+				
+				controlador.EliminarOBorrarPostre(codigo,numventa,cant);
+				
+				
+				
+			}
+		});
+		
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnEliminar.setBounds(60, 200, 120, 30);
+		contentPane.add(btnEliminar);
+		
+
 	}
+	
+	
+	
+	  public void mostrarInfo(String msg) {
+	        JOptionPane.showMessageDialog(this, msg);
+	    }
+
+	    public void mostrarError(String msg) {
+	        JOptionPane.showMessageDialog(this, msg);
+	    }
+		
+
+	    public void limpiar() {
+	        tfCodigoPostre.setText("");
+	        tfNumeroVenta.setText("");
+	        tfCantidad.setText("");
+	    }
+		
+		
+	
 
 }

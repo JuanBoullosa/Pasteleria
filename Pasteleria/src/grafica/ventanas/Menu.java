@@ -164,6 +164,18 @@ public class Menu{
 		});
 		
 		//Requermiento 6
+		btn_6EliminarPostredeVenta.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		    	VentanaEliminarOBorrarPostre ventana = new VentanaEliminarOBorrarPostre();
+		        ventana.setVisible(true);
+
+		        frmMenuPrincipal.setVisible(false); 
+		    }
+		});
+		
+		
+		
 		
 		//Requermiento 7
 		btn_7Finaliza_o_Cancela.addActionListener(new ActionListener() {
