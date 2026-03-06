@@ -2,13 +2,11 @@ package logica.valueobjects;
 
 import java.io.Serializable;
 
+import logica.negocio.Light;
+
 public class VOLightDetallado extends VOPostreDetallado implements Serializable {
 	
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private String endulzante;
 	private String descripcion;
@@ -18,6 +16,12 @@ public class VOLightDetallado extends VOPostreDetallado implements Serializable 
 		super(codigo, nombre, precio, tipo); 
 		this.endulzante = endulzante;
 		this.descripcion = descripcion;
+	}
+	
+	public VOLightDetallado(Light l) {
+		super(l); 
+		this.endulzante = l.getEndulzante() ;
+		this.descripcion = l.getDescripcion();
 	}
 	
 	public String getEndulzante() {

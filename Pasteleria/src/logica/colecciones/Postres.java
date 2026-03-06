@@ -53,31 +53,21 @@ public class Postres implements Serializable {
 								
 				if ("Light".equals(p.getTipoPostre())){		
 					Light l = (Light) p;
-					VOLight vopd = new VOLight(
-							l.getCodigo(),
-				            l.getNombre(),
-				            l.getPrecio(),
-				            l.getEndulzante(),
-				            l.getDescripcion()
-							);
-						
+					VOLight vopd = new VOLight(l);
 					ListaDePostresDetallado.add(vopd);
 					
 				}else {			
-					VOPostre vopdc = new VOPostre(
-							p.getCodigo(),
-							p.getNombre(),
-			                p.getPrecio()
-							);
+					VOPostre vopdc = new VOPostre(p);
 					ListaDePostresDetallado.add(vopdc);
 				}		
 			}
 			return ListaDePostresDetallado;
 		}
+		
 	
-	
+	/*
     ///Metodo auxiliar para ver en consola nada mas
-	public ArrayList<VOPostre> obtenerPostres() {
+	public ArrayList<VOPostre> obtenerPostres() {	
 		ArrayList<VOPostre> ListaDePostres = new ArrayList<VOPostre>();
 		for (Postre p: arbolPostres.values()) {
 			
@@ -102,5 +92,6 @@ public class Postres implements Serializable {
 		}
 		return ListaDePostres;
 	}
+	*/
 	
 }

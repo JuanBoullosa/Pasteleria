@@ -123,7 +123,7 @@ public class Ventas implements Serializable {
 	//Req8
 		public LinkedList <VOVenta> ListaVentaXEstado (String Estado)
 		{
-			LinkedList <VOVenta> ListRaVentaXEstadoRes = new LinkedList<>();
+			LinkedList <VOVenta> ListRaVentaXEstadoRes = new LinkedList<VOVenta>();
 			
 			for (Venta v : listaVentas) {
 		        if (Estado.equals("P")) {
@@ -143,7 +143,7 @@ public class Ventas implements Serializable {
 		
 		//REQUERIMIENTO 9
 		public LinkedList <VOVenta> obtenerListaPostresVenta (Venta v){
-			LinkedList <VOVenta> lista = new LinkedList<>();
+			LinkedList <VOVenta> lista = new LinkedList<VOVenta>();
 			
 			for (Venta v1: listaVentas ) {
 				VOVenta vov = new VOVenta(v1);	
@@ -176,12 +176,6 @@ public class Ventas implements Serializable {
 	    }
 
 		
-	
-
-
-		
-	
-
 		//Req 10
 		public VORecaudado obtenerVentaxFecha(String codigo, LocalDate fecha)
 		{

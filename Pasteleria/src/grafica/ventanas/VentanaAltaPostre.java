@@ -143,14 +143,12 @@ public class VentanaAltaPostre extends JFrame {
         	}
         );
         
-        /////////////////////////////////////  IMPORTANTE ////////////////////////////////////
-        //Agregar este botn en todas las Ventanas 
-        JButton btnVolver = new JButton("Volver");
-        btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        btnVolver.setBounds(352, 253, 128, 31);
-        contentPane.add(btnVolver);
+        JButton btnCancelar = new JButton("Cancelar");
+        btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        btnCancelar.setBounds(352, 253, 128, 31);
+        contentPane.add(btnCancelar);
         
-        btnVolver.addActionListener(
+        btnCancelar.addActionListener(
         	    new ActionListener() {
         	        public void actionPerformed(ActionEvent e) {
         	        	Menu menu = new Menu();
@@ -188,14 +186,11 @@ public class VentanaAltaPostre extends JFrame {
         tfPrecio.setText("");
         tfEdulcorante.setText("");
         tfDescripcion.setText("");
-
         chckbxLight.setSelected(false);
-
         lblEdulcorante.setVisible(false);
         tfEdulcorante.setVisible(false);
         lblDescripcion.setVisible(false);
         tfDescripcion.setVisible(false);
-
         contentPane.revalidate();
         contentPane.repaint();
     }

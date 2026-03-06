@@ -1,6 +1,8 @@
 package logica.negocio;
 import java.io.Serializable;
 
+import logica.valueobjects.VOPostre;
+
 public class Postre implements Serializable {
 	private static final long serialVersionUID= 1L;
 	
@@ -16,6 +18,14 @@ public class Postre implements Serializable {
 		this.nombre = nombre;
 		this.precio = precio;
 	}
+	
+	public Postre(VOPostre vop) {
+		super();
+		this.codigo = vop.getCodigo();
+		this.nombre = vop.getNombre();
+		this.precio = vop.getPrecio();
+	}
+	
 	
 	public String getCodigo() {
 		return codigo;

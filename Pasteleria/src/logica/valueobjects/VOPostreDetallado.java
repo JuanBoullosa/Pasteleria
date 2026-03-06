@@ -24,6 +24,15 @@ public class VOPostreDetallado implements Serializable {
 		this.tipo = tipo;
 	}
 	
+	public VOPostreDetallado(Postre p) {
+		super();
+		this.codigo = p.getCodigo();	
+		this.nombre = p.getNombre();
+		this.precio = p.getPrecio();
+		this.tipo = p.getTipoPostre();
+	}
+	
+	
 	public VOPostreDetallado(Postre p, int cant) {
 		this.codigo = p.getCodigo();	
 		this.nombre = p.getNombre();

@@ -87,24 +87,11 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		Postre p;
 
 		if ("Light".equals(voP.getTipoPostre())) {
-
 		    VOLight vol = (VOLight) voP;
-
-		    p = new Light(
-		        vol.getCodigo(),
-		        vol.getNombre(),
-		        vol.getPrecio(),
-		        vol.getEndulzante(),
-		        vol.getDescripcion()
-		    );
-
-		} else {
-
-		    p = new Postre(
-		        voP.getCodigo(),
-		        voP.getNombre(),
-		        voP.getPrecio()
-		    );
+		    p = new Light(vol);
+		} 
+		else {
+		    p = new Postre(voP);
 		}
 		dicPostres.insert(voP.getCodigo(), p);
 		monitor.terminoEscritura();
@@ -138,24 +125,12 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		if (p instanceof Light) {
 			Light l = (Light) p;
 
-			VOPostreDetallado vo =  new VOLightDetallado(
-					l.getCodigo(),
-					l.getNombre(),
-					l.getPrecio(),
-					l.getTipoPostre(),
-	                l.getEndulzante(),
-	                l.getDescripcion()
-					);
+			VOPostreDetallado vo =  new VOLightDetallado(l);
 			monitor.terminoLectura();
 			return vo;
 		}
 			else {
-				VOPostreDetallado vo = new VOPostreDetallado(						
-						p.getCodigo(),
-						p.getNombre(),
-						p.getPrecio(),
-						p.getTipoPostre()
-						);
+				VOPostreDetallado vo = new VOPostreDetallado(p);
 				monitor.terminoLectura();
 				return vo;
 			}
@@ -248,7 +223,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			monitor.terminoEscritura();
 			String msg = "No existe un postre con ese codigo";
 			throw new PostreException(msg);
-			
 		}
 		if (secVentas.obtenerVenta(numVenta) == null)
 		{
@@ -256,8 +230,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			String msg= "No existe venta con ese numero";
 		    throw new ExisteVentaException(msg);
 		}
-		
-		
 		Postre p = dicPostres.find(codigo);
 		secVentas.obtenerVenta(numVenta).bajaPostreEs_Vendidos(p, cantidad);
 		monitor.terminoEscritura();
@@ -341,9 +313,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 	}
 	
 	
-	
-	
-	
 	// Requerimiento 10
 			public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDate fecha ) throws AlfanumericoException,PostreException, RemoteException
 			{
@@ -385,7 +354,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		}
 
 		
-		
 		//requerimiento 12
 		
 		public void recuperar() throws RecuperarException, RemoteException 
@@ -406,8 +374,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		}
 
 		
-		
-		    
 		 public VOPersistencia exportarDatos()  {
 			 VOPersistencia vo = new VOPersistencia(dicPostres, secVentas);
 		     return vo;
@@ -418,16 +384,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		        this.secVentas = vo.getVentas();
 		    }
 		
-		 
-		 /*
-		//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
-		public ArrayList<VOVenta> ListaDeVentasIngresadas()
-		{
-			return secVentas.obtenerVentas();
-		}
-		*/
-		
-		 
+				 
 		//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
 		public ArrayList<VOVenta> ListaDeVentasIngresadas()
 		{
