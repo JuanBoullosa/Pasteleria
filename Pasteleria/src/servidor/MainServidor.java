@@ -9,7 +9,11 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.util.Properties;
 
+import config.Configuracion;
 import fachada.Fachada;
+import logica.excepciones.RecuperarException;
+import logica.valueobjects.VOPersistencia;
+import persistencia.Persistencia;
 
 public class MainServidor
 {
@@ -34,11 +38,25 @@ public class MainServidor
 			
 			//INVOCAR A RECUPERAR****
 			
+			try { 
+				fachada.recuperar();
+				System.out.println("Se restauro el sistema correctamente.");
+			} catch (Exception e) {
+				System.out.println("No existe respaldo previo.");
+				e.printStackTrace();
+			}
+			
+			
+			
 			System.out.println("Antes de publicar");
 			Naming.rebind(ruta, fachada);
 			System.out.println("Luego de publicar");
 			
-			//LLAMAR A RECUPERAR 
+	
+			
+			
+			
+			
 		}
 		catch (RemoteException e) // si ocurre cualquier problema de red
 		{

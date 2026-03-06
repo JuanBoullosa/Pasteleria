@@ -369,14 +369,19 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 	
 		public void respaldar() throws RespaldoException, RemoteException {
 			monitor.comienzoEscritura();	
-		    Persistencia p = new Persistencia();
+		    try {
+			Persistencia p = new Persistencia();
 
 		    VOPersistencia vo = this.exportarDatos();
 		    Configuracion config = new Configuracion();
 		    String nomArch = config.getnomArchivo();
 
 		    p.respaldar(nomArch, vo);
-		    monitor.terminoEscritura();
+		    }
+		    finally // si no cuando tira exception el monitor nunca termina escritura. 
+		    {
+		    	monitor.terminoEscritura();
+		    }
 		}
 
 		
@@ -386,13 +391,18 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		public void recuperar() throws RecuperarException, RemoteException 
 		{
 			monitor.comienzoEscritura();
-		    Persistencia p = new Persistencia();
-		    Configuracion config = new Configuracion();
+			try
+			{
+				Persistencia p = new Persistencia();
+				Configuracion config = new Configuracion();
 
-		    VOPersistencia persistencia = p.recuperar(config.getnomArchivo());
-
-		    this.importarDatos(persistencia);
-		    monitor.terminoEscritura();
+				VOPersistencia persistencia = p.recuperar(config.getnomArchivo());
+				this.importarDatos(persistencia);
+			}
+			finally // si no cuando tira exception el monitor nunca termina escritura. 
+			{
+				monitor.terminoEscritura();
+			}
 		}
 
 		

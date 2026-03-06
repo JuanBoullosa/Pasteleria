@@ -116,7 +116,9 @@ public class VentanaNuevaVenta extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				dispose();
+				Menu menu = new Menu();
+			    menu.mostrar();  
+			    setVisible(false);
 				
 			}
 		});

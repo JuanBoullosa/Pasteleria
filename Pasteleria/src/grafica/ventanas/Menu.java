@@ -1,6 +1,7 @@
 package grafica.ventanas;
 
 import java.awt.EventQueue;
+import javax.swing.JOptionPane;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -11,12 +12,16 @@ import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 
+import grafica.controladores.ControladorMenu;
+import grafica.controladores.ControladorNuevaVenta;
 
 import javax.swing.JMenu;
 
 public class Menu{
 
 	private JFrame frmMenuPrincipal;
+	
+	private ControladorMenu controlador;
 
 	/**
 	 * Launch the application.
@@ -50,6 +55,9 @@ public class Menu{
 		frmMenuPrincipal.setBounds(100, 100, 450, 344);
 		frmMenuPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMenuPrincipal.getContentPane().setLayout(null);
+		
+		controlador  = new ControladorMenu(this);
+
 		
 		JButton btn_1RegistrarPostre = new JButton("1 - REGISTRAR POSTRE");
 		btn_1RegistrarPostre.setHorizontalAlignment(SwingConstants.LEFT);
@@ -116,7 +124,8 @@ public class Menu{
 		JButton btn_11Respaldar = new JButton("Respaldar");
 		btn_11Respaldar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				controlador.RespaldarMenu();}
+		
 		});
 		btn_11Respaldar.setHorizontalAlignment(SwingConstants.LEFT);
 		btn_11Respaldar.setBounds(325, 273, 101, 23);
@@ -236,17 +245,27 @@ public class Menu{
 
 		        frmMenuPrincipal.setVisible(false); 
 		    }
-		});
+		});}
 		
 		//Requermiento 11
 		
-		
-	}
-	
 	public void mostrar() {
 	    frmMenuPrincipal.setVisible(true);
 	}
-	
-	
-	
+    public void mostrarInfo(String msg) {
+        JOptionPane.showMessageDialog( frmMenuPrincipal, msg);
+    }
+
+    public void mostrarError(String msg) {
+        JOptionPane.showMessageDialog(frmMenuPrincipal, msg);
+    }
 }
+	
+	
+	
+	
+	
+
+	
+	
+	
