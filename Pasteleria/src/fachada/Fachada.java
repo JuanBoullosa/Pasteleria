@@ -357,7 +357,8 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 					monitor.terminoLectura();
 					String msg = "No existe un postre con ese codigo";
 					throw new PostreException(msg);
-				}	
+				}
+	
 				VORecaudado vor = secVentas.obtenerVentaxFecha(codigo,fecha);
 				monitor.terminoLectura();
 				return vor;

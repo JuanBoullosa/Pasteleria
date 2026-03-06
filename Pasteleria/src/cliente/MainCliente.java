@@ -348,15 +348,15 @@ public class MainCliente
 	
 			
 			
-			
+			 */
 			//REQUERIMIENTO 10 - RECAUDACION POR POSTRE Y FECHA
 			System.out.println("\n---------------------------------------------------------------");
 			System.out.println("REQUERIMIENTO 10 - RECAUDACION POR POSTRE Y FECHA");
 			
 			try {
 				System.out.println("\nMonto total recaudado y total de unidades vendidas del postre 1:");
-				LocalDate fecha = LocalDate.of(2026, 2, 28);
-				VORecaudado vor = fachada.recaudacionXPostreXfecha("P001", fecha );
+				LocalDate fecha = LocalDate.of(2026, 3, 5);
+				VORecaudado vor = fachada.recaudacionXPostreXfecha("A1", fecha );
 				System.out.println(vor.toString());
 			}catch(AlfanumericoException e) {
 				System.out.println(e.darMensaje());
@@ -382,7 +382,7 @@ public class MainCliente
 		        }
 			
             
-            */
+           
             
             
             
