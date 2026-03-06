@@ -217,6 +217,16 @@ public class Menu{
 		
 		//Requermiento 9
 		
+		btn_9ListadoPostresVenta.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		    	VentanaListadoPostreXVenta ventana = new VentanaListadoPostreXVenta();
+		        ventana.setVisible(true);
+
+		        frmMenuPrincipal.setVisible(false); 
+		    }
+		});
+		
 		//Requermiento 10
 		btn_10RecaudacionxPostreyFecha.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {

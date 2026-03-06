@@ -44,11 +44,11 @@ public void finalizarVenta(String numVenta, String indicacion) {
 	try
 	{
 		
-		 if (numVenta.isBlank()) {
-             ven.mostrarError("El Numero de Venta no puede estar vacio");
-             return;
+		if(numVenta == null || numVenta.isEmpty()) {
+ 		   ven.mostrarError("Ingrese un Numero de Venta");
+ 		   return;
 		 }
-		//"CANCELAR" O "CONFIRMAR"
+		
 		int num = Integer.parseInt(numVenta);
 
 		float monto = fachada.finalizarVenta(num, indicacion);  // NUMERO DE VENTA, INDICACION

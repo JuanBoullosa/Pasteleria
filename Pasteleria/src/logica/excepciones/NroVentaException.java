@@ -12,7 +12,7 @@ public class NroVentaException extends Exception {
 		this.mensaje = mensaje; 
     }
     
-	public String getMensaje()
+	public String darMensaje()
 	{ 
 		return mensaje; 
 	}

@@ -31,6 +31,9 @@ public class MainServidor
 			//publico el objeto remoto en dicha ip y puerto
 			String ruta = "//" + ip + ":" + puerto + "/Pasteleria";
 			Fachada fachada = new Fachada();
+			
+			//INVOCAR A RECUPERAR****
+			
 			System.out.println("Antes de publicar");
 			Naming.rebind(ruta, fachada);
 			System.out.println("Luego de publicar");
