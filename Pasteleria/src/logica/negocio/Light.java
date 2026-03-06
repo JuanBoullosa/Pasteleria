@@ -1,5 +1,6 @@
 package logica.negocio;
 
+import logica.valueobjects.VOLight;
 
 public class Light extends Postre {
 	private String endulzante;
@@ -9,6 +10,12 @@ public class Light extends Postre {
 		super(codigo, nombre, precio);
 		this.endulzante = endulzante;
 		this.descripcion = descripcion;
+	}
+	
+	public Light(VOLight vol) {
+		super(vol);
+		this.endulzante = vol.getEndulzante();
+		this.descripcion = vol.getDescripcion();
 	}
 	
 	public String getEndulzante() {

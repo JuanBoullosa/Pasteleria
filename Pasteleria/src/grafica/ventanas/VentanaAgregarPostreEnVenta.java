@@ -103,6 +103,9 @@ public class VentanaAgregarPostreEnVenta extends JFrame {
 		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnCancelar.setBounds(195, 200, 120, 30);
+		contentPane.add(btnCancelar);
+		
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    Menu menu = new Menu();
@@ -111,10 +114,13 @@ public class VentanaAgregarPostreEnVenta extends JFrame {
 			    dispose();
 			}
 		});
-		btnCancelar.setBounds(195, 200, 120, 30);
-		contentPane.add(btnCancelar);
+		
 		
 		btnAgregar = new JButton("Agregar");
+		btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnAgregar.setBounds(60, 200, 120, 30);
+		contentPane.add(btnAgregar);
+		
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -123,16 +129,8 @@ public class VentanaAgregarPostreEnVenta extends JFrame {
 				String cant = tfCantidad.getText().trim();
 				
 				controlador.AgregarPostreVenta(codigo,numventa,cant);
-				
-				
-				
 			}
 		});
-		btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnAgregar.setBounds(60, 200, 120, 30);
-		contentPane.add(btnAgregar);
-		
-		
 		
 		
 	}

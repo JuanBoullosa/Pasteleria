@@ -119,11 +119,10 @@ public class VentanaListadoVentasxEstado extends JFrame {
 	        public void actionPerformed(ActionEvent e) {
 	        	Menu menu = new Menu();
 			    menu.mostrar();  
-			    setVisible(false);
-		
-	}
+			    setVisible(false);	
+	        }
 		});
-	}
+}
 
 
 		public void cargarTabla(LinkedList<VOVenta> lista2) {
@@ -139,13 +138,9 @@ public class VentanaListadoVentasxEstado extends JFrame {
 	                v.getEstado()
 	            };
 	            modelo.addRow(fila);
-	            
-	}
+	        }
 		}
 		
-
-	
-	
     public void mostrarMensaje(String msg) {
         JOptionPane.showMessageDialog(this, msg);
     }

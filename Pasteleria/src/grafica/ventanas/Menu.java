@@ -34,10 +34,6 @@ public class Menu{
 			}
 		});
 	}
-
-	
-	
-	
 	
 	public Menu() {
 		initialize();		
@@ -237,9 +233,7 @@ public class Menu{
 		        frmMenuPrincipal.setVisible(false); 
 		    }
 		});
-		
-		//Requermiento 11
-		
+				
 		
 	}
 	
