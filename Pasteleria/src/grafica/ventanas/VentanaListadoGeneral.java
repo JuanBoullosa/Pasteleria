@@ -22,7 +22,7 @@ public class VentanaListadoGeneral extends JFrame {
 
     private JPanel contentPane;
     private JTable table;
-    private ControladorListadoGeneral controlador; // ✅ agregué esto (atributo)
+    private ControladorListadoGeneral controlador;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -51,19 +51,22 @@ public class VentanaListadoGeneral extends JFrame {
         scrollPane.setBounds(37, 34, 295, 158);
         contentPane.add(scrollPane);
 
-        // ✅ 1) Primero creo la tabla
         table = new JTable();
         table.setModel(new DefaultTableModel(
             new Object[][] {},
             new String[] { "Codigo", "Nombre", "Precio", "Tipo" }
         ));
         scrollPane.setViewportView(table);
-
-        // ✅ 2) Después creo el controlador (UNA sola vez)
+        
+        table.getColumnModel().getColumn(0).setPreferredWidth(100);
+		table.getColumnModel().getColumn(1).setPreferredWidth(400);
+		table.getColumnModel().getColumn(2).setPreferredWidth(100);
+		table.getColumnModel().getColumn(3).setPreferredWidth(100);
+        
         controlador = new ControladorListadoGeneral(this);
-
-        // ✅ 3) Y recién ahí le digo que cargue el listado
-        controlador.cargarListado();
+        
+        //llama al meotod para obtener la lista de Postres  desde la fachada
+        controlador.ObtenerListaPostresdeFachada();
 
         JButton btnCerrar = new JButton("Cerrar");
         btnCerrar.setBounds(128, 203, 89, 23);
@@ -75,14 +78,16 @@ public class VentanaListadoGeneral extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     Menu menu = new Menu();
                     menu.mostrar();
-                    dispose(); // ✅ mejor que setVisible(false)
+                    setVisible(false);
                 }
             }
         );
     }
-
-    // ✅ Este método está bien en la ventana (porque tiene la JTable)
-    public void cargarTabla(ArrayList<VOPostre> lista) {
+    
+    
+    // Recibe la lista de Postres desde el Controlador 
+    public void cargarTablaPostresVentana(ArrayList<VOPostre> lista) {
+    	
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         modelo.setRowCount(0);
 
@@ -94,6 +99,7 @@ public class VentanaListadoGeneral extends JFrame {
                 p.getTipoPostre()
             });
         }
+
     }
 
     public void mostrarMensaje(String msg) {

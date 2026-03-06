@@ -34,6 +34,8 @@ public class MainServidor
 			System.out.println("Antes de publicar");
 			Naming.rebind(ruta, fachada);
 			System.out.println("Luego de publicar");
+			
+			//LLAMAR A RECUPERAR 
 		}
 		catch (RemoteException e) // si ocurre cualquier problema de red
 		{

@@ -25,6 +25,7 @@ public class Menu{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
 			}
 		});
 	}
@@ -141,6 +142,17 @@ public class Menu{
 		});
 		
 		//Requermiento 3
+		
+		btn_3DetalledeUnPostre.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) {
+
+		        VentanaListadoDetallado ventana = new VentanaListadoDetallado();
+		        ventana.setVisible(true);
+
+		        frmMenuPrincipal.setVisible(false); 
+		    }
+		});
+		
 		
 		//Requermiento 4
 		btn_4AltaVenta.addActionListener(new ActionListener() {

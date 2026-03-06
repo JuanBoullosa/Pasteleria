@@ -34,18 +34,13 @@ public class ControladorListadoGeneral {
             ven.mostrarMensaje("No se pudo conectar con el servidor.");
         }
     }
-
-    // ✅ ESTE método faltaba: trae la lista y se la pasa a la ventana
-    public void cargarListado() {
+    
+    //Obtiene la lsita de Postres de la Fachada y la pasa a la ventana
+    public void ObtenerListaPostresdeFachada() {
         try {
-            if (fachada == null) {
-                ven.mostrarMensaje("Fachada no disponible.");
-                return;
-            }
-
             ArrayList<VOPostre> lista = fachada.ListadoGeneralPostre();
-            ven.cargarTabla(lista);
-
+            ven.cargarTablaPostresVentana(lista);
+            
         } catch (RemoteException e) {
             ven.mostrarMensaje("Error de conexión con el servidor.");
             e.printStackTrace();
