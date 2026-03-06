@@ -5,8 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+
+
 import javax.swing.JMenu;
 
 public class Menu{
@@ -30,16 +35,15 @@ public class Menu{
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
+	
+	
+	
+	
 	public Menu() {
-		initialize();
+		initialize();		
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
 	private void initialize() {
 		frmMenuPrincipal = new JFrame();
 		frmMenuPrincipal.setTitle("Menu Principal");

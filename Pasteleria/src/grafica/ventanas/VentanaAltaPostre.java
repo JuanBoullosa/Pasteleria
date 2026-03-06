@@ -53,79 +53,80 @@ public class VentanaAltaPostre extends JFrame {
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
-
+        contentPane.setLayout(null);
+        
        
         controlador = new ControladorAltaPostre(this);
 
         JLabel lblCodigo = new JLabel("Codigo Postre");
         lblCodigo.setBounds(29, 35, 97, 20);
         lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        contentPane.add(lblCodigo);
 
         JLabel lblNombre = new JLabel("Nombre Postre");
         lblNombre.setBounds(29, 67, 105, 20);
         lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        contentPane.add(lblNombre);
 
         JLabel lblPrecio = new JLabel("Precio $");
         lblPrecio.setBounds(29, 99, 56, 20);
         lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        contentPane.add(lblPrecio);
 
         JLabel lblTipo = new JLabel("Tipo");
         lblTipo.setBounds(29, 131, 56, 20);
         lblTipo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        contentPane.add(lblTipo); 
 
         tfCodigo = new JTextField();
         tfCodigo.setBounds(154, 37, 200, 20);
         tfCodigo.setColumns(10);
+        contentPane.add(tfCodigo);
 
         tfNombre = new JTextField();
         tfNombre.setBounds(154, 69, 200, 20);
         tfNombre.setColumns(10);
+        contentPane.add(tfNombre);
 
         tfPrecio = new JTextField();
         tfPrecio.setBounds(154, 101, 200, 20);
         tfPrecio.setColumns(10);
+        contentPane.add(tfPrecio);
 
         tfEdulcorante = new JTextField();
         tfEdulcorante.setBounds(154, 167, 200, 20);
         tfEdulcorante.setColumns(10);
         tfEdulcorante.setVisible(false);
+        contentPane.add(tfEdulcorante);
 
         tfDescripcion = new JTextField();
         tfDescripcion.setBounds(154, 199, 200, 20);
         tfDescripcion.setColumns(10);
         tfDescripcion.setVisible(false);
+        contentPane.add(tfDescripcion);
 
         lblEdulcorante = new JLabel("Edulcorante");
         lblEdulcorante.setBounds(29, 165, 83, 20);
         lblEdulcorante.setFont(new Font("Tahoma", Font.PLAIN, 16));
         lblEdulcorante.setVisible(false);
+        contentPane.add(lblEdulcorante);
 
         lblDescripcion = new JLabel("Descripcion");
         lblDescripcion.setBounds(29, 197, 81, 20);
         lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
         lblDescripcion.setVisible(false);
+        contentPane.add(lblDescripcion);
 
         chckbxLight = new JCheckBox("Light");
         chckbxLight.setBounds(154, 132, 81, 23);
+        contentPane.add(chckbxLight);
 
         JButton btnAgregar = new JButton("Agregar");
         btnAgregar.setBounds(115, 253, 130, 31);
         btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-        contentPane.setLayout(null);
-        contentPane.add(lblCodigo);
-        contentPane.add(lblNombre);
-        contentPane.add(lblPrecio);
-        contentPane.add(lblTipo);
-        contentPane.add(lblEdulcorante);
-        contentPane.add(lblDescripcion);
-        contentPane.add(tfCodigo);
-        contentPane.add(tfNombre);
-        contentPane.add(tfPrecio);
-        contentPane.add(chckbxLight);
-        contentPane.add(tfEdulcorante);
-        contentPane.add(tfDescripcion);
         contentPane.add(btnAgregar);
-
+        
+      
         chckbxLight.addActionListener(
         		new ActionListener() {
         			public void actionPerformed(ActionEvent e) {
