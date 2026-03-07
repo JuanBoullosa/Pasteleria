@@ -81,7 +81,7 @@ public class VentanarecaudacionXPostreXfecha extends JFrame {
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Menu menu = new Menu();
+				MenuPrincipal menu = new MenuPrincipal();
 			    menu.mostrar();  
 			    setVisible(false);
 			    dispose();

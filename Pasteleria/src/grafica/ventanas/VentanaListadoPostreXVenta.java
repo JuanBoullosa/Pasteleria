@@ -99,7 +99,7 @@ public class VentanaListadoPostreXVenta extends JFrame {
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			    Menu menu = new Menu();
+				MenuPrincipal menu = new MenuPrincipal();
 			    menu.mostrar();  
 			    setVisible(false);
 			    dispose();
