@@ -8,11 +8,11 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
 import grafica.controladores.ControladorFinalizaVenta;
@@ -108,7 +108,7 @@ public class VentanaFinalizaVenta extends JFrame {
 	    
 	    btnCancelar.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
-	        	Menu menu = new Menu();
+	        	MenuPrincipal menu = new MenuPrincipal();
 			    menu.mostrar();  
 			    setVisible(false);
 			

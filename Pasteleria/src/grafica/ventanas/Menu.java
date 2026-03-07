@@ -248,10 +248,12 @@ public class Menu{
 		});}
 		
 		//Requermiento 11
-		
+	
+	/*
 	public void mostrar() {
 	    frmMenuPrincipal.setVisible(true);
 	}
+	*/
     public void mostrarInfo(String msg) {
         JOptionPane.showMessageDialog( frmMenuPrincipal, msg);
     }
