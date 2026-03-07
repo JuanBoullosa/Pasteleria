@@ -64,7 +64,9 @@ public void finalizarVenta(String numVenta, String indicacion) {
 			ven.mostrarError("Venta Cancelada y eliminada.");
 			ven.limpiar();
 		}
-	
+	} catch (NumberFormatException e) {
+        ven.mostrarError("El número de venta debe ser numérico.");
+        e.printStackTrace();
 	}catch (ExisteVentaException e)
 	{
 		ven.mostrarError(e.darMensaje());
