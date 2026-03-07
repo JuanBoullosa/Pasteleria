@@ -1,5 +1,6 @@
 package grafica.ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import grafica.controladores.ControladorAgregarPostreVenta;
@@ -53,8 +55,9 @@ public class VentanarecaudacionXPostreXfecha extends JFrame {
 	public VentanarecaudacionXPostreXfecha() {
 		setTitle("Recaudación por postre y fecha");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 300);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(198, 233, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -64,21 +67,28 @@ public class VentanarecaudacionXPostreXfecha extends JFrame {
 		
 		controlador = new ControladorRecaudacionXPostreXfecha(this);
 		
+		JLabel lblTitulo = new JLabel("Recaudación");
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 15, 450, 35);
+		contentPane.add(lblTitulo);
+		
+		
 		
 		JLabel lblCodigoPostre = new JLabel("Codigo postre:");
-		lblCodigoPostre.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCodigoPostre.setBounds(10, 35, 150, 30);
+		lblCodigoPostre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCodigoPostre.setBounds(16, 110, 154, 25);
 		contentPane.add(lblCodigoPostre);
 		
 		JLabel lblFecha = new JLabel("Fecha:");
-		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblFecha.setBounds(10, 85, 150, 30);
+		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblFecha.setBounds(16, 75, 48, 20);
 		contentPane.add(lblFecha);
 		
 
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    Menu menu = new Menu();
@@ -87,7 +97,7 @@ public class VentanarecaudacionXPostreXfecha extends JFrame {
 			    dispose();
 			}
 		});
-		btnCancelar.setBounds(195, 200, 120, 30);
+		btnCancelar.setBounds(230, 180, 90, 25);
 		contentPane.add(btnCancelar);
 		
 		btnCalcular = new JButton("Calcular");
@@ -101,30 +111,103 @@ public class VentanarecaudacionXPostreXfecha extends JFrame {
 				controlador.RecaudacioneXPostreXfecha(codigo,dia,mes,Anio);
 			}
 		});
-		btnCalcular.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnCalcular.setBounds(60, 200, 120, 30);
+		btnCalcular.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCalcular.setBounds(130, 180, 90, 25);
 		contentPane.add(btnCalcular);
 		
 		tfCodigoPostre = new JTextField();
-		tfCodigoPostre.setBounds(200, 35, 150, 30);
+		tfCodigoPostre.setBounds(160, 110, 210, 25);
 		contentPane.add(tfCodigoPostre);
 		tfCodigoPostre.setColumns(10);
 		
-		tfDia = new JTextField();
-		tfDia.setColumns(10);
-		tfDia.setBounds(200, 85, 41, 30);
+		tfDia = new JTextField("dd");
+		tfDia.setForeground(Color.GRAY);
+		tfDia.setHorizontalAlignment(JTextField.CENTER);
+		tfDia.setBounds(160, 75, 45, 25);
 		contentPane.add(tfDia);
+		tfDia.setColumns(10);
+
+		tfDia.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent e) {
+				if (tfDia.getText().equals("dd")) {
+					tfDia.setText("");
+		            tfDia.setForeground(Color.BLACK);
+
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent e) {
+				if (tfDia.getText().isEmpty()) {
+					tfDia.setText("dd");
+		            tfDia.setForeground(Color.GRAY);
+
+
+				}
+			}
+		});
 		
-		tfAnio = new JTextField();
+		tfAnio = new JTextField("aaaa");
+		tfAnio.setForeground(Color.GRAY);
+		tfAnio.setHorizontalAlignment(JTextField.CENTER);
 		tfAnio.setColumns(10);
-		tfAnio.setBounds(281, 85, 41, 30);
+		tfAnio.setBounds(290, 75, 60, 25);
 		contentPane.add(tfAnio);
+
+		tfAnio.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent e) {
+				if (tfAnio.getText().equals("aaaa")) {
+					tfAnio.setText("");
+					tfAnio.setForeground(Color.BLACK);
+
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent e) {
+				if (tfAnio.getText().isEmpty()) {
+					tfAnio.setText("aaaa");
+					tfAnio.setForeground(Color.GRAY);
+
+				}
+			}
+		});
 		
-		tfMes = new JTextField();
+		JLabel lblBarra1 = new JLabel("/");
+		lblBarra1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblBarra1.setBounds(210, 75, 10, 25);
+		contentPane.add(lblBarra1);
+
+		JLabel lblBarra2 = new JLabel("/");
+		lblBarra2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblBarra2.setBounds(275, 75, 10, 25);
+		contentPane.add(lblBarra2);
+
+		
+		
+		tfMes = new JTextField("mm");
+		tfMes.setForeground(Color.GRAY);
+		tfMes.setHorizontalAlignment(JTextField.CENTER);
+
 		tfMes.setColumns(10);
-		tfMes.setBounds(240, 85, 41, 30);
+		tfMes.setBounds(225, 75, 45, 25);
 		contentPane.add(tfMes);
-		
+
+		tfMes.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent e) {
+				if (tfMes.getText().equals("mm")) {
+					tfMes.setText("");
+					tfMes.setForeground(Color.BLACK);
+
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent e) {
+				if (tfMes.getText().isEmpty()) {
+					tfMes.setText("mm");
+					tfMes.setForeground(Color.GRAY);
+
+				}
+			}
+		});
 
 	}
 	
@@ -147,11 +230,8 @@ public class VentanarecaudacionXPostreXfecha extends JFrame {
     }
 
     public void mostrarResultado(VORecaudado vo) {
-        // Ajustá getters según tu VO (ej: getMontoTotal(), getUnidades(), etc.)
-        // Si no tenés getters, podés usar vo.toString()
-
         String msg =
-            "Monto total recaudado: " + vo.getMontoRecaudado() + "\n" +
+            "Monto total recaudado: " +"$"+  vo.getMontoRecaudado() + "\n" +
             "Unidades vendidas: " + vo.getTotalUnidades();
 
         JOptionPane.showMessageDialog(this, msg);

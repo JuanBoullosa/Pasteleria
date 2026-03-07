@@ -183,7 +183,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		if (cantidad > 40)
 		{
 			monitor.terminoEscritura();
-			String msg= "La cantidad ingresado es mayor que 40";
+			String msg= "La cantidad ingresada no puede superar las 40 unidades";
 		    throw new IngresoCantidadException(msg);
 		}
 		Venta v = secVentas.obtenerVenta(numVenta);
@@ -192,7 +192,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		if (antesTotal+cantidad>40)
 		{
 			monitor.terminoEscritura();
-			String msg = "Supera el maximo de unidades que es 40";
+			String msg = "La venta ya contiene postres y al agregar esta cantidad se superan las 40 unidades permitidas.";
 			throw new LimiteUnidadesException(msg);
 		}
 		
@@ -231,6 +231,15 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		    throw new ExisteVentaException(msg);
 		}
 		Postre p = dicPostres.find(codigo);
+		if (!secVentas.obtenerVenta(numVenta).obtenerDetalleVentas().existePostreArray(p)) {
+		        monitor.terminoEscritura();
+		        throw new PostreException("El postre no se encuentra en la venta.");
+		    }
+
+		
+		
+		
+		//Postre p = dicPostres.find(codigo);
 		secVentas.obtenerVenta(numVenta).bajaPostreEs_Vendidos(p, cantidad);
 		monitor.terminoEscritura();
 	}
@@ -327,7 +336,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 					String msg = "No existe un postre con ese codigo";
 					throw new PostreException(msg);
 				}
-	
+
 				VORecaudado vor = secVentas.obtenerVentaxFecha(codigo,fecha);
 				monitor.terminoLectura();
 				return vor;

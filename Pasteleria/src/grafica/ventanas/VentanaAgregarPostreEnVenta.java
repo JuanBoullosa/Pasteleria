@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.SystemColor;
@@ -57,8 +58,9 @@ public class VentanaAgregarPostreEnVenta extends JFrame {
 	public VentanaAgregarPostreEnVenta() {
 		setTitle("Agregado de un nuevo postre a una venta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 300);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(198, 233, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -67,43 +69,48 @@ public class VentanaAgregarPostreEnVenta extends JFrame {
 		
 		controlador  = new ControladorAgregarPostreVenta(this);
 
+		JLabel lblTitulo = new JLabel("Ingresar postre en una venta");
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 15, 450, 35);
+		contentPane.add(lblTitulo);
 		
 		JLabel lblCodigoPostre = new JLabel("Codigo postre:");
-		lblCodigoPostre.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCodigoPostre.setBounds(10, 25, 150, 30);
+		lblCodigoPostre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCodigoPostre.setBounds(32, 70, 150, 30);
 		contentPane.add(lblCodigoPostre);
 		
 		JLabel lblCantidad = new JLabel("Cantidad:");
-		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCantidad.setBounds(10, 118, 150, 30);
+		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCantidad.setBounds(32, 140, 150, 30);
 		contentPane.add(lblCantidad);
 		
 		JLabel lblNumeroVenta = new JLabel("Numero de venta:");
-		lblNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNumeroVenta.setBounds(10, 78, 150, 30);
+		lblNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNumeroVenta.setBounds(32, 105, 150, 30);
 		contentPane.add(lblNumeroVenta);
 		
 		tfCodigoPostre = new JTextField();
 		tfCodigoPostre.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		tfCodigoPostre.setBounds(200, 25, 150, 30);
+		tfCodigoPostre.setBounds(160, 70, 100, 25);
 		contentPane.add(tfCodigoPostre);
 		tfCodigoPostre.setColumns(10);
 		
 		tfCantidad = new JTextField();
 		tfCantidad.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		tfCantidad.setColumns(10);
-		tfCantidad.setBounds(200, 120, 150, 30);
+		tfCantidad.setBounds(160, 140, 100, 25);
 		contentPane.add(tfCantidad);
 		
 		tfNumeroVenta = new JTextField();
 		tfNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		tfNumeroVenta.setColumns(10);
-		tfNumeroVenta.setBounds(200, 76, 150, 30);
+		tfNumeroVenta.setBounds(160, 105, 100, 25);
 		contentPane.add(tfNumeroVenta);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnCancelar.setBounds(195, 200, 120, 30);
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCancelar.setBounds(230, 200, 90, 25);
 		contentPane.add(btnCancelar);
 		
 		btnCancelar.addActionListener(new ActionListener() {
@@ -117,8 +124,8 @@ public class VentanaAgregarPostreEnVenta extends JFrame {
 		
 		
 		btnAgregar = new JButton("Agregar");
-		btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnAgregar.setBounds(60, 200, 120, 30);
+		btnAgregar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnAgregar.setBounds(130, 200, 90, 25);
 		contentPane.add(btnAgregar);
 		
 		btnAgregar.addActionListener(new ActionListener() {

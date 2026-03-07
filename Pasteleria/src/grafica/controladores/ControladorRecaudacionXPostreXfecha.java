@@ -3,6 +3,7 @@ package grafica.controladores;
 import java.io.FileInputStream;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Properties;
 
@@ -43,6 +44,11 @@ public class ControladorRecaudacionXPostreXfecha {
 	public void RecaudacioneXPostreXfecha ( String codigo, String dia, String mes, String anio  )
 	{
 	try {
+			if (fachada == null) {
+				ven.mostrarError("No hay conexión con el servidor.");
+				return;
+			}  
+		
 		
 		  if (codigo == null || codigo.isBlank()) {
               ven.mostrarInfo("El codigo no puede ser nulo.");
@@ -56,25 +62,50 @@ public class ControladorRecaudacionXPostreXfecha {
 			int d = Integer.parseInt(dia);
 		     int m = Integer.parseInt(mes);
 		     int a = Integer.parseInt(anio);
-              
+		     
+		     if (d < 1 || d > 31) {
+		    	    ven.mostrarError("Dia inválido. Verifique nuevamente.");
+		    	    return;
+		    	}
+		     
+		     if (m < 1 || m > 12) {
+		    	    ven.mostrarError("Mes inválido. Verifique nuevamente.");
+		    	    return;
+		    	}
 		     LocalDate fecha = LocalDate.of(a, m, d);
 		     VORecaudado vo = fachada.recaudacionXPostreXfecha(codigo.trim(), fecha);
 
 		     ven.mostrarResultado(vo);
-		     //fachada.recaudacionXPostreXfecha(codigo, fecha);
+		     ven.limpiar();
 		
 		
 		
-	}catch (RemoteException e) {
+	}
+	catch (RemoteException e) {
 	    ven.mostrarInfo("Error de comunicacion con el servidor");
 	}
-	catch(AlfanumericoException e) {
+	catch (FechaException e)
+	{
 		ven.mostrarInfo(e.darMensaje());;
 	}
-	catch(PostreException e) {
-		ven.mostrarInfo(e.darMensaje());;
+	
+	catch (PostreException e) 
+	{
+        ven.mostrarError("No existe un postre con ese codigo.");
+    }
+	
+	catch (NumberFormatException e) 
+	{
+        ven.mostrarError("Ingrese correctamente la fecha.");
+    }
+	catch (DateTimeException e)
+	{
+	    ven.mostrarError("La fecha ingresada no es válida. Verifique si existe esa fecha");
 	}
-		
+	catch (Exception e) 
+	{
+    	ven.mostrarError("No se pudo iniciar la venta.");
+    }
 	
 	}
 	

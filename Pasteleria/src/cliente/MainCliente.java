@@ -365,6 +365,10 @@ public class MainCliente
 			catch(PostreException e) {
 				System.out.println(e.darMensaje());
 				e.printStackTrace();
+			}catch (FechaException e)
+			{
+				System.out.println(e.darMensaje());
+				e.printStackTrace();
 			}
 			
 			

@@ -1,5 +1,6 @@
 package grafica.ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
 import javax.swing.JFormattedTextField;
@@ -58,10 +60,12 @@ public class VentanaNuevaVenta extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaNuevaVenta() {
+		setBackground(new Color(240, 240, 240));
 		setTitle("Nueva Venta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(198, 233, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -69,37 +73,125 @@ public class VentanaNuevaVenta extends JFrame {
 		
 		controlador  = new ControladorNuevaVenta(this);
 		
+		
+		JLabel lblTitulo = new JLabel("Nueva Venta");
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(100, 15, 250, 35);
+		contentPane.add(lblTitulo);
+		
+		
 		JLabel lblFechaVenta = new JLabel("Fecha:");
 		lblFechaVenta.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblFechaVenta.setBounds(37, 61, 48, 14);
+		lblFechaVenta.setBounds(16, 75, 48, 20);
 		contentPane.add(lblFechaVenta);
+
 		
-		tfDia = new JTextField();
-		tfDia.setBounds(126, 61, 48, 19);
+		
+		
+	
+		tfDia = new JTextField("dd");
+		tfDia.setForeground(Color.GRAY);
+		tfDia.setHorizontalAlignment(JTextField.CENTER);
+		tfDia.setBounds(160, 75, 45, 25);
 		contentPane.add(tfDia);
 		tfDia.setColumns(10);
+
+		tfDia.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent e) {
+				if (tfDia.getText().equals("dd")) {
+					tfDia.setText("");
+		            tfDia.setForeground(Color.BLACK);
+
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent e) {
+				if (tfDia.getText().isEmpty()) {
+					tfDia.setText("dd");
+		            tfDia.setForeground(Color.GRAY);
+
+
+				}
+			}
+		});
 		
-		tfMes = new JTextField();
+		tfMes = new JTextField("mm");
+		tfMes.setForeground(Color.GRAY);
+		tfMes.setHorizontalAlignment(JTextField.CENTER);
+
 		tfMes.setColumns(10);
-		tfMes.setBounds(172, 61, 48, 19);
+		tfMes.setBounds(225, 75, 45, 25);
 		contentPane.add(tfMes);
-		
-		tfAnio = new JTextField();
+
+		tfMes.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent e) {
+				if (tfMes.getText().equals("mm")) {
+					tfMes.setText("");
+					tfMes.setForeground(Color.BLACK);
+
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent e) {
+				if (tfMes.getText().isEmpty()) {
+					tfMes.setText("mm");
+					tfMes.setForeground(Color.GRAY);
+
+				}
+			}
+		});
+		tfAnio = new JTextField("aaaa");
+		tfAnio.setForeground(Color.GRAY);
+		tfAnio.setHorizontalAlignment(JTextField.CENTER);
 		tfAnio.setColumns(10);
-		tfAnio.setBounds(215, 61, 48, 19);
+		tfAnio.setBounds(290, 75, 60, 25);
 		contentPane.add(tfAnio);
 
-		JLabel lblDireccion = new JLabel("Direccion de\r\n Entrega");
+		tfAnio.addFocusListener(new java.awt.event.FocusAdapter() {
+			public void focusGained(java.awt.event.FocusEvent e) {
+				if (tfAnio.getText().equals("aaaa")) {
+					tfAnio.setText("");
+					tfAnio.setForeground(Color.BLACK);
+
+				}
+			}
+
+			public void focusLost(java.awt.event.FocusEvent e) {
+				if (tfAnio.getText().isEmpty()) {
+					tfAnio.setText("aaaa");
+					tfAnio.setForeground(Color.GRAY);
+
+				}
+			}
+		});
+		
+
+		JLabel lblBarra1 = new JLabel("/");
+		lblBarra1.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblBarra1.setBounds(210, 75, 10, 25);
+		contentPane.add(lblBarra1);
+
+		JLabel lblBarra2 = new JLabel("/");
+		lblBarra2.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblBarra2.setBounds(275, 75, 10, 25);
+		contentPane.add(lblBarra2);
+
+		
+		
+		
+		JLabel lblDireccion = new JLabel("Direccion de Entrega:");
 		lblDireccion.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDireccion.setBounds(8, 97, 154, 34);
+		lblDireccion.setBounds(16, 110, 154, 25);
 		contentPane.add(lblDireccion);
 		
 		txfDireccion = new JTextField();
-		txfDireccion.setBounds(158, 102, 91, 29);
+		txfDireccion.setBounds(160, 110, 210, 25);
 		contentPane.add(txfDireccion);
 		txfDireccion.setColumns(10);
 		
 		btnIniciar = new JButton("Iniciar");
+		btnIniciar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String dia = tfDia.getText().trim();
@@ -107,12 +199,14 @@ public class VentanaNuevaVenta extends JFrame {
 				String Anio = tfAnio.getText().trim();
 				String direccion = txfDireccion.getText().trim();
 				controlador.NuevaVenta(dia,mes,Anio,direccion);
+				
 			}
 		});
-		btnIniciar.setBounds(73, 156, 89, 23);
+		btnIniciar.setBounds(130, 180, 90, 25);
 		contentPane.add(btnIniciar);
 		
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -122,7 +216,7 @@ public class VentanaNuevaVenta extends JFrame {
 				
 			}
 		});
-		btnCancelar.setBounds(189, 156, 89, 23);
+		btnCancelar.setBounds(230, 180, 90, 25);
 		contentPane.add(btnCancelar);
 
 		
@@ -149,13 +243,4 @@ public class VentanaNuevaVenta extends JFrame {
 	        tfAnio.setText("");
 	        txfDireccion.setText("");
 	    }
-		
-		
-		
-	
-		
-		
-		
-
-	
 }

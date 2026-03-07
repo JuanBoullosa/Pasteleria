@@ -28,7 +28,7 @@ public class ControladorMenu {
             fachada = (IFachada) Naming.lookup(ruta);
 
         } catch (Exception e) {
-            e.printStackTrace();
+        	e.printStackTrace();
             ven.mostrarInfo("No se pudo conectar con el servidor.");
         }
 	}
@@ -42,7 +42,6 @@ public class ControladorMenu {
 	            ven.mostrarInfo("Sistema respaldado correctamente.");
 		    } catch (Exception e) {
 		        ven.mostrarError("Error al respaldar: " + e.getMessage());
-		        e.printStackTrace();
 	        }
 		
       

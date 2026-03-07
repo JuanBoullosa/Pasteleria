@@ -43,7 +43,6 @@ public class MainServidor
 				System.out.println("Se restauro el sistema correctamente.");
 			} catch (Exception e) {
 				System.out.println("No existe respaldo previo.");
-				e.printStackTrace();
 			}
 			
 			
@@ -51,10 +50,6 @@ public class MainServidor
 			System.out.println("Antes de publicar");
 			Naming.rebind(ruta, fachada);
 			System.out.println("Luego de publicar");
-			
-	
-			
-			
 			
 			
 		}
@@ -74,5 +69,12 @@ public class MainServidor
 		{
 			e.printStackTrace();
 		}
+		
+			
+			
+			
+			
+			
+			
 	}
 }

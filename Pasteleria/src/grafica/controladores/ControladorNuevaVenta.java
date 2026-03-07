@@ -1,8 +1,13 @@
 package grafica.controladores;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Properties;
 
@@ -19,7 +24,7 @@ public class ControladorNuevaVenta {
 	public ControladorNuevaVenta (VentanaNuevaVenta ven  ) 
 	{
 		   this.ven = ven;
-
+		   
 	        try {
 	            Properties p = new Properties();
 	            String nomArch = "config/datos.properties";
@@ -32,9 +37,10 @@ public class ControladorNuevaVenta {
 	            fachada = (IFachada) Naming.lookup(ruta);
 
 	        } catch (Exception e) {
-	            e.printStackTrace();
+	        	e.printStackTrace();
 	            ven.mostrarInfo("No se pudo conectar con el servidor.");
 	        }
+
 	}
 
 	
@@ -43,7 +49,13 @@ public class ControladorNuevaVenta {
 		
 		try
 		{
-			  if (direccion == null || direccion.isBlank()) {
+			if (fachada == null) {
+				ven.mostrarError("No hay conexión con el servidor.");
+				return;
+			}  
+			
+			
+			if (direccion == null || direccion.isBlank()) {
 	                ven.mostrarError("La dirección no puede ser vacía.");
 	                return;
 	            }
@@ -53,15 +65,25 @@ public class ControladorNuevaVenta {
 					int d = Integer.parseInt(dia);
 				     int m = Integer.parseInt(mes);
 				     int a = Integer.parseInt(anio);
-
-				     LocalDate fecha = LocalDate.of(a, m, d);
-				     if (fecha.isAfter(LocalDate.now())) {
-				    	    ven.mostrarError("La fecha no puede ser mayor a la fecha actual.");
+				     
+				     if (d < 1 || d > 31) {
+				    	    ven.mostrarError("Dia inválido. Verifique nuevamente.");
 				    	    return;
 				    	}
+				     
+				     if (m < 1 || m > 12) {
+				    	    ven.mostrarError("Mes inválido. Verifique nuevamente.");
+				    	    return;
+				    	}
+				     
+				     
+				     
+				     LocalDate fecha = LocalDate.of(a, m, d);
 				     VOVentaIngreso vov = new VOVentaIngreso(direccion, fecha);
 
 				     fachada.nuevaVenta(vov);
+		             ven.mostrarError("Venta registrada correctamente");
+
 				     ven.limpiar();
 					
 			
@@ -73,10 +95,17 @@ public class ControladorNuevaVenta {
 			{
 				ven.mostrarInfo(e.darMensaje());;
 			}
-			catch (NumberFormatException e) {
-		         ven.mostrarError("Ingrese correctamente la fecha.");
-		    }catch (Exception e) {
-		         ven.mostrarError("Error al iniciar venta: " + e.getMessage());
+			catch (NumberFormatException e) 
+			{
+		        ven.mostrarError("Ingrese correctamente la fecha.");
+		    }
+			catch (DateTimeException e)
+			{
+			    ven.mostrarError("La fecha ingresada no es válida. Verifique si existe esa fecha");
+			}
+			catch (Exception e) 
+			{
+		    	ven.mostrarError("No se pudo iniciar la venta.");
 		    }
 	
 		

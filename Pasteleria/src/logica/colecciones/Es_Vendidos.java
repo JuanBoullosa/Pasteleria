@@ -53,6 +53,15 @@ public class Es_Vendidos implements Serializable{
 	}
 	
 	
+	public boolean existePostreArray (Postre p)
+	{
+		for (Es_Vendido ev: arrayEsVendido){
+			if (ev.getPostre().getCodigo().equals(p.getCodigo())) {
+				return true;
+			}
+		}
+			return false;
+	}
 	
 	
 	

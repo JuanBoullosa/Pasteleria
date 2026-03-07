@@ -31,7 +31,7 @@ public class ControladorEliminarOBorrarPostre {
 	            fachada = (IFachada) Naming.lookup(ruta);
 
 	        } catch (Exception e) {
-	            e.printStackTrace();
+	        	e.printStackTrace();
 	            ven.mostrarInfo("No se pudo conectar con el servidor.");
 	        }
 	}
@@ -40,7 +40,11 @@ public class ControladorEliminarOBorrarPostre {
 	public void EliminarOBorrarPostre (String codigo, String numventa, String cant )
 	{
 		
-		
+		if (fachada == null) {
+			ven.mostrarError("No hay conexión con el servidor.");
+			return;
+		}  
+              
 		try
 		{
 			  if ( codigo == null || codigo.isBlank()) {
@@ -67,7 +71,11 @@ public class ControladorEliminarOBorrarPostre {
 		         ven.limpiar();
 
 		}
-		
+		catch (RemoteException e)
+		{
+			ven.mostrarInfo("Error de comunicacion con el servidor");
+
+		}
 		
 		catch (NumberFormatException e) {
 			ven.mostrarInfo("Número de venta y cantidad deben ser enteros");
@@ -92,13 +100,9 @@ public class ControladorEliminarOBorrarPostre {
 			ven.mostrarInfo(e.darMensaje());
 
 		}	
-		catch (RemoteException e)
-		{
-			ven.mostrarInfo("Error de comunicacion con el servidor");
-
-		}	
-		
-		;
+		catch (Exception e) {
+	        ven.mostrarError("No se pudo agregar Postre a la venta");
+	    }
 		
 		
 		

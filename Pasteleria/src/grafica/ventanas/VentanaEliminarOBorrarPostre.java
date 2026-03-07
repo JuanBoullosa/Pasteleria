@@ -1,5 +1,6 @@
 package grafica.ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import grafica.controladores.ControladorAgregarPostreVenta;
@@ -51,8 +53,9 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 	public VentanaEliminarOBorrarPostre() {
 		setTitle("Eliminacion de postre de una venta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 300);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(198, 233, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -62,38 +65,45 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 		controlador  = new ControladorEliminarOBorrarPostre(this);
 
 		
+		JLabel lblTitulo = new JLabel("Eliminar postre en una venta");
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 15, 450, 35);
+		contentPane.add(lblTitulo);
+		
+		
 		JLabel lblCodigoPostre = new JLabel("Codigo postre:");
-		lblCodigoPostre.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCodigoPostre.setBounds(10, 25, 150, 30);
+		lblCodigoPostre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCodigoPostre.setBounds(32, 70, 150, 30);
 		contentPane.add(lblCodigoPostre);
 		
 		JLabel lblCantidad = new JLabel("Cantidad:");
-		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblCantidad.setBounds(10, 125, 150, 30);
+		lblCantidad.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblCantidad.setBounds(32, 140, 150, 30);
 		contentPane.add(lblCantidad);
 		
 		JLabel lblNumeroVenta = new JLabel("Numero de venta:");
-		lblNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNumeroVenta.setBounds(10, 72, 150, 30);
+		lblNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNumeroVenta.setBounds(32, 105, 150, 30);
 		contentPane.add(lblNumeroVenta);
 		
 		tfCodigoPostre = new JTextField();
-		tfCodigoPostre.setBounds(200, 25, 150, 30);
+		tfCodigoPostre.setBounds(160, 70, 100, 25);
 		contentPane.add(tfCodigoPostre);
 		tfCodigoPostre.setColumns(10);
 		
 		tfCantidad = new JTextField();
 		tfCantidad.setColumns(10);
-		tfCantidad.setBounds(200, 128, 150, 30);
+		tfCantidad.setBounds(160, 140, 100, 25);
 		contentPane.add(tfCantidad);
 		
 		tfNumeroVenta = new JTextField();
 		tfNumeroVenta.setColumns(10);
-		tfNumeroVenta.setBounds(200, 75, 150, 30);
+		tfNumeroVenta.setBounds(160, 105, 100, 25);
 		contentPane.add(tfNumeroVenta);
 		
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			    Menu menu = new Menu();
@@ -102,7 +112,7 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 			    dispose();
 			}
 		});
-		btnCancelar.setBounds(195, 200, 120, 30);
+		btnCancelar.setBounds(230, 200, 90, 25);
 		contentPane.add(btnCancelar);
 		
 		btnEliminar = new JButton("Eliminar");
@@ -120,8 +130,8 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 			}
 		});
 		
-		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnEliminar.setBounds(60, 200, 120, 30);
+		btnEliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEliminar.setBounds(130, 200, 90, 25);
 		contentPane.add(btnEliminar);
 		
 

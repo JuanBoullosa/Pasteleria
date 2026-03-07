@@ -38,7 +38,7 @@ public class ControladorAgregarPostreVenta {
 	            fachada = (IFachada) Naming.lookup(ruta);
 
 	        } catch (Exception e) {
-	            e.printStackTrace();
+	        	e.printStackTrace();
 	            ven.mostrarInfo("No se pudo conectar con el servidor.");
 	        }
 	}
@@ -48,7 +48,10 @@ public class ControladorAgregarPostreVenta {
 	public void AgregarPostreVenta( String codigo, String numventa, String cant    )
 	{
 		
-		
+		if (fachada == null) {
+			ven.mostrarError("No hay conexión con el servidor.");
+			return;
+		}  
               
 		
 		try {
@@ -67,9 +70,9 @@ public class ControladorAgregarPostreVenta {
 	              return;
 			  }
 			  
-			  String c = codigo;
-			     int n = Integer.parseInt(numventa);
-			     int can = Integer.parseInt(cant);
+			  String c = codigo.trim();
+			     int n = Integer.parseInt(numventa.trim());
+			     int can = Integer.parseInt(cant.trim());
 			
 		
 			fachada.agregarPostreEnVenta(c, can, n); //CODIGO,  CANTIDAD, NUMERO DE VENTA
@@ -105,8 +108,11 @@ public class ControladorAgregarPostreVenta {
 		catch (LimiteUnidadesException e)
 		{
 			ven.mostrarInfo(e.darMensaje());
-		}catch (Exception e) {
-	        ven.mostrarError("Error inesperado: " + e.getMessage());
+		}catch (NumberFormatException e) {
+		    ven.mostrarError("Numero de venta y cantidad deben ser enteros.");
+		}
+		catch (Exception e) {
+	        ven.mostrarError("No se pudo agregar Postre a la venta");
 	    }
 		
 		
