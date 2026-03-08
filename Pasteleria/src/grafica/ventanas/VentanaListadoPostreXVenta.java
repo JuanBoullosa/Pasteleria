@@ -1,5 +1,6 @@
 package grafica.ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import java.awt.Font;
@@ -17,6 +18,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JFormattedTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -49,23 +51,31 @@ public class VentanaListadoPostreXVenta extends JFrame {
 	public VentanaListadoPostreXVenta() {
 		setTitle("Listado de postres de una venta");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 500);
+		setBounds(100, 100, 600, 520);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(198, 233, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		controlador = new ControladorListadoPostrexVenta(this);
+		
+		JLabel lblTitulo = new JLabel("Lista de postres en una venta");
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 15, 600, 35);
+		contentPane.add(lblTitulo);
+		
+		
+		
+		
 		JLabel lblNumeroVenta = new JLabel("Número de venta:");
-		lblNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNumeroVenta.setBounds(30, 30, 150, 30);
+		lblNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNumeroVenta.setBounds(30, 61, 150, 25);
 		contentPane.add(lblNumeroVenta);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(252, 98, -204, 115); // Esto se puede eliminar porque no se usa
-		// contentPane.add(scrollPane);  // Comentado porque no se usa
-		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(30, 82, 521, 300);
+		scrollPane_1.setBounds(30, 103, 521, 300);
 		contentPane.add(scrollPane_1);
 		
 		tableListadoPostresXVenta = new JTable();
@@ -77,16 +87,16 @@ public class VentanaListadoPostreXVenta extends JFrame {
 		scrollPane_1.setViewportView(tableListadoPostresXVenta);
 		
 		tfnNumeroVenta = new JTextField();
-		tfnNumeroVenta.setBounds(180, 30, 120, 30);
+		tfnNumeroVenta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		tfnNumeroVenta.setBounds(150, 61, 100, 25);
 		contentPane.add(tfnNumeroVenta);
 		tfnNumeroVenta.setColumns(10);
 
-		// Crear el controlador una vez
-		controlador = new ControladorListadoPostrexVenta(this);
+		
 
 		JButton btnMostrar = new JButton("Mostrar");
-		btnMostrar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnMostrar.setBounds(431, 30, 120, 30);
+		btnMostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnMostrar.setBounds(451, 61, 100, 25);
 		contentPane.add(btnMostrar);
 		btnMostrar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -106,8 +116,8 @@ public class VentanaListadoPostreXVenta extends JFrame {
 			}
 		});
 		
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnCancelar.setBounds(431, 404, 120, 30);
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCancelar.setBounds(250, 430, 100, 25);
 		contentPane.add(btnCancelar);
 	}
 

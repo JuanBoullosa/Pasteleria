@@ -1,6 +1,7 @@
 
 package grafica.ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 
@@ -22,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import logica.valueobjects.VOPostreDetallado;
 
@@ -50,16 +52,22 @@ public class VentanaListadoDetallado extends JFrame {
 	public VentanaListadoDetallado() {
 		setTitle("Listado Detallado de Postre");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 300);
+		 setBounds(100, 100, 600, 315);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(198, 233, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblTitulo = new JLabel("Detalle de un postre");
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 15, 600, 35);
+		contentPane.add(lblTitulo);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 58, 516, 60);
+		scrollPane.setBounds(10, 123, 560, 60);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -73,7 +81,7 @@ public class VentanaListadoDetallado extends JFrame {
 		
 		table.getColumnModel().getColumn(0).setPreferredWidth(200);
 		table.getColumnModel().getColumn(1).setPreferredWidth(600);
-		table.getColumnModel().getColumn(2).setPreferredWidth(200);
+		table.getColumnModel().getColumn(2).setPreferredWidth(230);
 		table.getColumnModel().getColumn(3).setPreferredWidth(200);
 		table.getColumnModel().getColumn(4).setPreferredWidth(400);
 		table.getColumnModel().getColumn(5).setPreferredWidth(1000);
@@ -81,16 +89,17 @@ public class VentanaListadoDetallado extends JFrame {
 		
 		JLabel lblCodigo = new JLabel("Codigo");
 		lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblCodigo.setBounds(30, 22, 55, 22);
+		lblCodigo.setBounds(10, 80, 55, 25);
 		contentPane.add(lblCodigo);
 		
 		tfCodigo = new JTextField();
-		tfCodigo.setBounds(88, 25, 96, 20);
+		tfCodigo.setBounds(75, 80, 96, 25);
 		contentPane.add(tfCodigo);
 		tfCodigo.setColumns(10);
 		
 		JButton btnMostrarCod = new JButton("Mostrar");
-		btnMostrarCod.setBounds(203, 24, 89, 23);
+		btnMostrarCod.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnMostrarCod.setBounds(180, 80, 90, 25);
 		contentPane.add(btnMostrarCod);
 		
 		controlador = new ControladorListadoDetallado(this);
@@ -106,7 +115,7 @@ public class VentanaListadoDetallado extends JFrame {
 		
 		JButton btnCerrar = new JButton("Cerrar");
 		btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnCerrar.setBounds(164, 158, 89, 23);
+		btnCerrar.setBounds(255, 210, 90, 25);
 		contentPane.add(btnCerrar);
 		
 		btnCerrar.addActionListener( new ActionListener() {
@@ -129,7 +138,7 @@ public class VentanaListadoDetallado extends JFrame {
 
 			 modelo.addRow(new Object[] { 
 					 vol.getCodigo(),
-					 vol.getNombre(),
+					 vol.getNombre(),"$ "+
 					 vol.getPrecio(),
 					 vol.getTipo(),
 					 vol.getEndulzante(),
@@ -140,7 +149,7 @@ public class VentanaListadoDetallado extends JFrame {
 				else {
 					modelo.addRow(new Object[] { 
 			        		vop.getCodigo(),
-			        		vop.getNombre(),
+			        		vop.getNombre(),"$ "+
 			        		vop.getPrecio(),
 			        		vop.getTipo(),        		
 			        });

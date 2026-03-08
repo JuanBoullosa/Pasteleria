@@ -1,5 +1,6 @@
 package grafica.ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -18,6 +19,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import logica.valueobjects.VOVenta;
@@ -55,31 +57,35 @@ public class VentanaListadoVentasxEstado extends JFrame {
 		
 		setTitle("Lista de ventas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 500);
+		setBounds(100, 100, 600, 520);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(198, 233, 251));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
+		
+		JLabel lblTitulo = new JLabel("Listado de ventas");
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 15, 600, 35);
+		contentPane.add(lblTitulo);
+		
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblIndicacion = new JLabel("Indicación:");
-		lblIndicacion.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblIndicacion.setBounds(30, 30, 150, 30);
+		lblIndicacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblIndicacion.setBounds(30, 61, 100, 25);
 		contentPane.add(lblIndicacion);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"T", "F", "P"}));
 		comboBox.setMaximumRowCount(3);
-		comboBox.setBounds(140, 30, 70, 30);
+		comboBox.setBounds(127, 61, 48, 25);
 		contentPane.add(comboBox);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(252, 98, -204, 115);
-		contentPane.add(scrollPane);
-		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(30, 82, 521, 300);
+		scrollPane_1.setBounds(30, 103, 521, 300);
 		contentPane.add(scrollPane_1);
 		
 		table = new JTable();
@@ -97,8 +103,8 @@ public class VentanaListadoVentasxEstado extends JFrame {
 	
 		
 		JButton btnMostrar = new JButton("Mostrar");
-		btnMostrar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnMostrar.setBounds(431, 30, 120, 30);
+		btnMostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnMostrar.setBounds(451, 61, 100, 25);
 		contentPane.add(btnMostrar);
 		btnMostrar.addActionListener(new ActionListener() {
 		    public void actionPerformed(ActionEvent e) {
@@ -111,8 +117,8 @@ public class VentanaListadoVentasxEstado extends JFrame {
 		
 		
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnCancelar.setBounds(431, 393, 120, 30);
+		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnCancelar.setBounds(250, 430, 100, 25);
 		contentPane.add(btnCancelar);
 		
 		btnCancelar.addActionListener(new ActionListener() {
@@ -133,7 +139,7 @@ public class VentanaListadoVentasxEstado extends JFrame {
 	        	Object[] fila = {
 	                v.getNumero(),
 	                v.getFecha(),
-	                v.getDireccionEnvio(),
+	                v.getDireccionEnvio(), "$ " +
 	                v.getMontoTotal(),
 	                v.getEstado()
 	            };

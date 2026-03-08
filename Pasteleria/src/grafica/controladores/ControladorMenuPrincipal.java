@@ -1,19 +1,20 @@
 package grafica.controladores;
 
-import grafica.ventanas.Menu;
-
 import java.io.FileInputStream;
 import java.rmi.Naming;
 import java.util.Properties;
+import grafica.ventanas.MenuPrincipal;
 
+import grafica.ventanas.MenuPrincipal;
 import interfaz.IFachada;
 
-public class ControladorMenu {
+public class ControladorMenuPrincipal {
+
 	
 	private  IFachada fachada;
-	private Menu ven;
+	private MenuPrincipal ven;
 	
-	public ControladorMenu (Menu ven ){ 
+	public ControladorMenuPrincipal (MenuPrincipal ven ){ 
 		
 		this.ven = ven;
 
@@ -35,7 +36,7 @@ public class ControladorMenu {
 	}
 	
 	
-	public void RespaldarMenu ()
+	public void RespaldarMenuPrincipal ()
 	{
 		
 		  try {
@@ -47,7 +48,13 @@ public class ControladorMenu {
 		
       
 	}
-	
-	
 
+
+
+	
+	
+	
+	
+	
+	
 }

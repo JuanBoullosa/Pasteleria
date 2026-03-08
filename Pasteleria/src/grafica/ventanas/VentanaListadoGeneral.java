@@ -1,13 +1,16 @@
 package grafica.ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
@@ -40,15 +43,23 @@ public class VentanaListadoGeneral extends JFrame {
     public VentanaListadoGeneral() {
         setTitle("Listado general de postres");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 600, 400);
 
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBackground(new Color(198, 233, 251));
+
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
+    	JLabel lblTitulo = new JLabel("Lista de postres");
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 24));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo.setBounds(0, 15, 600, 35);
+		contentPane.add(lblTitulo);
+        
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(37, 34, 295, 158);
+        scrollPane.setBounds(10, 61, 564, 243);
         contentPane.add(scrollPane);
 
         table = new JTable();
@@ -69,7 +80,7 @@ public class VentanaListadoGeneral extends JFrame {
         controlador.ObtenerListaPostresdeFachada();
 
         JButton btnCerrar = new JButton("Cerrar");
-        btnCerrar.setBounds(128, 203, 89, 23);
+        btnCerrar.setBounds(255, 315, 90, 25);
         btnCerrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
         contentPane.add(btnCerrar);
 
@@ -94,8 +105,8 @@ public class VentanaListadoGeneral extends JFrame {
         for (VOPostre p : lista) {
             modelo.addRow(new Object[] {
                 p.getCodigo(),
-                p.getNombre(),
-                p.getPrecio(),
+                p.getNombre(), 
+                "$ " + p.getPrecio(),
                 p.getTipoPostre()
             });
         }

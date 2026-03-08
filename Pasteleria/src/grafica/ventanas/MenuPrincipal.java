@@ -10,9 +10,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+import grafica.controladores.ControladorMenuPrincipal;
+
 public class MenuPrincipal {
 
 	private JFrame frame;
+	
+	private ControladorMenuPrincipal controlador;
 
 	/**
 	 * Launch the application.
@@ -44,6 +48,8 @@ public class MenuPrincipal {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		controlador = new ControladorMenuPrincipal(this);
 		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
@@ -211,7 +217,12 @@ public class MenuPrincipal {
 				    }
 				});
 		
+		itm11Respalar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlador.RespaldarMenuPrincipal();}
 		
+		});
+
 	
 	
 	}	
