@@ -102,13 +102,17 @@ public class ControladorRecaudacionXPostreXfecha {
 	{
 	    ven.mostrarError("La fecha ingresada no es válida. Verifique si existe esa fecha");
 	}
+	
+	catch (VentaFechaException e)
+	{
+		ven.mostrarInfo(e.darMensaje());;
+	}
+	
 	catch (Exception e) 
 	{
     	ven.mostrarError("No se pudo iniciar la venta.");
     }
 	
 	}
-	
-	
 
 }

@@ -42,7 +42,7 @@ public interface IFachada extends Remote {
 	public ArrayList<VOPostreCantidad> ListadoPostresVenta(int numero) throws NroVentaException, RemoteException, NoPoseePostreException;
   	
   	// Requerimiento 10
-	public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDate fecha ) throws AlfanumericoException,FechaException,PostreException, RemoteException;
+	public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDate fecha ) throws AlfanumericoException,FechaException,PostreException, RemoteException, VentaFechaException;
 
  	//requerimiento 11
   	public void respaldar() throws RespaldoException, RemoteException;

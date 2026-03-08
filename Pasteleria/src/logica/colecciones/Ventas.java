@@ -200,7 +200,14 @@ public class Ventas implements Serializable {
 		}
 		
 		
-		
+		public boolean existeVentaFecha(LocalDate fecha) { 
+		    for (Venta v : listaVentas) {
+		        if (v.getFecha().equals(fecha)) {
+		            return true;
+		        }
+		    }
+		    return false;
+		}
 			
 
 }

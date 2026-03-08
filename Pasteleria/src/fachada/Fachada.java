@@ -323,7 +323,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 	
 	
 	// Requerimiento 10
-			public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDate fecha ) throws AlfanumericoException,PostreException, RemoteException
+			public VORecaudado recaudacionXPostreXfecha(String codigo, LocalDate fecha ) throws AlfanumericoException,PostreException, RemoteException ,VentaFechaException
 			{
 				monitor.comienzoLectura();
 				if (!codigo.matches("^[a-zA-Z0-9]+$")) {
@@ -335,6 +335,12 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 					monitor.terminoLectura();
 					String msg = "No existe un postre con ese codigo";
 					throw new PostreException(msg);
+				}
+				
+				if(!secVentas.existeVentaFecha(fecha)){
+				    monitor.terminoLectura();
+				    String msg = "No existe Venta en esa fecha";
+				    throw new VentaFechaException(msg);
 				}
 
 				VORecaudado vor = secVentas.obtenerVentaxFecha(codigo,fecha);

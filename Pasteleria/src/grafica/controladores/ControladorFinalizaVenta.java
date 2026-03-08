@@ -57,7 +57,7 @@ public void finalizarVenta(String numVenta, String indicacion) {
 			if(monto == 0) {
 				ven.mostrarError("La venta no posee Postres.");
 			} else {
-				ven.mostrarError("Finalizo venta 1. Monto a pagar: $" + monto);
+				ven.mostrarError("Venta Finalizada\nMonto a pagar: $" + monto);
 				ven.limpiar();
 			}
 		}else {
