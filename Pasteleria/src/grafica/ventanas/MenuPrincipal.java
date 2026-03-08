@@ -1,20 +1,28 @@
 package grafica.ventanas;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 import grafica.controladores.ControladorMenuPrincipal;
+import grafica.paneles.PanelConFondo;
+
+import javax.swing.JPanel;
 
 public class MenuPrincipal {
 
 	private JFrame frame;
+	private JPanel contentPane;
 	
 	private ControladorMenuPrincipal controlador;
 
@@ -46,8 +54,26 @@ public class MenuPrincipal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 600, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);	
+		
+		
+	
+		
+		// Panel con imagen de fondo
+        contentPane = new PanelConFondo("src/grafica/paneles/fondoPasteleria.jpg");
+        contentPane.setLayout(null);
+    	
+        
+        JLabel lblTitulo = new JLabel("Pasteleria");
+		lblTitulo.setBounds(210, 180, 450, 80);
+		lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 45));
+		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(lblTitulo);
+        
+		
+		frame.setContentPane(contentPane);
 		
 		controlador = new ControladorMenuPrincipal(this);
 		
