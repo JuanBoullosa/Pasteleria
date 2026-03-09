@@ -58,15 +58,10 @@ public class Ventas implements Serializable {
 	public Boolean FechaInvalida(VOVentaIngreso vovi)
 	{
 		Venta ult = getUltimaVenta();
-	    LocalDate hoy = LocalDate.now();
-		
 		if (ult != null && vovi.getFecha().isBefore(ult.getFecha())) {
-			return true; // fecha inválida
+			return true;
 	    }
-		if (vovi.getFecha().isAfter(hoy)) {
-	        return true;
-	    }
-	    return false;
+		return false;
 	    
 	}
 	
