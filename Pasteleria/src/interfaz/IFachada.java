@@ -27,10 +27,10 @@ public interface IFachada extends Remote {
     public void nuevaVenta(VOVentaIngreso vovi) throws RemoteException, FechaException;
     
     //Requerimiento 5 Agregar Postre a una venta
-    public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException,IngresoCantidadException, RemoteException;
+    public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException,IngresoCantidadException, RemoteException,FinalizadaException;
     
     //Requerimiento 6
-    public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, RemoteException, NumberFormatException;
+    public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, RemoteException, NumberFormatException, FinalizadaException;
     
   	//REQUERIMIENTO 7
     public float finalizarVenta (int numVenta,String indicacion) throws ExisteVentaException,IndicacionException, FinalizadaException, RemoteException;

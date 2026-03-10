@@ -11,6 +11,7 @@ import interfaz.IFachada;
 import logica.excepciones.AlfanumericoException;
 import logica.excepciones.CantidadException;
 import logica.excepciones.ExisteVentaException;
+import logica.excepciones.FinalizadaException;
 import logica.excepciones.IngresoCantidadException;
 import logica.excepciones.LimiteUnidadesException;
 import logica.excepciones.PostreException;
@@ -103,12 +104,19 @@ public class ControladorAgregarPostreVenta {
 		}
 		catch (IngresoCantidadException e)
 		{
-			ven.mostrarInfo(e.darMensaje());;
+			ven.mostrarInfo(e.darMensaje());
 		}
 		catch (LimiteUnidadesException e)
 		{
 			ven.mostrarInfo(e.darMensaje());
-		}catch (NumberFormatException e) {
+		}
+		catch (FinalizadaException e)
+		{
+			ven.mostrarError(e.darMensaje());
+		}
+		
+		catch (NumberFormatException e) 
+		{
 		    ven.mostrarError("Numero de venta y cantidad deben ser enteros.");
 		}
 		catch (Exception e) {

@@ -153,7 +153,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 	
 	
 	//Requerimiento 5
-	public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException,IngresoCantidadException, RemoteException
+	public void agregarPostreEnVenta (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, LimiteUnidadesException,IngresoCantidadException, RemoteException ,FinalizadaException
 	{
 		monitor.comienzoEscritura();
 		if(cantidad <= 0)
@@ -167,6 +167,14 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		    String msg= "El codigo debe ser alfanumerico";
 		    throw new AlfanumericoException(msg);
 		}
+		
+		if (secVentas.obtenerVenta(numVenta).getEstado().equals("FINALIZADA") )
+		{	
+			monitor.terminoEscritura();
+			String msg= "La venta ya se encuentra finalizada";
+		    throw new FinalizadaException(msg);
+		}
+		
 		if(!dicPostres.member(codigo)) {
 			monitor.terminoEscritura();
 			String msg = "No existe un postre con ese codigo";
@@ -179,6 +187,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			String msg= "No existe venta con ese numero";
 		    throw new ExisteVentaException(msg);
 		}
+		
 		
 		if (cantidad > 40)
 		{
@@ -195,7 +204,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			String msg = "La venta ya contiene postres y al agregar esta cantidad se superan las 40 unidades permitidas.";
 			throw new LimiteUnidadesException(msg);
 		}
-		
+				
 		Postre p = dicPostres.find(codigo);
 		
 		secVentas.obtenerVenta(numVenta).altaPostreEnVenta(p, cantidad);
@@ -205,7 +214,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 	
 	
 	//Requerimiento 6
-	public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, RemoteException, NumberFormatException
+	public void eliminarOBorrarPostreEs_Vendidos (String codigo, int cantidad, int numVenta) throws CantidadException,AlfanumericoException, PostreException, ExisteVentaException, RemoteException, NumberFormatException,FinalizadaException
 	{
 		monitor.comienzoEscritura();
 		if(cantidad <= 0)
@@ -230,14 +239,18 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			String msg= "No existe venta con ese numero";
 		    throw new ExisteVentaException(msg);
 		}
+		if (secVentas.obtenerVenta(numVenta).getEstado().equals("FINALIZADA") )
+		{
+			monitor.terminoEscritura();
+			String msg= "La venta ya se encuentra finalizada";
+		    throw new FinalizadaException(msg);
+		}
 		Postre p = dicPostres.find(codigo);
+		
 		if (!secVentas.obtenerVenta(numVenta).obtenerDetalleVentas().existePostreArray(p)) {
 		        monitor.terminoEscritura();
 		        throw new PostreException("El postre no se encuentra en la venta.");
-		    }
-
-		
-		
+		}
 		
 		//Postre p = dicPostres.find(codigo);
 		secVentas.obtenerVenta(numVenta).bajaPostreEs_Vendidos(p, cantidad);

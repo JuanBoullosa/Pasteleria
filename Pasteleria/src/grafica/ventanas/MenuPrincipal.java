@@ -248,8 +248,6 @@ public class MenuPrincipal {
 				controlador.RespaldarMenuPrincipal();}
 		
 		});
-
-	
 	
 	}	
 		

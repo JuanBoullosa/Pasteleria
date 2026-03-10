@@ -99,12 +99,19 @@ public class ControladorEliminarOBorrarPostre {
 		{
 			ven.mostrarInfo(e.darMensaje());
 
-		}	
+		}
+		
+		catch (FinalizadaException e)
+		{
+			ven.mostrarError(e.darMensaje());
+		}
+		
+		/*
 		catch (Exception e) {
 	        ven.mostrarError("No se pudo agregar Postre a la venta");
 	    }
 		
-		
+		*/
 		
 		
 		
