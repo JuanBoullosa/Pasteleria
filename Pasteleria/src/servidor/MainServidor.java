@@ -53,19 +53,19 @@ public class MainServidor
 		}
 		catch (RemoteException e) // si ocurre cualquier problema de red
 		{
-			e.printStackTrace();
+			System.err.println("Error de entrada/salida al iniciar el servidor.");
 		}
 		catch (MalformedURLException e) // si la ruta no esta bien formada
 		{
-			e.printStackTrace();
+			System.err.println("La URL del servidor está mal formada.");
 		}
 		catch (FileNotFoundException e) // si no encuentra el archivo de configuracion
 		{
-			e.printStackTrace();
+			System.err.println("No se encontró el archivo de configuración.");
 		}
 		catch (IOException e) // si ocurre cualquier otro error de E/S
 		{
-			e.printStackTrace();
+			System.err.println("No se encontró el archivo de configuración.");
 		}
 		
 			

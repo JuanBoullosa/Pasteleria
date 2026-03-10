@@ -35,7 +35,6 @@ try {
     fachada = (IFachada) Naming.lookup(ruta);
 
 } catch (Exception e) {
-    e.printStackTrace();
     ven.mostrarError("No se pudo conectar con el servidor.");
 }
 	}
@@ -66,21 +65,21 @@ public void finalizarVenta(String numVenta, String indicacion) {
 		}
 	} catch (NumberFormatException e) {
         ven.mostrarError("El número de venta debe ser numérico.");
-        e.printStackTrace();
+       
 	}catch (ExisteVentaException e)
 	{
 		ven.mostrarError(e.darMensaje());
-		e.printStackTrace();
+		
 	}
 	catch (IndicacionException e)
 	{
 		ven.mostrarError(e.darMensaje());
-		e.printStackTrace();
+		
 	}
 	catch (FinalizadaException e)
 	{
 		ven.mostrarError(e.darMensaje());
-		e.printStackTrace();
+		
 	}
  catch (RemoteException e) {
     ven.mostrarError("Error de comunicacion con el servidor");

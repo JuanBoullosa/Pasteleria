@@ -41,8 +41,9 @@ public class VentanaEliminarOBorrarPostre extends JFrame {
 					VentanaEliminarOBorrarPostre frame = new VentanaEliminarOBorrarPostre();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					JOptionPane.showMessageDialog(null,
+							"No se pudo iniciar la ventana.");
+					}
 			}
 		});
 	}

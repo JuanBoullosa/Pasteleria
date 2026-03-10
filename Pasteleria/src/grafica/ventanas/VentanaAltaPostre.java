@@ -41,8 +41,9 @@ public class VentanaAltaPostre extends JFrame {
                 VentanaAltaPostre frame = new VentanaAltaPostre();
                 frame.setVisible(true);
             } catch (Exception e) {
-                e.printStackTrace();
-            }
+            	JOptionPane.showMessageDialog(null,
+            			"No se pudo iniciar la ventana.");
+            	}
         });
     }
 

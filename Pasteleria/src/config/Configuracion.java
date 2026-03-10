@@ -23,7 +23,7 @@ public class Configuracion {
 
         }
         catch (IOException e) {
-            e.printStackTrace();
+        	System.err.println("Error al leer el archivo de configuración");
         }
     }
     

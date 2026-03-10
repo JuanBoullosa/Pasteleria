@@ -42,8 +42,9 @@ public class VentanaListadoVentasxEstado extends JFrame {
 					VentanaListadoVentasxEstado frame = new VentanaListadoVentasxEstado();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					JOptionPane.showMessageDialog(null,
+							"No se pudo iniciar la ventana.");
+					}
 			}
 		});
 	}

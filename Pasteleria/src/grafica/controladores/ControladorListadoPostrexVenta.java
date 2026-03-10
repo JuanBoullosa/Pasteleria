@@ -38,7 +38,6 @@ public class ControladorListadoPostrexVenta {
 		    fachada = (IFachada) Naming.lookup(ruta);
 
 		} catch (Exception e) {
-		    e.printStackTrace();
 		    ven.mostrarMensaje("No se pudo conectar con el servidor.");
 		}
 			}
@@ -68,7 +67,6 @@ public class ControladorListadoPostrexVenta {
 
 	       } catch (RemoteException e) {
 	           ven.mostrarMensaje("Error de conexión con el servidor.");
-	           e.printStackTrace();
 	       }
 	}
 }

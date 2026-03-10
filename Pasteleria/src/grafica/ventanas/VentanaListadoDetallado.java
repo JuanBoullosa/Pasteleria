@@ -42,8 +42,9 @@ public class VentanaListadoDetallado extends JFrame {
 					VentanaListadoDetallado frame = new VentanaListadoDetallado();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					JOptionPane.showMessageDialog(null,
+							"No se pudo iniciar la ventana.");
+					}
 			}
 		});
 	}

@@ -94,7 +94,7 @@ public class MainCliente
 			}
 			catch (PostreException e) {
 	            System.out.println(e.darMensaje());
-	            e.printStackTrace();
+	            
 			}
 
 	        
@@ -113,7 +113,7 @@ public class MainCliente
 	            } 	
 	        	catch (Exception e) {
 	    			System.out.println("Error lista");
-	    			e.printStackTrace();
+	    			
 	    		};
 
 			
@@ -128,11 +128,11 @@ public class MainCliente
 	            System.out.println(det2);
 	        }	catch (AlfanumericoException e) {
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (PostreException e) {
 	            System.out.println(e.darMensaje());
-	            e.printStackTrace();
+	            
 			
 			};
 			//REQUERIMIENTO 4 - CREO UNA VENTA
@@ -160,7 +160,7 @@ public class MainCliente
 			catch (FechaException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			};
             
 			/*
@@ -182,17 +182,17 @@ public class MainCliente
 			catch (AlfanumericoException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (PostreException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (ExisteVentaException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (IngresoCantidadException e)
 			{
@@ -202,7 +202,7 @@ public class MainCliente
 			catch (LimiteUnidadesException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			;
 			
@@ -232,17 +232,17 @@ public class MainCliente
 			catch (AlfanumericoException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (PostreException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (ExisteVentaException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			;
 			
@@ -264,17 +264,17 @@ public class MainCliente
 			catch (ExisteVentaException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (IndicacionException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (FinalizadaException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			};
 			
 			*/
@@ -311,7 +311,7 @@ public class MainCliente
 				
 			}catch(EstadoVentaException e){
 				System.out.println(e.getMensaje());
-				e.printStackTrace();
+				
 			};
 			
 			
@@ -339,11 +339,11 @@ public class MainCliente
 				
 			}catch(NroVentaException e) {
 				System.out.println(e.getMensaje());
-				e.printStackTrace();
+				
 			}
 			catch(NoPoseePostreException e) {
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 	
 			
@@ -360,20 +360,20 @@ public class MainCliente
 				System.out.println(vor.toString());
 			}catch(AlfanumericoException e) {
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch(PostreException e) {
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}catch (FechaException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			catch (VentaFechaException e)
 			{
 				System.out.println(e.darMensaje());
-				e.printStackTrace();
+				
 			}
 			
 			
@@ -400,26 +400,25 @@ public class MainCliente
 
 			
 		}
-		catch (MalformedURLException e) // si la ruta no esta bien formada
-		{
-			e.printStackTrace();
-		}
 		catch (RemoteException e) // si ocurre cualquier problema de red
 		{
-			e.printStackTrace();
+			System.err.println("Error de entrada/salida al iniciar el servidor.");
 		}
-		catch (NotBoundException e) // si la ruta esta bien formada pero el servidor esta bajo
+		catch (MalformedURLException e) // si la ruta no esta bien formada
 		{
-			e.printStackTrace();
+			System.err.println("La URL del servidor está mal formada.");
 		}
 		catch (FileNotFoundException e) // si no encuentra el archivo de configuracion
 		{
-			e.printStackTrace();
+			System.err.println("No se encontró el archivo de configuración.");
 		}
 		catch (IOException e) // si ocurre cualquier otro error de E/S
 		{
-			e.printStackTrace();
-		} 
+			System.err.println("No se encontró el archivo de configuración.");
+		}
+		catch (NotBoundException e) {
+		    System.out.println("El objeto remoto no está registrado en el servidor.");
+		}
 	}
 }
 

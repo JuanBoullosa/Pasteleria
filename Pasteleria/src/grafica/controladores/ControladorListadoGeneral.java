@@ -30,7 +30,6 @@ public class ControladorListadoGeneral {
             fachada = (IFachada) Naming.lookup(ruta);
 
         } catch (Exception e) {
-            e.printStackTrace();
             ven.mostrarMensaje("No se pudo conectar con el servidor.");
         }
     }
@@ -43,10 +42,8 @@ public class ControladorListadoGeneral {
             
         } catch (RemoteException e) {
             ven.mostrarMensaje("Error de conexión con el servidor.");
-            e.printStackTrace();
         } catch (Exception e) {
             ven.mostrarMensaje("Error al cargar el listado.");
-            e.printStackTrace();
         }
     }
 }

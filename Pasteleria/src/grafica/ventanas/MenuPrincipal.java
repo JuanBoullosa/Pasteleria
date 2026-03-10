@@ -36,8 +36,9 @@ public class MenuPrincipal {
 					MenuPrincipal window = new MenuPrincipal();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					JOptionPane.showMessageDialog(null,
+							"No se pudo iniciar la ventana.");
+					}
 			}
 		});
 	}
