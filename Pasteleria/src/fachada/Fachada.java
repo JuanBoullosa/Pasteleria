@@ -252,7 +252,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		        throw new PostreException("El postre no se encuentra en la venta.");
 		}
 		
-		//Postre p = dicPostres.find(codigo);
 		secVentas.obtenerVenta(numVenta).bajaPostreEs_Vendidos(p, cantidad);
 		monitor.terminoEscritura();
 	}
@@ -285,7 +284,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			        monitor.terminoEscritura();
 			        return 0; //tengo que devolver 0 porque no se puede obtener el numero de venta ya que no existe mas
 			        
-			        
 			    }
 			    secVentas.confirmarVenta(numVenta);
 			    float resu =  secVentas.obtenerVenta(numVenta).getMontoTotal();
@@ -297,7 +295,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			
 			public LinkedList <VOVenta> ListadoVentasxEstado(String Estado) throws EstadoVentaException, RemoteException
 			{
-				// Estado = Estado.toUpperCase();
 				monitor.comienzoLectura();
 				if (!(Estado.equals("T") || Estado.equals("P") || Estado.equals("F"))) {
 					monitor.terminoLectura();	
@@ -368,9 +365,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			monitor.comienzoEscritura();	
 		    try {
 			Persistencia p = new Persistencia();
-			
-			//VOPersistencia vo = this.exportarDatos();
-		
+					
 			VOPersistencia vo = new VOPersistencia(dicPostres, secVentas);
 		    Configuracion config = new Configuracion();
 		    String nomArch = config.getnomArchivo();
@@ -395,9 +390,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 				Configuracion config = new Configuracion();
 
 				VOPersistencia vop = p.recuperar(config.getnomArchivo());
-				 /*	
-				this.importarDatos(persistencia);
-				*/	
+				
 					this.dicPostres = vop.getPostres();
 			        this.secVentas = vop.getVentas();
 			}
@@ -406,34 +399,6 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 				monitor.terminoEscritura();
 			}
 		}
-
-		/*
-		 public VOPersistencia exportarDatos()  {
-			 VOPersistencia vo = new VOPersistencia(dicPostres, secVentas);
-		     return vo;
-		    }
-		
-		 public void importarDatos(VOPersistencia vo) {
-		        this.dicPostres = vo.getPostres();
-		        this.secVentas = vo.getVentas();
-		    }
-		
-		*/
-				 
-		//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
-		public ArrayList<VOVenta> ListaDeVentasIngresadas()
-		{
-			monitor.comienzoLectura();
-			ArrayList<VOVenta> resu = secVentas.obtenerVentas();
-			monitor.terminoLectura();
-			return resu;
-		}
-		
-		
-		
-		
-		
-	
 		
 
 }

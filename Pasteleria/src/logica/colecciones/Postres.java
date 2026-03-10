@@ -65,33 +65,4 @@ public class Postres implements Serializable {
 		}
 		
 	
-	/*
-    ///Metodo auxiliar para ver en consola nada mas
-	public ArrayList<VOPostre> obtenerPostres() {	
-		ArrayList<VOPostre> ListaDePostres = new ArrayList<VOPostre>();
-		for (Postre p: arbolPostres.values()) {
-			
-			VOPostre vop = new VOPostre(p);
-			
-			if (p instanceof Light) {
-				Light l = (Light) p;
-	
-				VOLight vopl = new VOLight(
-						l.getCodigo(),
-						l.getNombre(),
-		                l.getPrecio(),
-		                l.getEndulzante(),
-		                l.getDescripcion()
-						);
-					
-				ListaDePostres.add(vopl);
-				
-			}else {
-				ListaDePostres.add(vop);
-			}		
-		}
-		return ListaDePostres;
-	}
-	*/
-	
 }

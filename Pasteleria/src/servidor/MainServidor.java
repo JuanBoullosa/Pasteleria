@@ -36,8 +36,7 @@ public class MainServidor
 			String ruta = "//" + ip + ":" + puerto + "/Pasteleria";
 			Fachada fachada = new Fachada();
 			
-			//INVOCAR A RECUPERAR****
-			
+			//Requerimiento 11			
 			try { 
 				fachada.recuperar();
 				System.out.println("Se restauro el sistema correctamente.");

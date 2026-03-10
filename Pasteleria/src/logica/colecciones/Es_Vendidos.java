@@ -22,10 +22,6 @@ public class Es_Vendidos implements Serializable{
 		arrayEsVendido = new ArrayList<Es_Vendido> ();
 	}
 	
-	
-	
-	
-	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	//Requerimiento 5
 
 	//Funcion aux 1 - Requerimiento 5 - sumar o insertar postre valido en Es_Vendidos
@@ -103,12 +99,6 @@ public class Es_Vendidos implements Serializable{
 		}
 	}
 	
-	
-	
-	
-	
-	//%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 	//agregar un elemento a la lista
 	public void insertar(Es_Vendido esV)
 	{
@@ -117,10 +107,12 @@ public class Es_Vendidos implements Serializable{
 	    for (Es_Vendido e : arrayEsVendido) {
 	        total = total + e.getCantidad();
 	    }
-
+	    
+	    /*
 	    if (total + esV.getCantidad() > 40) {
 	        System.out.println(" Tirar EXCEPCION : Supera el límite permitido de postres (40)");
 	    }
+	    */
 	    
 	    for (Es_Vendido e : arrayEsVendido) {
 	        if (e.getPostre().getCodigo().equals(esV.getPostre().getCodigo())) {
@@ -165,12 +157,6 @@ public class Es_Vendidos implements Serializable{
 	    return total;
 	}
 	
-	/*
-	// REVISAR SI ESTA EN USO 
-	public ArrayList<Es_Vendido> getArrayEsVendido() {
-	    return arrayEsVendido;
-	}
-	*/
 	
 	//REQUERIMIENTO 9 
 	public ArrayList<Es_Vendido> obtenerArrayEsVendido() {
@@ -185,8 +171,6 @@ public class Es_Vendidos implements Serializable{
 	}
 	
 
-	
-	
 }	
 	
 

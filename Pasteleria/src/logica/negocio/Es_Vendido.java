@@ -1,5 +1,4 @@
 package logica.negocio;
-//import logica.valueobjects.VOPostre;
 import java.io.Serializable;
 
 public class Es_Vendido implements Serializable {
@@ -42,12 +41,5 @@ public class Es_Vendido implements Serializable {
 		int nuevaCantidad = cantidadActual - cant;
 		this.cantidad = nuevaCantidad;
 	}
-	 /*
-	//MODIFICAR SOLO PARA PRUEBAS 
-	public void toEsVendido (){
-		VOPostre p = new VOPostre(getPostre()); 
-		// p.toVOPostre();
-	};
-	*/
-
+	
 }
