@@ -368,8 +368,10 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			monitor.comienzoEscritura();	
 		    try {
 			Persistencia p = new Persistencia();
-
-		    VOPersistencia vo = this.exportarDatos();
+			
+			//VOPersistencia vo = this.exportarDatos();
+		
+			VOPersistencia vo = new VOPersistencia(dicPostres, secVentas);
 		    Configuracion config = new Configuracion();
 		    String nomArch = config.getnomArchivo();
 
@@ -392,8 +394,12 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 				Persistencia p = new Persistencia();
 				Configuracion config = new Configuracion();
 
-				VOPersistencia persistencia = p.recuperar(config.getnomArchivo());
+				VOPersistencia vop = p.recuperar(config.getnomArchivo());
+				 /*	
 				this.importarDatos(persistencia);
+				*/	
+					this.dicPostres = vop.getPostres();
+			        this.secVentas = vop.getVentas();
 			}
 			finally // si no cuando tira exception el monitor nunca termina escritura. 
 			{
@@ -401,7 +407,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 			}
 		}
 
-		
+		/*
 		 public VOPersistencia exportarDatos()  {
 			 VOPersistencia vo = new VOPersistencia(dicPostres, secVentas);
 		     return vo;
@@ -412,6 +418,7 @@ public class Fachada extends UnicastRemoteObject implements IFachada {
 		        this.secVentas = vo.getVentas();
 		    }
 		
+		*/
 				 
 		//funcion que sirve para ver como cargo las listas ingresadas (no es un requerimiento)
 		public ArrayList<VOVenta> ListaDeVentasIngresadas()
