@@ -31,7 +31,6 @@ public class ControladorEliminarOBorrarPostre {
 	            fachada = (IFachada) Naming.lookup(ruta);
 
 	        } catch (Exception e) {
-	        	e.printStackTrace();
 	            ven.mostrarInfo("No se pudo conectar con el servidor.");
 	        }
 	}

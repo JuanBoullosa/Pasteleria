@@ -43,8 +43,9 @@ public class VentanarecaudacionXPostreXfecha extends JFrame {
 					VentanarecaudacionXPostreXfecha frame = new VentanarecaudacionXPostreXfecha();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					JOptionPane.showMessageDialog(null,
+							"No se pudo iniciar la ventana.");
+					}
 			}
 		});
 	}

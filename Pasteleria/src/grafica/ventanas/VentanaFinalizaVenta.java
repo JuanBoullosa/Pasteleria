@@ -38,8 +38,9 @@ public class VentanaFinalizaVenta extends JFrame {
 					VentanaFinalizaVenta frame = new VentanaFinalizaVenta();
 					frame.setVisible(true);
 				} catch (Exception e) {
-					e.printStackTrace();
-				}
+					JOptionPane.showMessageDialog(null,
+							"No se pudo iniciar la ventana.");
+					}
 			}
 		});
 	}

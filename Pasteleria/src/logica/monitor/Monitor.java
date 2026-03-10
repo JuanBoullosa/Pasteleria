@@ -20,7 +20,7 @@ public class Monitor {
 	            cantLectores = cantLectores + 1;
 
 	        } catch (InterruptedException e) {
-	            e.printStackTrace();
+	        	System.err.println("Error de sincronización en el monitor.");
 	        }
 	    }
 	    
@@ -46,7 +46,7 @@ public class Monitor {
 	            escribiendo = true;
 
 	        } catch (InterruptedException e) {
-	            e.printStackTrace();
+	        	System.err.println("Error de sincronización en el monitor.");
 	        }
 	    }
 

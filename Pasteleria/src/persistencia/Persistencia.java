@@ -25,7 +25,6 @@ package persistencia;
 				}
 				catch(Exception e)
 					{
-						e.printStackTrace();
 						throw new RespaldoException("error al respaldar");
 					}
 				}
@@ -50,7 +49,6 @@ package persistencia;
 					}
 					catch(Exception e)
 					{
-						e.printStackTrace();
 						throw new RecuperarException("error al recuperar el archivo");
 					}
 				}
